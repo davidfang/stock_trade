@@ -1,0 +1,72 @@
+<style>
+    .modal-darkorange .import-btn{
+        cursor: pointer;
+        /*margin-bottom: 10px;*/
+    }
+    .modal-darkorange .file-bar{
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .modal-darkorange p{
+        color:#777;
+    }
+
+</style>
+<!--import Modal Templates-->
+<div id="import-modal" style="display:none;">
+    <input type="file" name="import" class="import-submit" style="display: none">
+    <a class="import-btn">上传文件</a>
+    <div class="file-bar"></div>
+    <p>请上传规定格式的Excel文件,<a id="download-template">下载模板</a></p>
+</div>
+<!--End import Modal Templates-->
+<script>
+    $(document).on('click','a.import-btn',function(e){
+        e.preventDefault();
+        $('.modal-darkorange .import-submit').click();
+    })
+    $(document).on('change','.import-submit',function(e){
+        $(this).siblings('.file-bar').text(this.files[0].name);
+    })
+    $('#import_excel').on('click',function(e){
+        e.preventDefault();
+        bootbox.dialog({
+            message: $("#import-modal").html(),
+            title: "导入文件",
+            className: "modal-darkorange",
+            buttons: {
+                success: {
+                    label: "导入",
+                    className: "btn-blue",
+                    callback: function () {
+                        var formdata = new FormData ();
+                        var url = $('#import-url').val();
+                        formdata.append('import_file',$('.modal-darkorange .import-submit')[0].files[0]);
+                        $.ajax({
+                            url :url,
+                            type: 'post',
+                            data:formdata,
+                            cache: false,
+                            processData:false,
+                            contentType:false,
+                            success:function(data){
+                                if(data.code == 0){
+                                    hint('success',data.msg, data.data,true);
+                                }else{
+                                    hint('warning',data.msg,data.data);
+                                }
+                                return false;
+                            }
+                        })
+                    }
+                },
+                "取消": {
+                    className: "btn",
+                    callback: function () {}
+                }
+            }
+        });
+        $('.modal-darkorange').find('#download-template').attr('href',$('#download-template-url').val());
+    })
+</script>

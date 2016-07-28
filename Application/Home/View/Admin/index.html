@@ -1,0 +1,158 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+</block>
+<block name="main">
+    <!--<div class="col-lg-12 col-sm-12 col-xs-12">-->
+        <!--<div class="widget flat">-->
+            <!--<div class="widget-header">-->
+                <!--<span class="widget-caption">基本信息</span>-->
+            <!--</div>&lt;!&ndash;Widget Header&ndash;&gt;-->
+            <!--<div class="widget-body">-->
+
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget flat">
+                        <div class="widget-header">
+                            <span class="widget-caption">用户信息</span>
+                        </div><!--Widget Header-->
+                        <div class="widget-body">
+                            <foreach name="user_distribute" item="vo">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                                        <div class="databox-left bg-palegreen">
+                                            <div class="databox-piechart">
+                                                <div id="users-pie" data-toggle="easypiechart" class="easyPieChart"
+                                                     data-barcolor="#fff" data-linecap="butt"
+                                                     data-percent="{$vo.num_rate}" data-animate="500" data-linewidth="3" data-size="47"
+                                                     data-trackcolor="rgba(255,255,255,0.1)"
+                                                     style="width: 47px; height: 47px; line-height: 47px;">
+
+                                                    <span class="white font-90">{$vo.num_rate}%</span>
+                                                    <canvas width="47" height="47"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <span class="databox-number green">{$vo.user_num} 人</span>
+                                            <div class="databox-text darkgray">
+                                                <if condition="$vo.grade_id eq 0">
+                                                    普通用户
+                                                <elseif condition="$vo.grade_id eq 1"/>
+                                                    一级代理
+                                                <elseif condition="$vo.grade_id eq 2"/>
+                                                    二级代理
+                                                <elseif condition="$vo.grade_id eq 3"/>
+                                                    三级代理
+                                                </if>
+                                            </div>
+                                            <!--<div class="databox-state bg-themeprimary">-->
+                                                <!--<i class="fa fa-check"></i>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </foreach>
+                        </div><!--Widget Body-->
+                    </div><!--Widget-->
+                </div>
+
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget flat">
+                        <div class="widget-header">
+                            <span class="widget-caption">今日充值信息</span>
+                        </div><!--Widget Header-->
+                        <div class="widget-body">
+
+                            <div class="databox radius-bordered databox-shadowed databox-graded databox-vertical">
+                                <div class="databox-top no-padding ">
+                                    <div class="databox-row">
+                                        <div class="databox-cell cell-6 text-align-center bg-sky">
+                                            <span class="databox-number">{$prepaid['indent']}单 / ￥{$prepaid['indent_money']}</span>
+                                            <span class="databox-text">今日的订单</span>
+                                        </div>
+                                        <div class="databox-cell cell-6 text-align-center bg-azure">
+                                            <span class="databox-number">{$prepaid['finish']}单 / ￥{$prepaid['finish_money']}</span>
+                                            <span class="databox-text">今日的订单完成量</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="databox-bottom">
+                                    <span class="databox-text">完成金额比：{$prepaid['money_percentage']}%</span>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar progress-bar-azure" role="progressbar" aria-valuenow="{$prepaid['money_percentage']}" aria-valuemin="0" aria-valuemax="100" style="width: {$prepaid['money_percentage']}%">
+                                            <span class="sr-only">
+                                                {$prepaid['money_percentage']}% Complete
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!--Widget Body-->
+                    </div><!--Widget-->
+                </div>
+
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget flat">
+                        <div class="widget-header">
+                            <span class="widget-caption">昨日提成信息</span>
+                        </div><!--Widget Header-->
+                        <div class="widget-body">
+                            <div class="databox databox-xlg databox-halved radius-bordered databox-shadowed databox-vertical">
+                                    <div class="databox-top bg-white padding-10">
+                                        <div class="col-lg-12 col-sm-12 col-xs-12 text-align-center padding-10">
+                                            <span class="databox-header carbon no-margin">昨日提成信息</span>
+                                            <!--<span class="databox-text lightcarbon no-margin"> Software Manager at Microsoft </span>-->
+                                        </div>
+                                    </div>
+                                    <div class="databox-bottom bg-white no-padding">
+                                        <div class="databox-row row-12">
+                                            <div class="databox-row row-6 no-padding">
+
+                                                <foreach name="yesterday_push" item="vo">
+                                                    <div class="databox-cell cell-4 no-padding text-align-center bordered-right bordered-platinum">
+                                                        <span class="databox-text sonic-silver  no-margin">
+                                                           <if condition="$vo.grade_id eq 1">
+                                                               一级代理
+                                                               <elseif condition="$vo.grade_id eq 2"/>
+                                                               二级代理
+                                                               <elseif condition="$vo.grade_id eq 3"/>
+                                                               三级代理
+                                                           </if>
+                                                        </span>
+                                                        <span class="databox-number lightcarbon no-margin">{$vo.push_sum} 元</span>
+                                                    </div>
+                                                </foreach>
+                                                <empty name="yesterday_push">
+                                                    <div class="databox-cell cell-12 no-padding text-align-center bordered-platinum">
+                                                        <span class="databox-number lightcarbon no-margin">无</span>
+                                                    </div>
+                                                </empty>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div><!--Widget Body-->
+                    </div><!--Widget-->
+                </div>
+
+            <!--</div>&lt;!&ndash;Widget Body&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;Widget&ndash;&gt;-->
+    <!--</div>-->
+
+</block>
+<block name="script">
+    <script>
+        $(function(){
+            InitiateEasyPieChart.init();
+        })
+    </script>
+    <script src="__ASSETS__/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="__ASSETS__/js/charts/easypiechart/easypiechart-init.js"></script>
+</block>

@@ -1,0 +1,110 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .form-group{
+            display: inline-block;
+            width: 100%;
+        }
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+            height: 450px;
+        }
+        .form-control{
+            width: 50%;
+            display: inline-block;
+        }
+        .control-label{
+            line-height: 34px;
+            margin-bottom: 0px;
+        }
+        .form_label{
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            line-height: 34px;
+            float: none;
+        }
+        .form_text{
+            width: 15%;
+            display: inline-block;
+        }
+    </style>
+</block>
+<block name="main">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat">
+            <div class="widget-header">
+                <span class="widget-caption">产品信息</span>
+            </div><!--Widget Header-->
+            <div class="widget-body">
+                <div class="table-toolbar operation">
+                    <div class="btn-group">
+                        <a type="button" id="export" class="btn btn-default" href="{:U('Admin/add_user')}">
+                            <i class=""></i>添加产品
+                        </a>
+                    </div>
+                </div>
+
+                <table class="table_data table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr role="row">
+                        <th>名字</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="data_user">
+                    <foreach name="product" item="vo">
+                        <tr>
+                            <td>{$vo.name}</td>
+                            <td>
+                                <a class="edit_info" href="{:U('Admin/add_save_product')}?product_id={$vo.id}">编辑</a>
+                                <a obj="{$vo.id}" class="del" href="javascript:void(0);">删除</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="page">{$show_page}</div>
+            </div><!--Widget Body-->
+        </div><!--Widget-->
+    </div>
+    <input type="hidden" url="{:U('Admin/del_product')}" id="del_id" />
+
+</block>
+<block name="script">
+    <script>
+        var url=$("#del_id").attr('url');
+        $(function(){
+            $(".del").click(function(){
+                var obj = $(this).attr('obj');
+                bootbox.setDefaults("locale","zh_CN");
+                bootbox.confirm("你确定要删除吗?", function (result) {
+                    if (!result) {
+                        return;
+                    } else {
+                        if (obj != '') {
+                            $.post(
+                                url,
+                                {
+                                    obj_id:obj,
+                                },
+                                function (data) {
+                                    if (data['code'] == 0) {
+                                        hint('success', data['msg'], data['data'], true);
+                                    } else if (data['code'] == 1) {
+                                        hint('warning', data['msg'], data['data']);
+                                    } else {
+                                        hint('warning', '提示', '未知错误！');
+                                    }
+                                }
+                            )
+                        } else {
+                            hint('warning', '提示', '未知错误！');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</block>

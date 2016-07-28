@@ -1,0 +1,77 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .form-group{
+            display: inline-block;
+            width: 100%;
+            margin-top: 10%;
+        }
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+            min-height: 450px;
+        }
+        .save_info{
+            float: right;
+            margin-right: 45%;
+            margin-top: 15%;
+        }
+        .form_label{
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            line-height: 34px;
+        }
+        .form_text{
+            width: 40%;
+            display: inline-block;
+        }
+    </style>
+</block>
+<block name="main">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat">
+            <div class="widget-header">
+                <span class="widget-caption">信息填写</span>
+            </div><!--Widget Header-->
+            <div class="widget-body">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label text-align-right form_label">名字：</label>
+                    <input type="text" maxlength="5" class="form-control form_text" value="{$product['name']}" name="name" id="name">
+                </div>
+                <a class="btn btn-blue shiny save_info" product="{$product['id']}" to-url="{:U('Admin/product')}" url="{:U('Admin/add_save_product')}">提交</a>
+            </div><!--Widget Body-->
+        </div><!--Widget-->
+    </div>
+</block>
+<block name="script">
+    <script>
+        $(function(){
+            $(".save_info").click(function(){
+                var url = $(this).attr("url");
+                var product = $(this).attr('product');
+                var name = $.trim($("#name").val());
+                var to_url = $(this).attr('to-url');
+                $.post(
+                        url,
+                        {
+                            product:product,
+                            name:name
+                        },
+                        function(data){
+                            if(data['code']==0){
+                                hint('success',data['msg'],data['data']);
+                                setTimeout(function(){
+                                    window.location.href=to_url;
+                                },2000)
+                            }else if(data['code']==1){
+                                hint('warning',data['msg'],data['data']);
+                            }else{
+                                hint('warning','提示','未知错误！');
+                            }
+                        }
+                )
+            })
+        })
+    </script>
+</block>

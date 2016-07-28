@@ -1,0 +1,94 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .form-group{
+            display: inline-block;
+            width: 100%;
+            margin-top: 10%;
+        }
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+            min-height: 450px;
+        }
+        .save_info{
+            float: right;
+            margin-right: 45%;
+            margin-top: 15%;
+        }
+        .form_label{
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            line-height: 34px;
+        }
+        .input-group{
+            width: 40%;
+        }
+    </style>
+</block>
+<block name="main">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat">
+            <div class="widget-header">
+                <span class="widget-caption main_title">时间设定</span>
+            </div><!--Widget Header-->
+            <div class="widget-body">
+                <div class="form-group">
+                    <label for="end_time" class="col-sm-2 control-label text-align-right form_label">设定时间：</label>
+                    <div class="input-group">
+                        <input class="form-control date-picker" placeholder="例: 2000-1-1" id="end_time" type="text" data-date-format="yyyy-mm-dd">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                <a class="btn btn-blue shiny save_info" url="{:U('Admin/data_manage')}">清除</a>
+            </div><!--Widget Body-->
+        </div><!--Widget-->
+    </div>
+</block>
+<block name="script">
+    <script src="__ASSETS__/js/datetime/bootstrap-datepicker.js"></script>
+    <script>
+        $(function(){
+            $('.date-picker').datepicker();
+            $(".save_info").click(function(){
+                var url = $(this).attr("url");
+                var time = $.trim($("#end_time").val());
+                if(time.length!=0){
+                    var reg = /^(\d{1,4})-(\d{1,2})-(\d{1,2})$/;
+                    var r = time.match(reg);
+                    if(r==null){
+                        hint('warning','提示','日期格式不正确！');
+                        return;
+                    }
+                }else{
+                    hint('warning','提示','请设定时间！');
+                    return;
+                }
+                bootbox.setDefaults("locale","zh_CN");
+                bootbox.confirm("你确定要删除 "+time+" 之前的数据吗?", function (result) {
+                    if (!result) {
+                        return;
+                    }else{
+                        $.post(
+                            url,
+                            {
+                                time:time
+                            },
+                            function(data){
+                                if(data['code']==0){
+                                    hint('success',data['msg'],data['data']);
+                                }else if(data['code']==1){
+                                    hint('warning',data['msg'],data['data']);
+                                }else{
+                                    hint('warning','提示','未知错误！');
+                                }
+                            }
+                        )
+                    }
+                })
+            })
+        })
+    </script>
+</block>

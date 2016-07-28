@@ -1,0 +1,130 @@
+<?php
+
+namespace Home\Controller;
+use Think\Controller;
+
+class LoginController extends Controller
+{
+
+    /**
+     * json的统一返回形式
+     * @param $data   code 错误码   msg 信息  data 数据
+     */
+    private function json_response($data){
+        $this->ajaxReturn(array(
+            'code' => empty($data['code']) ? 0 : $data['code'],
+            'msg' => empty($data['msg']) ? "" : $data['msg'],
+            'data' => empty($data['data']) ? "" : $data['data'],
+        ));
+    }
+
+    /**
+     * 管理员登陆
+     */
+    public function login(){
+        $this->display();
+    }
+
+    /**
+     * 登录验证
+     */
+    public function login_verify(){
+        $account  = trim(I('account'));
+        $password = trim(I('password'));
+        $verify = new \Think\Verify();
+        if(!$verify->check(trim($_POST["verify"]))){
+            $this->json_response(array('code' => 2,'msg' => '提示','data' => '验证码有误！'));
+        } else {
+            if(empty($account) || empty($password)){
+                $this->json_response(array('code' => 2,'msg' => '提示','data' => '无效数据！'));
+            }
+            $where['phone'] = $account;
+            $login_res = M('user')->where($where)->find();
+            if(empty($login_res)||$login_res['password']!=md5($password)){
+                $this->json_response(array('code' => 2,'msg' => '提示','data' => '账号或密码有误！'));
+            }else{
+                session('user',$login_res);
+                $this->json_response(array('code' => 0,'msg' => '成功','data' => '登陆成功'));
+            }
+        }
+    }
+
+    /**
+     * 登出并清空session
+     */
+    public function login_out(){
+        session('user',null);
+        $this->redirect("Login/login");
+    }
+
+    /**
+     * 注册界面
+     */
+    public function register(){
+        $this->display();
+    }
+
+    /**
+     * 获取手机验证
+     */
+    public function get_phone_verify(){
+
+    }
+
+    /**
+     * 注册验证
+     */
+    public function register_verify(){
+        $data = I("post.");
+        $check_res = D('checking')->checking_check($data['phone'],$data['verify_text']);
+        if($check_res!==true){
+            $this->json_response(array('code' => 2,'msg' => '提示','data' => $check_res));
+        }
+        $user_model = D('user');
+        if(!$user_model->create($data)){
+            $this->json_response(array('code' => 2,'msg' => '提示','data' => $user_model->getError()));
+        }else{
+            $find_phone = M('user')->where('status=0 and phone=' . $data['phone'])->find();
+            if (!empty($find_phone)) {
+                $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '账号已被占用！'));
+            } else {
+                $res = $user_model->add_user($data);
+                if ($res == false) {
+                    $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '注册失败！'));
+                } else {
+                    $this->json_response(array('code' => 0, 'msg' => '成功', 'data' => '注册成功！'));
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 验证码设置
+     */
+    function verify(){
+        $config = array(
+            'useImgBg' => false,    // 使用背景图片
+            'fontSize' => 15,       // 验证码字体大小(px)
+            'useCurve' => false,    // 是否画混淆曲线
+            'useNoise' => false,    // 是否添加杂点
+            'imageH'   => 30,       // 验证码图片高度
+            'imageW'   => 130,      // 验证码图片宽度
+            'length'   => C('VERIFY_NUM'), // 验证码位数
+            //字体样式有1.ttf   2.ttf   3.ttf   4.ttf   5.ttf   6.ttf  共六种
+            'fontttf'  => '',       // 验证码字体，不设置随机获取
+            'bg'       => array(243, 251, 254), // 背景颜色
+            'reset'    => true,     // 验证成功后是否重置
+        );
+        $Verify = new \Think\Verify($config);
+        $Verify->entry();
+    }
+
+    /**
+     * 空方法处理
+     */
+    function _empty(){
+        $this->display("Public/404");
+    }
+
+}

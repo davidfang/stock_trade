@@ -1,0 +1,79 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .form-group{
+            display: inline-block;
+            width: 100%;
+            margin-top: 10%;
+        }
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+            min-height: 450px;
+        }
+        .save_info{
+            float: right;
+            margin-right: 45%;
+            margin-top: 15%;
+        }
+        .form_label{
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            line-height: 34px;
+        }
+        .form_text{
+            width: 40%;
+            display: inline-block;
+        }
+    </style>
+</block>
+<block name="main">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat">
+            <div class="widget-header">
+                <span class="widget-caption main_title">手续费信息</span>
+            </div><!--Widget Header-->
+            <div class="widget-body">
+                <div class="form-group">
+                    <label for="money" class="col-sm-2 control-label text-align-right form_label">手续费：</label>
+                    <input type="number" min="0" class="form-control form_text" value="{$poundage['money']}" name="money" id="money">（元/次）
+                </div>
+                <a class="btn btn-blue shiny save_info" url="{:U('Admin/poundage')}">提交</a>
+            </div><!--Widget Body-->
+        </div><!--Widget-->
+    </div>
+</block>
+<block name="script">
+    <script>
+        $(function(){
+            $(".save_info").click(function(){
+                var url = $(this).attr("url");
+                var money = $.trim($("#money").val());
+                if(isNaN(money)){
+                    hint('warning','警告','输入不合法！');
+                    return;
+                }
+                if(money<0){
+                    hint('warning','警告','手续费不能小于零！');
+                    return;
+                }
+                $.post(
+                        url,
+                        {
+                            money:money
+                        },
+                        function(data){
+                            if(data['code']==0){
+                                hint('success',data['msg'],data['data'],true);
+                            }else if(data['code']==1){
+                                hint('warning',data['msg'],data['data']);
+                            }else{
+                                hint('warning','提示','未知错误！');
+                            }
+                        }
+                )
+            })
+        })
+    </script>
+</block>

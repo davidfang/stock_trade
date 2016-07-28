@@ -1,0 +1,38 @@
+.login-container {
+    /* position: relative; */
+    margin: 5% auto;
+    max-width: 350px;
+}
+.login-container .loginbox {
+    width: 350px !important;
+    height: 450px!important;
+}
+.loginbox-warning{
+    display: none;
+    width:100%;
+    height: 32px;
+    position: relative;
+}
+#warning-msg{
+    position: relative;
+    display: block;
+    line-height:32px;
+    color:red;
+    text-align: center;
+}
+.login-container .loginbox .loginbox-title{
+    height:46px;
+    font-size:27px;
+    margin:10px 0;
+}
+.reloadverify{
+    width: 100%;
+    border:1px solid #ddd;
+    cursor: pointer;
+}
+.loginbox-forgot{
+    display: inline-block;
+    float: right;
+    margin-right: 15%;
+    margin-top: 10px;
+}
