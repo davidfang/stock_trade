@@ -50,6 +50,21 @@ class LoginController extends Controller
     }
 
     /**
+     * 登陆后跳转页面
+     */
+    public function select_url(){
+        if(session('user')['type']==0){
+            $this->redirect('User/index');
+        }elseif(session('user')['type']==1){
+            $this->redirect('Agency/client');
+        }elseif(session('user')['type']==2){
+            $this->redirect('Admin/index');
+        }else{
+            $this->redirect('Index/index');
+        }
+    }
+
+    /**
      * 登出并清空session
      */
     public function login_out(){
@@ -68,7 +83,15 @@ class LoginController extends Controller
      * 获取手机验证
      */
     public function get_phone_verify(){
-
+        $phone = I('post.phone');
+        $code = GetRandStr(4);
+        $res = send_sms_code($phone,$code);
+        if(empty($res)){
+            $this->json_response(array('code' => 1,'msg' => '','data' => ''));
+        }else{
+            session('verify',array($phone,$code,strtotime('+'.C('PAST_DUE_TIME').' minute',time())));
+            $this->json_response(array('code' => 0,'msg' => '','data' => ''));
+        }
     }
 
     /**

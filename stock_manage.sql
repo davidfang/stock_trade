@@ -27,27 +27,6 @@ INSERT INTO `asset` VALUES (1,2,2,2.00,2.00),(2,2,1,4.00,3.50);
 /*!40000 ALTER TABLE `asset` ENABLE KEYS */;
 
 #
-# Structure for table "checking"
-#
-
-DROP TABLE IF EXISTS `checking`;
-CREATE TABLE `checking` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL DEFAULT '' COMMENT '手机号',
-  `verify` char(4) NOT NULL DEFAULT '' COMMENT '验证码',
-  `due_time` int(11) NOT NULL DEFAULT '0' COMMENT '验证码过期时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户注册验证';
-
-#
-# Data for table "checking"
-#
-
-/*!40000 ALTER TABLE `checking` DISABLE KEYS */;
-INSERT INTO `checking` VALUES (1,'15237375997','1234',1568840444);
-/*!40000 ALTER TABLE `checking` ENABLE KEYS */;
-
-#
 # Structure for table "commission"
 #
 

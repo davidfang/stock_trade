@@ -1,5 +1,5 @@
 $(function(){
-    var verify_phone = /^1[3|4|5|7|8]\d{9}$/;//验证手机
+    var verify_phone = /^1\d{10}$/;//验证手机
     var verify_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;//验证邮箱
     var verify_id = /^\d{17}([0-9]|X|x)$/;//验证身份证号
     //获取手机验证码

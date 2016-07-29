@@ -1,29 +1,28 @@
 <?php
 
 namespace Home\Model;
-use Think\Model;
 
-class CheckingModel extends Model
+class CheckingModel
 {
     /**
      * @param $phone
-     * 添加验证码
+     * @param $verify
+     * @return bool|string
+     * 验证手机验证码
      */
-    public function add_checking($phone){
-
-    }
-
     public function checking_check($phone,$verify){
-        $table = M('checking');
-        $where['phone'] = $phone;
-        $find_verify = $table ->where($where) -> find();
-        if(empty($find_verify)){
+        if(!session('?verify')){
             return '您未获取验证码';
         }else{
-            if($find_verify['due_time']>=time()){
-                if($find_verify['verify']!=$verify){
+            $find_verify = session('verify');
+            if($phone!=$find_verify[0]){
+                return '您未获取验证码';
+            }
+            if($find_verify[2]>=time()){
+                if($find_verify[1]!=$verify){
                     return '验证码有误！';
                 }else{
+                    session('verify',null);
                     return true;
                 }
             }else{

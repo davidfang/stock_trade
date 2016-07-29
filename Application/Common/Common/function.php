@@ -85,7 +85,7 @@ function From_Excel($file)
  * @param  int $code  验证码
  * @return boole      是否发送成功
  */
-/*function send_sms_code($phone,$code){
+function send_sms_code($phone,$code){
     //请求地址，格式如下，不需要写https://
     $serverIP='app.cloopen.com';
     //请求端口
@@ -98,13 +98,15 @@ function From_Excel($file)
     $accountToken=C('RONGLIAN_ACCOUNT_TOKEN');
     //应用Id
     $appId=C('RONGLIAN_APPID');
-    //应用Id
+    //模板Id
     $templateId=C('RONGLIAN_TEMPLATE_ID');
-    $rest = new \Org\Xb\Rest($serverIP,$serverPort,$softVersion);
+    $past_due_time = C('PAST_DUE_TIME');
+    vendor('Xb.Rest');
+    $rest = new \Rest($serverIP,$serverPort,$softVersion);
     $rest->setAccount($accountSid,$accountToken);
     $rest->setAppId($appId);
     // 发送模板短信
-    $result=$rest->sendTemplateSMS($phone,array($code,5),$templateId);
+    $result=$rest->sendTemplateSMS($phone,array($code,$past_due_time),$templateId);
     if($result==NULL) {
         return false;
     }
@@ -113,4 +115,22 @@ function From_Excel($file)
     }else{
         return true;
     }
-}*/
+}
+
+/**
+ * @param $len 随机数的个数
+ * @return string
+ * 生成随机数
+ */
+function GetRandStr($len){
+    $chars = array(
+        "0", "1", "2","3", "4", "5", "6", "7", "8", "9"
+    );
+    $charsLen = count($chars) - 1;
+    shuffle($chars);
+    $output = "";
+    for ($i=0; $i<$len; $i++){
+        $output .= $chars[mt_rand(0, $charsLen)];
+    }
+    return $output;
+}
