@@ -89,7 +89,7 @@
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->
-                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                            <ul style="min-width: 70px;width: 124px;" class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                 <li class="username"><a><?php echo ($user['name']); ?></a></li>
                                 <li><a href="<?php echo U('Personal/personal_info');?>" style="text-align: center;">个人信息</a></li>
                                 <li class="dropdown-footer">
@@ -138,7 +138,7 @@
                     </h1>
                 </div>
             </div>
-            <div class="page-body">
+            <div class="age-body">
                 
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget flat">
@@ -269,6 +269,19 @@
 <script src="/stock_trade/Public/assets/js/validation/bootstrapValidator.js"></script>
 <script src="/stock_trade/Public/assets/js/fullcalendar/fullcalendar.js"></script>
 <script src="/stock_trade/Public/Home/Js/hint.js"></script>
+
+<script>
+    $(function(){
+        for(var i=0;i < $('table').length;i++){
+            var table = $('table').eq(i);
+            if(table.find('tr').length==1){
+                var th_len = table.find('th').length;
+                var html = '<tr><td colspan="'+th_len+'">没有数据哦</td></tr>';
+                table.append(html);
+            }
+        }
+    })
+</script>
 
 
     <script src="/stock_trade/Public/Staick/md5.js"></script>

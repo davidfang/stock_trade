@@ -1,0 +1,901 @@
+[ 2016-07-29T08:53:55+08:00 ] ::1 /stock_trade/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002931s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001183s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001335s ]
+
+[ 2016-07-29T08:53:55+08:00 ] ::1 /stock_trade/index.php/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000970s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000718s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000853s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000126s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000271s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011098s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011248s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000945s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001229s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001365s ]
+
+[ 2016-07-29T08:53:55+08:00 ] ::1 /stock_trade/index.php/Home/Login/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000599s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000815s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000868s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001034s ]
+
+[ 2016-07-29T08:54:00+08:00 ] ::1 /stock_trade/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000674s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000815s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000948s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000099s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000228s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008752s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008887s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000543s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000658s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000701s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000802s ]
+
+[ 2016-07-29T08:54:00+08:00 ] ::1 /stock_trade/index.php/Home/Login/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000469s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000658s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000715s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000851s ]
+
+[ 2016-07-29T08:54:03+08:00 ] ::1 /stock_trade/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000618s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000741s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000872s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000275s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008728s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008869s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000764s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000837s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000962s ]
+
+[ 2016-07-29T08:54:03+08:00 ] ::1 /stock_trade/index.php/Home/Login/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001780s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000881s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000678s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000818s ]
+
+[ 2016-07-29T08:54:16+08:00 ] ::1 /stock_trade/index.php/Home/Login/login_verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000923s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0963s ]
+SQL: SELECT * FROM `user` WHERE `phone` = '15237375997' LIMIT 1   [ RunTime:0.0142s ]
+
+[ 2016-07-29T08:54:16+08:00 ] ::1 /stock_trade/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000659s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000801s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000933s ]
+
+[ 2016-07-29T08:54:16+08:00 ] ::1 /stock_trade/index.php/Home/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000823s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0012s ]
+SQL: SELECT
+            grade_id,count(id) as user_num,ROUND(ROUND(count(id)/(select count(id) from user where status=0 and type!=2),4)*100,2) AS num_rate
+            FROM user
+            where status=0 and type!=2
+            group by grade_id; [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0026s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0006s ]
+SQL: SELECT u.grade_id,sum(c.money) as push_sum FROM commission as c INNER JOIN user as u on u.id=c.agency_id  WHERE c.create_time BETWEEN 1469635200 AND 1469721600 GROUP BY u.grade_id  [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0026s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0006s ]
+SQL: SELECT count(id) as sum,sum(money) as indent_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT count(id) as sum,sum(money) as finish_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 AND `update_time` BETWEEN 1469721600 AND 1469808000 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] Division by zero D:\wamp\www\stock_trade\Application\Home\Model\PrepaidModel.class.php 第 72 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000234s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000389s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033906s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034036s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000648s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000746s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000926s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001095s ]
+
+[ 2016-07-29T08:54:20+08:00 ] ::1 /stock_trade/Home/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000880s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001003s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT
+            grade_id,count(id) as user_num,ROUND(ROUND(count(id)/(select count(id) from user where status=0 and type!=2),4)*100,2) AS num_rate
+            FROM user
+            where status=0 and type!=2
+            group by grade_id; [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0006s ]
+SQL: SELECT u.grade_id,sum(c.money) as push_sum FROM commission as c INNER JOIN user as u on u.id=c.agency_id  WHERE c.create_time BETWEEN 1469635200 AND 1469721600 GROUP BY u.grade_id  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0005s ]
+SQL: SELECT count(id) as sum,sum(money) as indent_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT count(id) as sum,sum(money) as finish_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 AND `update_time` BETWEEN 1469721600 AND 1469808000 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] Division by zero D:\wamp\www\stock_trade\Application\Home\Model\PrepaidModel.class.php 第 72 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000255s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000378s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018670s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018784s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000506s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000881s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001051s ]
+
+[ 2016-07-29T09:10:08+08:00 ] ::1 /stock_trade/Home/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000790s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000969s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0036s ]
+SQL: SELECT
+            grade_id,count(id) as user_num,ROUND(ROUND(count(id)/(select count(id) from user where status=0 and type!=2),4)*100,2) AS num_rate
+            FROM user
+            where status=0 and type!=2
+            group by grade_id; [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0006s ]
+SQL: SELECT u.grade_id,sum(c.money) as push_sum FROM commission as c INNER JOIN user as u on u.id=c.agency_id  WHERE c.create_time BETWEEN 1469635200 AND 1469721600 GROUP BY u.grade_id  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0006s ]
+SQL: SELECT count(id) as sum,sum(money) as indent_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT count(id) as sum,sum(money) as finish_money FROM `prepaid` WHERE `create_time` BETWEEN 1469721600 AND 1469808000 AND `update_time` BETWEEN 1469721600 AND 1469808000 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] Division by zero D:\wamp\www\stock_trade\Application\Home\Model\PrepaidModel.class.php 第 72 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000249s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000367s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\c506a66e5fd5c20a850e05056283aa1e.php 第 99 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019950s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020066s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000575s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000992s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001115s ]
+
+[ 2016-07-29T09:10:12+08:00 ] ::1 /stock_trade/Home/Admin/trading_record.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000723s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000947s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001095s ]
+SQL: SHOW COLUMNS FROM `trade` [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `trade` [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\TradeModel.class.php 第 37 行.
+SQL: SELECT COUNT(*) AS tp_count FROM trade as t INNER JOIN user as u on t.user_id=u.id INNER JOIN product as p on t.product_id=p.id  LIMIT 1   [ RunTime:0.0076s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\TradeModel.class.php 第 47 行.
+SQL: SELECT t.id,t.user_id,u.name,u.phone,p.name as product,t.create_time,t.number FROM trade as t INNER JOIN user as u on t.user_id=u.id INNER JOIN product as p on t.product_id=p.id  ORDER BY t.create_time desc LIMIT 0,10   [ RunTime:0.0034s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 515 行.
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `product` WHERE `status` = 0 ORDER BY create_time desc  [ RunTime:0.0019s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000289s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000411s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019470s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019593s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000664s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001078s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001266s ]
+
+[ 2016-07-29T09:10:13+08:00 ] ::1 /stock_trade/Home/Admin/poundage_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000796s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000929s ]
+SQL: SHOW COLUMNS FROM `refund` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `refund` [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT r.id,r.user_id,u.name,u.phone,p.name as product,r.money,r.poundage,r.actual_refund,r.status,r.remarks FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 ORDER BY r.create_time asc LIMIT 0,10   [ RunTime:0.0006s ]
+SQL: SELECT SUM(poundage) AS tp_sum FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000198s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000317s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015540s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015660s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000549s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000647s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000910s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001077s ]
+
+[ 2016-07-29T09:10:15+08:00 ] ::1 /stock_trade/Home/Admin/push_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001685s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 39 行.
+SQL: SELECT COUNT(*) AS tp_count FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0094s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 49 行.
+SQL: SELECT c.id,c.agency_id,u.name as grade,u.phone,u.grade_id,g.name as grade_rank,c.create_time,c.money FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  ORDER BY c.create_time desc LIMIT 0,10   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 56 行.
+SQL: SELECT SUM(money) AS tp_sum FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 656 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000378s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000568s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029079s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029253s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000848s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001038s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001505s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001781s ]
+
+[ 2016-07-29T09:10:15+08:00 ] ::1 /stock_trade/Home/Admin/push_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000514s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000669s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000784s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 39 行.
+SQL: SELECT COUNT(*) AS tp_count FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 49 行.
+SQL: SELECT c.id,c.agency_id,u.name as grade,u.phone,u.grade_id,g.name as grade_rank,c.create_time,c.money FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  ORDER BY c.create_time desc LIMIT 0,10   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 56 行.
+SQL: SELECT SUM(money) AS tp_sum FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 656 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000235s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000362s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018434s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018551s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000601s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000710s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000942s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001128s ]
+
+[ 2016-07-29T09:10:16+08:00 ] ::1 /stock_trade/Home/Admin/recharge.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000851s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000821s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000981s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `prepaid` [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM prepaid as p INNER JOIN user as u on p.user_id=u.id INNER JOIN product as pr on p.product_id=pr.id  WHERE p.status = 1 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT p.id,p.user_id,u.name,u.phone,pr.name as product,p.money,p.update_time FROM prepaid as p INNER JOIN user as u on p.user_id=u.id INNER JOIN product as pr on p.product_id=pr.id  WHERE p.status = 1 ORDER BY p.update_time desc LIMIT 0,10   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 627 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000209s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000323s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\826a6cedec7f8c103a7519bbb87de673.php 第 123 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018273s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018430s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000699s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000799s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000870s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001018s ]
+
+[ 2016-07-29T09:10:17+08:00 ] ::1 /stock_trade/Home/Admin/trading_record.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000540s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001188s ]
+SQL: SHOW COLUMNS FROM `trade` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `trade` [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\TradeModel.class.php 第 37 行.
+SQL: SELECT COUNT(*) AS tp_count FROM trade as t INNER JOIN user as u on t.user_id=u.id INNER JOIN product as p on t.product_id=p.id  LIMIT 1   [ RunTime:0.0011s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\TradeModel.class.php 第 47 行.
+SQL: SELECT t.id,t.user_id,u.name,u.phone,p.name as product,t.create_time,t.number FROM trade as t INNER JOIN user as u on t.user_id=u.id INNER JOIN product as p on t.product_id=p.id  ORDER BY t.create_time desc LIMIT 0,10   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 515 行.
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `product` WHERE `status` = 0 ORDER BY create_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000257s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000402s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\8ce62244bb034c6bc1c7020260bc768f.php 第 123 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017876s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000563s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000661s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001020s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001236s ]
+
+[ 2016-07-29T09:10:17+08:00 ] ::1 /stock_trade/Home/Admin/push_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000800s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000931s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `commission` [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 39 行.
+SQL: SELECT COUNT(*) AS tp_count FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 49 行.
+SQL: SELECT c.id,c.agency_id,u.name as grade,u.phone,u.grade_id,g.name as grade_rank,c.create_time,c.money FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  ORDER BY c.create_time desc LIMIT 0,10   [ RunTime:0.0012s ]
+NOTIC: [8] Undefined variable: where D:\wamp\www\stock_trade\Application\Home\Model\CommissionModel.class.php 第 56 行.
+SQL: SELECT SUM(money) AS tp_sum FROM commission as c INNER JOIN user as u on c.agency_id=u.id INNER JOIN grade as g on u.grade_id=g.id  LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: time D:\wamp\www\stock_trade\Application\Home\Controller\AdminController.class.php 第 656 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000220s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000346s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\7ebe67ae9ab5c7e0e3cec72c85e2faff.php 第 130 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018077s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018198s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000671s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000774s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001159s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001329s ]
+
+[ 2016-07-29T09:10:18+08:00 ] ::1 /stock_trade/Home/Admin/poundage_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001288s ]
+SQL: SHOW COLUMNS FROM `refund` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `refund` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT r.id,r.user_id,u.name,u.phone,p.name as product,r.money,r.poundage,r.actual_refund,r.status,r.remarks FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 ORDER BY r.create_time asc LIMIT 0,10   [ RunTime:0.0006s ]
+SQL: SELECT SUM(poundage) AS tp_sum FROM refund as r INNER JOIN user as u on r.user_id=u.id INNER JOIN product as p on r.product_id=p.id  WHERE r.status = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000368s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000626s ]
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\ef4de287624c253906b42934a59512e2.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014318s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014436s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000624s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000731s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000789s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000903s ]
+
+[ 2016-07-29T09:10:19+08:00 ] ::1 /stock_trade/Home/Personal/personal_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000905s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001226s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001452s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT u.name,u.phone,u.email,u.address,u.identity_card,g.name as grade_name,u.stock,u.stock_psd FROM user as u left join grade as g on g.id=u.grade_id  WHERE u.id = '1' AND u.status = 0 LIMIT 1   [ RunTime:0.0028s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000276s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000455s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020889s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021095s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000719s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000895s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001850s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002116s ]
+
+[ 2016-07-29T09:10:19+08:00 ] ::1 /stock_trade/Home/Personal/edit_personal_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000821s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT u.name,u.phone,u.email,u.address,u.identity_card,g.name as grade_name,u.stock,u.stock_psd FROM user as u left join grade as g on g.id=u.grade_id  WHERE u.id = '1' AND u.status = 0 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000215s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000342s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015099s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015254s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000793s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001147s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001357s ]
+
+[ 2016-07-29T09:10:20+08:00 ] ::1 /stock_trade/Home/Personal/edit_password.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000771s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001700s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001994s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000189s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000306s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\2ffa7f9990d1db376d26aa67bf45964e.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012426s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012546s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000530s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000635s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001084s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001284s ]
+
+[ 2016-07-29T09:10:21+08:00 ] ::1 /stock_trade/Home/Personal/edit_personal_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000643s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001089s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT u.name,u.phone,u.email,u.address,u.identity_card,g.name as grade_name,u.stock,u.stock_psd FROM user as u left join grade as g on g.id=u.grade_id  WHERE u.id = '1' AND u.status = 0 LIMIT 1   [ RunTime:0.0012s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000184s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000299s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\676ba452679b62c277aad0bd3a37461a.php 第 119 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016377s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016560s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000935s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001061s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000994s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001197s ]
+
+[ 2016-07-29T09:10:21+08:00 ] ::1 /stock_trade/Home/Personal/personal_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000525s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000654s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000787s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0005s ]
+SQL: SELECT u.name,u.phone,u.email,u.address,u.identity_card,g.name as grade_name,u.stock,u.stock_psd FROM user as u left join grade as g on g.id=u.grade_id  WHERE u.id = '1' AND u.status = 0 LIMIT 1   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000291s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012596s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012721s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000489s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000612s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000763s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000931s ]
+
+[ 2016-07-29T09:10:22+08:00 ] ::1 /stock_trade/Home/Personal/personal_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000742s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000809s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000943s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0006s ]
+SQL: SELECT u.name,u.phone,u.email,u.address,u.identity_card,g.name as grade_name,u.stock,u.stock_psd FROM user as u left join grade as g on g.id=u.grade_id  WHERE u.id = '1' AND u.status = 0 LIMIT 1   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000170s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000279s ]
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+NOTIC: [8] Undefined index: url D:\wamp\www\stock_trade\Application\Runtime\Cache\Home\350e5f1e55b42347072ec8e969dd2957.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012710s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012833s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000582s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000681s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000808s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000990s ]
+
