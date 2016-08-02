@@ -56,6 +56,7 @@ class BaseController extends Controller
                 ['name'=>'用户管理','ico'=>'fa fa-user', 'children' => [
                     ['name'=>'用户信息','url'=>U('Admin/user')],
                     ['name'=>'添加用户','url'=>U('Admin/add_user')],
+                    ['name'=>'用户资产管理','url'=>U('Admin/assets_manage')],
                 ]],
                 ['name'=>'代理管理','ico'=>'fa fa-group', 'children' => [
                     ['name'=>'代理信息','url'=>U('Admin/agency_info')],

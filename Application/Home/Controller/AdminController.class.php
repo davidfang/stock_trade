@@ -690,4 +690,50 @@ class AdminController extends BaseController
         D('trade')->today_trade();
     }
 
+    /**
+     * @param string $phone 用户手机号
+     * 资产管理
+     */
+    public function assets_manage($phone=''){
+        $user_assets = D("asset")->get_assets($phone);
+        $this -> assign('title','资产管理');
+        $this -> assign('route','用户管理 / 资产管理');
+        $this -> assign('header_title','资产管理');
+        $this -> assign('user_assets',$user_assets[0]);
+        $this -> assign('show_page',$user_assets[1]);
+        $this -> assign('phone',$phone);
+        $this -> display();
+    }
+
+    /**
+     * 修改用户资金信息
+     */
+    public function assets_save(){
+        $id = I("post.id");
+        $money = I("post.money");
+        $asset_old = M('asset')->where('id='.$id)->find();
+        $poor = $asset_old['money']-$money;
+        $data['money'] = $money;
+        $data['usable'] = $asset_old['usable']-$poor;
+        $asset_save = M('asset')->where('id='.$id)->save($data);
+        if(empty($asset_save)){
+            $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请刷新重试！'));
+        }else{
+            $this->json_response(array('code' => 0,'msg' => '成功','data' => '已成功修改。'));
+        }
+    }
+
+    /**
+     * 按id查询资金信息
+     */
+    public function get_asset_info(){
+        $asset = I("post.id");
+        $asset = M('asset')->where('id='.$asset)->find();
+        if(empty($asset)){
+            $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请刷新重试！'));
+        }else{
+            $this->json_response(array('code' => 0,'msg' => '','data' => $asset));
+        }
+    }
+
 }

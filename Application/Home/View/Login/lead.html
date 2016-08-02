@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+    <style>
+        .c_d{
+            width: 40%;
+            display: inline-block;
+            background-color: #eae2e2;
+            height: 100px;
+            margin: 15% 30%;
+        }
+        img{
+            width: 100px;
+            height: 85px;
+            float: left;
+            margin-left: 5%;
+            margin-top: 7px;
+        }
+        span{
+            height: 85px;
+            line-height: 85px;
+            display: inline-block;
+            float: left;
+            color: goldenrod;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c_d">
+        <img src="__HIMG__/success.png">
+        <span>恭喜您，注册成功!</span>
+        <span>即将返回 <a href="{:U('Login/login')}">登录</a></span>
+    </div>
+    <input type="hidden" id="login" value="{:U('Login/login')}"/>
+</body>
+<script src="__ASSETS__/js/jquery-2.0.3.min.js"></script>
+<script>
+    setTimeout(function(){
+        var url = $("#login").val();
+        window.location.href=url;
+    },3000)
+</script>
+</html>

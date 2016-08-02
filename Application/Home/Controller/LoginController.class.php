@@ -121,6 +121,12 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * 注册成功后引导页
+     */
+    public function lead(){
+        $this->display();
+    }
 
     /**
      * 验证码设置

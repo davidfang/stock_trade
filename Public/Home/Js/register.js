@@ -70,6 +70,7 @@ $(function(){
             }
         }
         if(post){
+            var to_url = $("#lead_login").val();
             $.post(
                 url,
                 {
@@ -84,6 +85,9 @@ $(function(){
                 },function(data){
                     if(data['code']==0){
                         hint('success',data['msg'],data['data']);
+                        setTimeout(function(){
+                            window.location.href = to_url;
+                        },1000)
                     }else if(data['code']==1){
                         hint('warning',data['msg'],data['data']);
                     }else if(data['code']==2){
