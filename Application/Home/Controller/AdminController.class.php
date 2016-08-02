@@ -711,14 +711,19 @@ class AdminController extends BaseController
     public function assets_save(){
         $id = I("post.id");
         $money = I("post.money");
-        $asset_old = M('asset')->where('id='.$id)->find();
+        $asset_table = M('asset');
+        $asset_old = $asset_table->where('id='.$id)->find();
         $poor = $asset_old['money']-$money;
         $data['money'] = $money;
         $data['usable'] = $asset_old['usable']-$poor;
-        $asset_save = M('asset')->where('id='.$id)->save($data);
-        if(empty($asset_save)){
+        $asset_table->startTrans();
+        $asset_save = $asset_table->where('id='.$id)->save($data);
+        $save_user = M('user')->where('id='.$asset_old['user_id'])->setDec('current',$poor);
+        if(empty($asset_save)||empty($save_user)){
+            $asset_table->rollback();
             $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请刷新重试！'));
         }else{
+            $asset_table->commit();
             $this->json_response(array('code' => 0,'msg' => '成功','data' => '已成功修改。'));
         }
     }
