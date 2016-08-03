@@ -90,7 +90,7 @@ class PHPExcel_Chart_Legend
 	}
 
 	/**
-	 * Get legend position as an excel string value
+	 * Get legend position as an Excel string value
 	 *
 	 * @return	string
 	 */
@@ -99,7 +99,7 @@ class PHPExcel_Chart_Legend
 	}
 
 	/**
-	 * Get legend position using an excel string value
+	 * Get legend position using an Excel string value
 	 *
 	 * @param	string	$position
 	 */

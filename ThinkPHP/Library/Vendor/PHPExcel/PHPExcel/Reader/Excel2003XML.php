@@ -78,7 +78,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 	{
 
 		//	Office					xmlns:o="urn:schemas-microsoft-com:office:office"
-		//	Excel					xmlns:x="urn:schemas-microsoft-com:office:excel"
+		//	Excel					xmlns:x="urn:schemas-microsoft-com:office:Excel"
 		//	XML Spreadsheet			xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
 		//	Spreadsheet component	xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet"
 		//	XML schema 				xmlns:s="uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882"
@@ -251,7 +251,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 
  	/**
- 	 * pixel units to excel width units(units of 1/256th of a character width)
+ 	 * pixel units to Excel width units(units of 1/256th of a character width)
  	 * @param pxs
  	 * @return
  	 */
@@ -265,7 +265,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 
 	/**
-	 * excel width units(units of 1/256th of a character width) to pixel units
+	 * Excel width units(units of 1/256th of a character width) to pixel units
 	 * @param widthUnits
 	 * @return
 	 */

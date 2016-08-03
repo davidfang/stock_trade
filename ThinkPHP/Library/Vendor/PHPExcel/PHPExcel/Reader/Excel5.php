@@ -447,7 +447,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
 			// Use ParseXL for the hard work.
 			$ole = new PHPExcel_Shared_OLERead();
 
-			// get excel data
+			// get Excel data
 			$res = $ole->read($pFilename);
 			return true;
 		} catch (PHPExcel_Exception $e) {
@@ -1160,7 +1160,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
 		// OLE reader
 		$ole = new PHPExcel_Shared_OLERead();
 
-		// get excel data,
+		// get Excel data,
 		$res = $ole->read($pFilename);
 		// Get workbook data: workbook stream + sheet streams
 		$this->_data = $ole->getStream($ole->wrkbook);

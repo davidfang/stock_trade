@@ -584,7 +584,7 @@ class AdminController extends BaseController
     }
 
     /**
-     * 导入时 上传 excel 文件
+     * 导入时 上传 Excel 文件
      * @return array|void  文件信息
      */
     public function upload(){

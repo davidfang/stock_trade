@@ -7,6 +7,7 @@ return array(
     'TMPL_PARSE_STRING' => array(
         '__IMG__'    => __ROOT__ . '/Public/Images',
         '__HIMG__'     => __ROOT__ . '/Public/Home/Images',
+        '__HEXCEL__'     => __ROOT__ . '/Public/Home/Excel',
         '__HCSS__'    => __ROOT__ . '/Public/Home/Css',
         '__HJS__'     => __ROOT__ . '/Public/Home/Js',
         '__ASSETS__'     =>__ROOT__ . '/Public/assets',

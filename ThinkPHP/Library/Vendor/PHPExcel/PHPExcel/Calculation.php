@@ -3497,7 +3497,7 @@ class PHPExcel_Calculation {
 		//	Numbers, matrices and booleans can pass straight through, as they're already valid
 		if (is_string($operand)) {
 			//	We only need special validations for the operand if it is a string
-			//	Start by stripping off the quotation marks we use to identify true excel string values internally
+			//	Start by stripping off the quotation marks we use to identify true Excel string values internally
 			if ($operand > '' && $operand{0} == '"') { $operand = self::_unwrapResult($operand); }
 			//	If the string is a numeric value, we treat it as a numeric, so no further testing
 			if (!is_numeric($operand)) {

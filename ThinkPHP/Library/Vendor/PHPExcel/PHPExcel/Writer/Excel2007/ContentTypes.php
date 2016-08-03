@@ -89,7 +89,7 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 			if($pPHPExcel->hasMacros()){ //Macros in workbook ?
 				// Yes : not standard content but "macroEnabled"
 				$this->_writeOverrideContentType(
-					$objWriter, '/xl/workbook.xml', 'application/vnd.ms-excel.sheet.macroEnabled.main+xml'
+					$objWriter, '/xl/workbook.xml', 'application/vnd.ms-Excel.sheet.macroEnabled.main+xml'
 				);
 				//... and define a new type for the VBA project
 				$this->_writeDefaultContentType(

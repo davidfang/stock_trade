@@ -26,6 +26,7 @@
             font-size: 26px;
             color: #ef0b0b;
             font-weight: 900;
+            float: left;
         }
         .login span{
             font-size: 18px;
@@ -39,7 +40,7 @@
             width: 3% !important;
         }
         .foot{
-            width: 15%;
+            width: 28%;
             float: left;
             text-align: left;
         }
@@ -69,7 +70,8 @@
     <body>
         <div class="row" style="border-top: 1px solid black;">
             <div class="title">
-                <span>恒铭软件</span>
+                <a href="{:U('Index/index')}"><span style="margin-left: 40%;">恒铭软件</span></a>
+                <a href="{:U('Index/download')}"><span style="margin-left: 30px;font-size: 14px;">下载中心</span></a>
             </div>
             <div class="login">
                 <span><a href="{:U('Login/login')}">登陆</a></span>
@@ -78,7 +80,7 @@
         </div>
         <div class="row">
 
-            <div id="myCarousel" class="carousel slide">
+            <div id="myCarousel" data-ride="carousel" data-interval="3000" class="carousel slide">
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -99,28 +101,27 @@
 
         </div>
         <div class="row">
-            <div class="foot">
-                <div class="foot-content">
-                    <h4>版权信息</h4>
-                    <p>© 2015 hnhmrj | 河南恒铭软甲有限公司.All Rights Reserved.</p>
-                    <p>备案：豫ICP备13550568532号-1</p>
+            <div class="col-sm-8" style="margin-left: 20%;">
+                <div class="foot">
+                    <div class="foot-content">
+                        <h4>版权信息</h4>
+                        <p>© 2015 hnhmrj | 河南恒铭软甲有限公司.All Rights Reserved.</p>
+                        <p>备案：豫ICP备13550568532号-1</p>
+                    </div>
                 </div>
-            </div>
-            <div class="foot" style="margin-left: 14%;">
-                <div class="foot-content">
-                    <h4>关于我们</h4>
-                    <p>
-                        公司致力于开发功能更全，用户体验更好，性价比更高的
-                        开源股票产品，真正帮助您实现'股票+赚钱'转型让您轻松进军股票市场。
-                    </p>
+                <div class="foot" style="margin-left: 14%;">
+                    <div class="foot-content">
+                        <h4>关于我们</h4>
+                        <p>
+                            公司致力于开发功能更全，用户体验更好，性价比更高的
+                            开源股票产品，真正帮助您实现'股票+赚钱'转型让您轻松进军股票市场。
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="foot" style="margin-left: 14%;">
-                <div class="foot-content">
-                    <h4>联系我们</h4>
-                    <p><i class="icon-headphones"></i>152xxxxxxxx</p>
-                    <p><i class="icon-envelope"></i>myemail@qq.com</p>
-                    <p><i class="icon-map-marker"></i>河南商务大厦12号1203室</p>
+                <div class="foot">
+                    <div class="foot-content" style="text-align: right;" >
+                        <img src="__HIMG__/scan_code.png">
+                    </div>
                 </div>
             </div>
         </div>

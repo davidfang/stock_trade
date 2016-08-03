@@ -47,7 +47,7 @@ function To_Exel($fileName, $headArr, $list)
     $fileName = iconv("utf-8", "gb2312", $fileName);
     $objPHPExcel->setActiveSheetIndex(0);
     ob_end_clean();//清除缓冲区,避免乱码
-    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Type: application/vnd.ms-Excel');
     header("Content-Disposition: attachment;filename=\"$fileName\"");
     header('Cache-Control: max-age=0');
 

@@ -103,7 +103,7 @@ class BCS_MimeTypes {
 			'wmv' => 'video/x-ms-wmv', 'wrl' => 'model/vrml',
 			'xbm' => 'image/x-xbitmap', 'xht' => 'application/xhtml+xml',
 			'xhtml' => 'application/xhtml+xml',
-			'xls' => 'application/vnd.ms-excel',
+			'xls' => 'application/vnd.ms-Excel',
 			'xml' => 'application/xml', 'xpm' => 'image/x-xpixmap',
 			'xsl' => 'application/xml', 'xslt' => 'application/xslt+xml',
 			'xul' => 'application/vnd.mozilla.xul+xml',

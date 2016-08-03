@@ -406,7 +406,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 		$objWriter->startElement('xml');
 		$objWriter->writeAttribute('xmlns:v', 'urn:schemas-microsoft-com:vml');
 		$objWriter->writeAttribute('xmlns:o', 'urn:schemas-microsoft-com:office:office');
-		$objWriter->writeAttribute('xmlns:x', 'urn:schemas-microsoft-com:office:excel');
+		$objWriter->writeAttribute('xmlns:x', 'urn:schemas-microsoft-com:office:Excel');
 
 			// o:shapelayout
 			$objWriter->startElement('o:shapelayout');
