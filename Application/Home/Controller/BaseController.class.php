@@ -12,8 +12,31 @@ class BaseController extends Controller
         if(!session('?user')){
             $this->redirect("Login/login");
         }
+        if(!$this->cross_jurisdiction()){
+            $this->display("Public/404");
+            exit;
+        }
         $this -> assign('user',session('user'));
         $this -> get_nav(session('user')['type']);
+    }
+
+
+    /**
+     * @return bool
+     * 判断是否越权
+     */
+    public function cross_jurisdiction(){
+        if(CONTROLLER_NAME=='Personal'||ACTION_NAME=='push_details'){
+            return true;
+        }
+        if(session('user')['type']==2&&CONTROLLER_NAME=='Admin'){
+            return true;
+        }elseif(session('user')['type']==1&&CONTROLLER_NAME=='Agency'){
+            return true;
+        }elseif(session('user')['type']==0&&CONTROLLER_NAME=='User'){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -22,7 +45,7 @@ class BaseController extends Controller
     private function get_nav($type){
         if($type==0){
             $nav = [
-                ['name'=>'首页','url'=>U('index/index'),'ico'=>'glyphicon glyphicon-home'],
+                ['name'=>'首页','url'=>U('User/index'),'ico'=>'glyphicon glyphicon-home'],
                 ['name'=>'充值管理','ico'=>'fa fa-plus-square', 'children' => [
                     ['name'=>'我要充值','url'=>U('User/recharge')],
                     ['name'=>'充值记录','url'=>U('User/prepaid_records')],

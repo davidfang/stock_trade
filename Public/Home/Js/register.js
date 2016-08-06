@@ -71,6 +71,7 @@ $(function(){
         }
         if(post){
             var to_url = $("#lead_login").val();
+            $("#register").attr('disabled',true);
             $.post(
                 url,
                 {
@@ -89,8 +90,10 @@ $(function(){
                             window.location.href = to_url;
                         },1000)
                     }else if(data['code']==1){
+                        $("#register").attr('disabled',false);
                         hint('warning',data['msg'],data['data']);
                     }else if(data['code']==2){
+                        $("#register").attr('disabled',false);
                         hint('warning',data['msg'],data['data']);
                     }
                 }

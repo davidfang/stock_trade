@@ -43,11 +43,13 @@ function L_alert(msg){
     shake('#warning-msg');
 }
 function do_post(data){
+    $('#submit-btn').attr('disabled',true);
     $.post($('#login-url').val() ,data, function(data){
         //console.log(data.code);
         if(data.code != 0){
             L_alert(data.data);
             $(".reloadverify").click();
+            $('#submit-btn').attr('disabled',false);
         }else{
             window.location.href = $('#index-url').val();
         }

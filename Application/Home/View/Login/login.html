@@ -49,9 +49,19 @@
         <div class="loginbox-submit">
             <input type="button" class="btn btn-primary btn-block" id="submit-btn" value="登录">
         </div>
+        <div class="loginbox-forgot forget" style="float: none;">
+            <a href="javascript:void(0);">忘记密码？</a>
+        </div>
         <div class="loginbox-forgot">
             <a href="{:U('Login/register')}">注册>></a>
         </div>
+    </div>
+</div>
+
+<div id="toast-container" class="toast-top-right notify" style="display: none;">
+    <div class="toast fa-envelope toast-info">
+        <button class="toast-close-button notify_close">×</button>
+        <div class="toast-message">请联系管理员</div>
     </div>
 </div>
 
@@ -66,7 +76,20 @@
 <!--Extend Scripts-->
 <script src="__HJS__/login.js"></script>
 <script>
-
+    $(function(){
+        var time = 0;
+        $(".forget").click(function(){
+            clearTimeout(time);
+            $(".notify").show();
+            time = setTimeout(function(){
+                $(".notify").hide();
+            },3000)
+        })
+        $(".notify_close").click(function(){
+            clearTimeout(time);
+            $(".notify").hide();
+        })
+    })
 </script>
 </body>
 <!--Body Ends-->

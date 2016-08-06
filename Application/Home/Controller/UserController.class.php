@@ -14,7 +14,7 @@ class UserController extends BaseController
      */
     public function index($begin='',$end='',$product=''){
         $user_info = M('user')->where('id='.session('user')['id'])->find();
-        $product_sum = M('prepaid')->where('user_id='.session('user')['id'])->group('product_id')->select();
+        $product_sum = M('prepaid')->where('status=1 and user_id='.session('user')['id'])->group('product_id')->select();
         if(!empty($begin)&&!empty($end)){
             $return_begin = date('m/d/Y',$begin);
             $return_end = date('m/d/Y',$end);

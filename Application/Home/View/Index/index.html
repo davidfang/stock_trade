@@ -74,8 +74,13 @@
                 <a href="{:U('Index/download')}"><span style="margin-left: 30px;font-size: 14px;">下载中心</span></a>
             </div>
             <div class="login">
-                <span><a href="{:U('Login/login')}">登陆</a></span>
-                <span><a href="{:U('Login/register')}">注册</a></span>
+                <if condition="empty(session('user'))">
+                    <span><a href="{:U('Login/login')}">登陆</a></span>
+                    <span><a target= _blank href="{:U('Login/register')}">注册</a></span>
+                <else />
+                    <span><a href="{:U('Personal/personal_info')}"><?php echo(session('user')['name']) ?></a> ,您好</span>
+                    <span><a href="{:U('Login/login_out')}">退出</a></span>
+                </if>
             </div>
         </div>
         <div class="row">

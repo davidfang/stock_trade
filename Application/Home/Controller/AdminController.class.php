@@ -245,6 +245,11 @@ class AdminController extends BaseController
     }
 
     /**
+     * @param int $grade_id 代理等级查询 【高级搜索】
+     * @param string $phone 代理电话【高级搜索】
+     * @param string $name 代理名字【高级搜索】
+     * @param int $grade 代理等级【查看下级】
+     * @param int $user 代理id【查看下级】
      * 子代理信息
      */
     public function son_agency($grade_id=0,$phone='all',$name='all',$grade=0,$user=0){
@@ -254,13 +259,14 @@ class AdminController extends BaseController
         $this -> assign('where',$grade_id);
         $this -> assign('phone',$phone=='all'?'':$phone);
         $this -> assign('name',$name=='all'?'':$name);
-        if(!empty($grade)&&!empty($user)){
+        if(!empty($grade)&&!empty($user)){//查看下级代理
             $user_info = D('user')->get_son_agency($grade,$user);
-        }else{
+        }else{//代理信息搜索查看
             $user_info = D('user')->get_agency_info($grade_id,$phone,$name);
         }
         $this->assign('user_info', $user_info[0]);
         $this->assign('show_page', $user_info[1]);
+        $this->assign('grade', $user);
         $this -> display();
     }
 
@@ -681,13 +687,6 @@ class AdminController extends BaseController
         $this -> assign('phone',$phone);
         $this -> assign('name',$name);
         $this -> display();
-    }
-
-    /**
-     * 每日自动提成
-     */
-    public function everyday_push(){
-        D('trade')->today_trade();
     }
 
     /**

@@ -36,6 +36,11 @@
         <div class="widget flat">
             <div class="widget-header">
                 <span class="widget-caption">代理信息</span>
+                <if condition="!empty($grade)">
+                    <div class="widget-buttons">
+                        <a href="javascript:void(0);" onclick="self.location=document.referrer;" style="margin-right: 20px;"><< 返回</a>
+                    </div>
+                </if>
             </div><!--Widget Header-->
             <div class="widget-body">
                 <div class="table-toolbar">

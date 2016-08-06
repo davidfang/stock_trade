@@ -1,9 +1,12 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-    'VERIFY_NUM'    =>1,//验证码数量
+    'VERIFY_NUM'    =>4,//验证码数量
     'PAGE_NUM'      =>10,//分页每页显示数据量
     'URL_MODEL'     =>2,
+    'PUSH_BEGIN'    =>'23:30:00',//提成开始时间
+    'PUSH_END'    =>'23:59:59',//提成结束时间
+
     /* 模板替换 */
     'TMPL_PARSE_STRING' => array(
         '__IMG__'    => __ROOT__ . '/Public/Images',
