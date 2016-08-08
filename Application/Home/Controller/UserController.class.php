@@ -116,10 +116,10 @@ class UserController extends BaseController
     }
 
     /**
-     * @param int $status 退款状态【0：审核中的，1：已退款的，2：已拒绝的】
+     * @param string $status 退款状态【'':全部，0：审核中的，1：已退款的，2：已拒绝的】
      * 我的退款记录
      */
-    public function refund_apply_list($status=1){
+    public function refund_apply_list($status=''){
         $this -> assign('title','退款记录');
         $this -> assign('route','退款管理 / 退款记录');
         $this -> assign('header_title','退款记录');

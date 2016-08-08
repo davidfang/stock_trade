@@ -7,14 +7,23 @@ class SettingModel extends Model
 {
 
     /**
+     * @param $grade_rank 代理等级
+     * @param $product_id 产品id
      * @return array
      * 分页获取全部提成信息
      */
-    public function get_push_info(){
+    public function get_push_info($grade_rank,$product_id){
+        $where['p.status']=0;
+        if(!empty($grade_rank)){
+            $where['s.grade_id']=$grade_rank;
+        }
+        if(!empty($product_id)){
+            $where['s.product_id']=$product_id;
+        }
         $table = M('setting as s');
         $total = $table
             -> join('product as p on s.product_id=p.id')
-            -> where('p.status=0')
+            -> where($where)
             -> count();
         $per = C('PAGE_NUM');
         $Page = new  \Think\Page($total, $per);
@@ -23,7 +32,7 @@ class SettingModel extends Model
         $info = $table
             -> field('s.id,s.grade_id,s.money,s.begin,s.end,p.name')
             -> join('product as p on s.product_id=p.id')
-            -> where('p.status=0')
+            -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
             -> order('s.create_time desc')
             -> select();

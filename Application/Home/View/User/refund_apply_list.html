@@ -45,6 +45,7 @@
 
                                     <label class="col-sm-1 control-label text-align-right">分类：</label>
                                     <select id="status" class="form_text" data="{$status}">
+                                        <option value="">全部</option>
                                         <option value="1">已退款</option>
                                         <option value="2">已拒绝</option>
                                         <option value="0">处理中</option>
@@ -65,7 +66,7 @@
                         <th>产品</th>
                         <th>提款金额</th>
                         <th>申请时间</th>
-                        <if condition="$status eq 0">
+                        <if condition="$status eq 0 or empty($status)">
 
                         <elseif condition="$status eq 1" />
                             <th>实际退款</th>
@@ -82,8 +83,16 @@
                             <td>{$vo.product}</td>
                             <td>{$vo.money}</td>
                             <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
-                            <if condition="$status eq 0">
-                                <td>处理中</td>
+                            <if condition="$status eq 0 or empty($status)">
+                                <td>
+                                    <if condition="$vo.status eq 0">
+                                        处理中
+                                    <elseif condition="$vo.status eq 1"/>
+                                        已退款
+                                    <elseif condition="$vo.status eq 2"/>
+                                        被拒绝
+                                    </if>
+                                </td>
                             <elseif condition="$status eq 1" />
                                 <td>{$vo.actual_refund}</td>
                                 <td>{$vo.poundage}</td>

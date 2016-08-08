@@ -60,7 +60,7 @@ class AdminController extends BaseController
                 $data['password'] = md5(substr($data['identity_card'],12));
                 $res = $user_model->add_user($data);
                 if($res == false){
-                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '添加失败！'));
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '添加失败,请重试！'));
                 }else{
                     $this->json_response(array('code' => 0,'msg' => '成功','data' => '添加成功！'));
                 }
@@ -186,7 +186,7 @@ class AdminController extends BaseController
                 $data['update_time'] = time();
                 $res = M('user')->where('id=' . $data['user'])->save($data);
                 if ($res == false) {
-                    $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '操作失败！'));
+                    $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '操作失败,请重试！'));
                 } else {
                     $this->json_response(array('code' => 0, 'msg' => '成功', 'data' => '操作成功！'));
                 }
@@ -206,7 +206,7 @@ class AdminController extends BaseController
         $save_data['update_time'] = time();
         $save_res = M('user')->where('id='.$data['user'])->save($save_data);
         if(empty($save_res)){
-            $this->json_response(array('code' => 1,'msg' => '失败','data' => '修改失败！'));
+            $this->json_response(array('code' => 1,'msg' => '失败','data' => '修改失败,请重试！'));
         }else{
             $this->json_response(array('code' => 0,'msg' => '成功','data' => '恭喜，密码已重置。'));
         }
@@ -237,7 +237,7 @@ class AdminController extends BaseController
         }else{
             $allot_res = M("user")->where('id='.$data['user'])->save(array('superior'=>$data['superior']));
             if(empty($allot_res)){
-                $this->json_response(array('code' => 1,'msg' => '失败','data' => '分配失败！'));
+                $this->json_response(array('code' => 1,'msg' => '失败','data' => '分配失败,请重试！'));
             }else{
                 $this->json_response(array('code' => 0,'msg' => '成功','data' => '分配成功。'));
             }
@@ -325,14 +325,19 @@ class AdminController extends BaseController
     public function push_info(){
         $data = I('post.');
         if(empty($data)){
+            $grade_rank = I('get.grade_rank');
+            $product_id = I('get.product_id');
             $this -> assign('title','提成设置');
             $this -> assign('route','系统管理 / 提成设置');
             $this -> assign('header_title','提成设置');
-            $push_info = D('setting')->get_push_info();
+            $push_info = D('setting')->get_push_info($grade_rank,$product_id);
             $this->assign('push_info', $push_info[0]);
             $this->assign('show_page', $push_info[1]);
             $product = D('product')->get_product();
             $this -> assign('product',$product);
+
+            $this -> assign('grade_rank',$grade_rank);
+            $this -> assign('product_id',$product_id);
             $this -> display();
         }else{
             if($data['type']=='look'){
@@ -341,21 +346,21 @@ class AdminController extends BaseController
             }elseif($data['type']=='del'){
                 $del_res = M('setting')->where('id='.$data['set_id'])->delete();
                 if(empty($del_res)){
-                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '删除失败！'));
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '删除失败,请重试！'));
                 }else{
                     $this->json_response(array('code' => 0,'msg' => '成功','data' => '删除成功。'));
                 }
             }elseif(!empty($data['set_id'])){
                 $save_res = D('setting')->save_push($data,$data['set_id']);
                 if(empty($save_res)){
-                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '修改失败！'));
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '修改失败,请重试！'));
                 }else{
                     $this->json_response(array('code' => 0,'msg' => '成功','data' => '修改成功。'));
                 }
             }elseif(empty($data['set_id'])){
                 $add_res = D('setting')->add_push($data);
                 if(empty($add_res)){
-                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '设置失败！'));
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '设置失败,请重试！'));
                 }else{
                     $this->json_response(array('code' => 0,'msg' => '成功','data' => '设置成功。'));
                 }
@@ -640,19 +645,20 @@ class AdminController extends BaseController
     /**
      * @param string $begin
      * @param string $end
-     * @param string $grade
-     * @param string $phone
-     * @param string $name
+     * @param string $grade 代理等级
+     * @param string $phone 代理电话
+     * @param string $name 代理名
+     * @param string $grade_id 某代理下的直接代理【为空这代表全部】
      * 获取提成信息
      */
-    public function push_list($begin='',$end='',$grade='',$phone='',$name=''){
+    public function push_list($begin='',$end='',$grade='',$phone='',$name='',$grade_id=''){
         if(!empty($begin)&&!empty($end)){
             $return_begin = date('m/d/Y',$begin);
             $return_end = date('m/d/Y',$end);
             $time = $return_begin." - ".$return_end;
             $end = strtotime("+1 day",$end);
         }
-        $push_list = D('commission')->get_push_list($begin,$end,$grade,$phone,$name);
+        $push_list = D('commission')->get_grade_push_list($begin,$end,$grade,$phone,$name,$grade_id);
         $this -> assign('title','提成记录');
         $this -> assign('route','提成记录');
         $this -> assign('header_title','提成记录');
@@ -663,6 +669,7 @@ class AdminController extends BaseController
         $this -> assign('grade',$grade);
         $this -> assign('phone',$phone);
         $this -> assign('name',$name);
+        $this -> assign('user_grade_id',$grade_id);
         $this -> display();
     }
 

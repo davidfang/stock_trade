@@ -58,6 +58,57 @@ class CommissionModel extends Model
         return array($push_list, $show,$push_sum);
     }
 
+    /**
+     * @param $begin
+     * @param $end
+     * @param $grade 代理等级
+     * @param $phone 用户手机号
+     * @param $name 用户名
+     * @param string $grade_id 某代理下的直接代理【为空这代表全部】
+     * @return array
+     * 获取代理提成列表
+     */
+    public function get_grade_push_list($begin,$end,$grade,$phone,$name,$grade_id){
+        if(!empty($begin)&&!empty($end)){
+            $where['c.create_time'] = array('BETWEEN',array($begin,$end));
+        }
+        if(!empty($grade)){
+            $where['u.grade_id'] = $grade;
+        }
+        if(!empty($phone)){
+            $where['u.phone'] = $phone;
+        }
+        if(!empty($name)){
+            $where['u.name'] = array('like',"%".$name."%");
+        }
+        if(!empty($grade_id)){
+            $where['u.superior'] = $grade_id;
+        }
+        $refund_table = M('commission as c');
+        $total = $refund_table
+            -> join('user as u on c.agency_id=u.id')
+            -> join('grade as g on u.grade_id=g.id')
+            -> where($where)
+            -> count();
+        $per = C('PAGE_NUM');
+        $Page = new  \Think\Page($total, $per);
+        $Page->setConfig('last','尾页');//最后一页显示"尾页"
+        $show = $Page->show();
+        $push_list = $refund_table
+            -> field('c.id,c.agency_id,u.name as grade,u.phone,u.id as user_grade_id,u.grade_id,g.name as grade_rank,c.create_time,c.money')
+            -> join('user as u on c.agency_id=u.id')
+            -> join('grade as g on u.grade_id=g.id')
+            -> where($where)
+            -> limit($Page->firstRow.','.$Page->listRows)
+            -> order('c.create_time desc')
+            -> select();
+        $push_sum = $refund_table
+            -> join('user as u on c.agency_id=u.id')
+            -> join('grade as g on u.grade_id=g.id')
+            -> where($where)
+            -> sum('money');
+        return array($push_list, $show,$push_sum);
+    }
 
     /**
      * @param $commission 某次提成

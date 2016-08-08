@@ -207,7 +207,7 @@ class RefundModel extends Model
     }
 
     /**
-     * @param $status
+     * @param $status 退款状态【'':全部，0：审核中的，1：已退款的，2：已拒绝的】
      * @param $user
      * @return array
      * 按状态获取某个用户的提款申请记录
@@ -224,7 +224,7 @@ class RefundModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $apply_info = $refund_table
-            -> field('p.name as product,r.money,r.poundage,r.actual_refund,r.remarks,r.create_time,r.update_time')
+            -> field('p.name as product,r.money,r.poundage,r.actual_refund,r.remarks,r.create_time,r.update_time,r.status')
             -> join('product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)

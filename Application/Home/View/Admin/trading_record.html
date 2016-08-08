@@ -140,7 +140,7 @@
 
                     <div class="form-group">
                         <label for="number" class="col-sm-3 control-label text-align-right"> 交易手数：</label>
-                        <input type="number" placeholder="请输入交易手数" class="form-control" name="number" id="number">
+                        <input onkeyup="value=value.replace(/[^\d]/g,'')" type="number" placeholder="请输入交易手数" class="form-control" name="number" id="number">
                     </div>
 
                 </div>
@@ -220,7 +220,6 @@
                         }
                 )
             })
-
         })
     </script>
     <include file="Public:import"/>

@@ -24,6 +24,21 @@
         .push_modal select{
             width: 50%;
         }
+        .form_label{
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            line-height: 34px;
+            float: none;
+            padding-right: 0px;
+        }
+        .form_text{
+            width: 15%;
+            display: inline-block;
+        }
+        .col-sm-1{
+            float: none;
+        }
     </style>
 </block>
 <block name="main">
@@ -33,6 +48,44 @@
                 <span class="widget-caption">提成信息</span>
             </div><!--Widget Header-->
             <div class="widget-body">
+                <div class="table-toolbar">
+                    <div class="panel-group accordion" id="accordion" style="margin-bottom: 8px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading ">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                       data-parent="#accordion"
+                                       href="#collapseOne">
+                                        <i class="fa fa-search"></i> 高级搜索
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <label class="col-sm-1 control-label text-align-right">等级：</label>
+                                    <select id="grade_rank" class="form_text" data="{$grade_rank}">
+                                        <option value="" selected="selected">全部</option>
+                                        <option value="1">一级代理</option>
+                                        <option value="2">二级代理</option>
+                                        <option value="3">三级代理</option>
+                                    </select>
+
+                                    <label class="col-sm-1 control-label text-align-right">产品：</label>
+                                    <select id="product_id" class="form_text" data="{$product_id}">
+                                        <option value="">全部</option>
+                                        <foreach name="product" item="vo" >
+                                            <option value="{$vo.id}">{$vo.name}</option>
+                                        </foreach>
+                                    </select>
+                                    <button id="seek" type="button" class="btn btn-primary" url="{:U('Admin/push_info')}" style="padding: 7px; margin-top: -3px;">
+                                        <i class="fa fa-search"></i>搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="table-toolbar operation">
                     <div class="btn-group">
                         <a type="button" class="add_push btn btn-default" href="javascript:void (0);">
@@ -255,6 +308,13 @@
                 }
             })
         })
-
+        $("#grade_rank option[value="+$("#grade_rank").attr('data')+"]").attr("selected", true);
+        $("#product_id option[value="+$("#product_id").attr('data')+"]").attr("selected", true);
+        $("#seek").click(function() {
+            var url = $(this).attr('url');
+            var grade_rank = $.trim($("#grade_rank").val());
+            var product_id = $.trim($("#product_id").val());
+            window.location.href = url + "?grade_rank=" + grade_rank + "&product_id=" + product_id;
+        })
     </script>
 </block>
