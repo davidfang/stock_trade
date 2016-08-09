@@ -627,6 +627,9 @@ class AdminController extends BaseController
         $this->json_response(['code'=>'0','msg'=>'导入完成','data'=>$num.'条数据成功导入']);
     }
 
+    /**
+     * 获取今天的导入失败的交易数据
+     */
     public function get_fail_file(){
         $dir="Uploads/download_xlsx/";
         $file=scandir($dir);
@@ -747,16 +750,18 @@ class AdminController extends BaseController
 
     /**
      * @param string $phone 用户手机号
+     * @param string $name 用户名
      * 资产管理
      */
-    public function assets_manage($phone=''){
-        $user_assets = D("asset")->get_assets($phone);
+    public function assets_manage($phone='',$name=''){
+        $user_assets = D("asset")->get_assets($phone,$name);
         $this -> assign('title','资产管理');
         $this -> assign('route','用户管理 / 资产管理');
         $this -> assign('header_title','资产管理');
         $this -> assign('user_assets',$user_assets[0]);
         $this -> assign('show_page',$user_assets[1]);
         $this -> assign('phone',$phone);
+        $this -> assign('name',$name);
         $this -> display();
     }
 

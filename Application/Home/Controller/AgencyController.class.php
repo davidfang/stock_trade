@@ -83,6 +83,7 @@ class AgencyController extends BaseController
         $this -> assign('time',$time);
         $this -> assign('phone',$phone);
         $this -> assign('name',$name);
+        $this -> assign('grade_rank',$grade_rank);
         $this -> display();
     }
 

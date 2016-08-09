@@ -240,7 +240,7 @@ class UserModel extends Model
             $sql .= ' union all
                 select * from user where superior in(select id from user where superior='.$grade.')';
         }elseif(session('user')['grade_id']==3){
-            $sql=' ';
+            $sql.=' ';
         }
         $sql .= ' ) as u where type!=2';
         if($type!=''){
@@ -282,7 +282,7 @@ class UserModel extends Model
         }elseif(session('user')['grade_id']==2){
             $sql .= ' ';
         }elseif(session('user')['grade_id']==3){
-            $sql=' ';
+            $sql.=' ';
         }
         $sql .= ' ) as u,commission as c where u.id=c.agency_id and u.type=1';
         if(!empty($begin)&&!empty($end)){
