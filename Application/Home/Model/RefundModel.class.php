@@ -24,7 +24,7 @@ class RefundModel extends Model
             -> join('product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
-            -> order('r.create_time asc')
+            -> order('r.create_time desc')
             -> select();
         return array($apply_info, $show);
     }
@@ -40,17 +40,17 @@ class RefundModel extends Model
         $trans = M("refund");
         $trans->startTrans();
         $data_old = $trans->where('id='.$id)->find();
-        $poundage = M('poundage')->find();
+        $poundage = M('poundage')->find();//获取提成百分比
         if(empty($data_old)||empty($poundage)){
             $trans->rollback();
             return false;
         }
-        if($data_old['money']<=$poundage['money']){
-            $trans->rollback();
-            return '退款金额小于手续费！';
-        }
-        $data['poundage'] = $poundage['money'];
-        $data['actual_refund'] = $data_old['money']-$poundage['money'];
+//        if($data_old['money']<=$poundage['money']){
+//            $trans->rollback();
+//            return '退款金额小于手续费！';
+//        }
+        $data['poundage'] = round($data_old['money']*$poundage['money']/100,2);//手续费四舍五入（两位小数）
+        $data['actual_refund'] = $data_old['money']-$data['poundage'];//实际退款金额
         $res = $trans->where('id='.$id)->save($data);
         $user_trans = M('user');
         $user_trans->startTrans();
@@ -136,7 +136,7 @@ class RefundModel extends Model
             -> join('product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
-            -> order('r.create_time asc')
+            -> order('r.update_time desc')
             -> select();
         return array($apply_info, $show);
     }
@@ -171,7 +171,7 @@ class RefundModel extends Model
             -> join('product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
-            -> order('r.create_time asc')
+            -> order('r.update_time desc')
             -> select();
         $poundage_sum = $refund_table
             -> join('user as u on r.user_id=u.id')
@@ -228,7 +228,7 @@ class RefundModel extends Model
             -> join('product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
-            -> order('r.create_time asc')
+            -> order('r.create_time desc')
             -> select();
         return array($apply_info, $show);
     }

@@ -449,7 +449,7 @@ class AdminController extends BaseController
         if($data['status']=='pass'){
             $res = D('refund')->pass_apply($data['id']);
             if(empty($res)){
-                $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败！'));
+                $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请重试！'));
             }else{
                 if($res===true){
                     $this->json_response(array('code' => 0,'msg' => '成功','data' => '已同意。'));
@@ -460,7 +460,7 @@ class AdminController extends BaseController
         }elseif($data['status']=='refuse'){
             $res = D('refund')->refuse_apply($data['id'],$data['remarks']);
             if(empty($res)){
-                $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败！'));
+                $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请重试！'));
             }else{
                 $this->json_response(array('code' => 0,'msg' => '成功','data' => '已拒绝。'));
             }

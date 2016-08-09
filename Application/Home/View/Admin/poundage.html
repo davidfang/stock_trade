@@ -37,7 +37,10 @@
             <div class="widget-body">
                 <div class="form-group">
                     <label for="money" class="col-sm-2 control-label text-align-right form_label">手续费：</label>
-                    <input type="number" min="0" class="form-control form_text" value="{$poundage['money']}" name="money" id="money">（元/次）
+                    <div class="input-group" style="width: 40%;">
+                        <input type="number" min="0" class="form-control form_text" value="{$poundage['money']}" name="money" id="money">
+                        <span class="input-group-addon">%</span>
+                    </div>
                 </div>
                 <a class="btn btn-blue shiny save_info" url="{:U('Admin/poundage')}">提交</a>
             </div><!--Widget Body-->
