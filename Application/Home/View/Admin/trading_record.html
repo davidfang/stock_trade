@@ -86,6 +86,11 @@
                             <i class=""></i>添加记录
                         </a>
                     </div>
+                    <div class="btn-group">
+                        <a type="button" url="{:U('Admin/get_fail_file')}" id="download_fail" class="btn btn-default" href="javascript:void(0);">
+                            <i class=""></i>下载失败数据
+                        </a>
+                    </div>
                 </div>
                 <table class="table_data table table-striped table-hover table-bordered">
                     <thead>
@@ -120,7 +125,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title"></h4>
+                    <h4 class="modal-title">添加交易记录</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -147,6 +152,34 @@
                 <div class="modal-footer">
                     <button type="button" class="modal_close btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" url="{:U('Admin/push_info')}" class="affirm_save btn btn-default">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="fail_modal modal modal-darkorange">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">导入失败的数据文件</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover table-bordered no-footer" id="editabledatatable" >
+                        <thead>
+                            <tr>
+                                <th>文件</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="file_tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -218,6 +251,24 @@
                                 hint('warning',data['msg'],data['data']);
                             }
                         }
+                )
+            })
+            $("#download_fail").click(function(){
+                var url = $(this).attr('url');
+                $.post(
+                    url,
+                    function(data){
+                        $('#file_tbody tr').remove();
+                        for(var i=0;i<data.data.length;i++){
+                            var trHTML = "<tr>" +
+                                    "<td>"+data.data[i]['file']+"</td>" +
+                                    "<td>"+data.data[i]['create_time']+"</td>" +
+                                    "<td><a href='__UPLOADS__/"+data.data[i]['file']+"'>下载</a></td>" +
+                                    "</tr>";
+                            $("#file_tbody").append(trHTML);
+                        }
+                        $(".fail_modal").modal({show:true})
+                    }
                 )
             })
         })

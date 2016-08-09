@@ -59,22 +59,30 @@ class TradeModel extends Model
      * 添加交易记录
      */
     public function add_record($user,$product,$number){
+        $number = intval($number);
+        if($number<0){
+            return '交易手数有误！';
+        }
         $user_id = M('user')->where('type=0 and status=0 and phone='.$user)->find();
         if(empty($user_id)){
-            return 'no';
+            return '用户不存在！';
         }
         $product_where['status']=0;
         $product_where['name']=$product;
         $product_id = M('product')->where($product_where)->find();
         if(empty($product_id)){
-            return false;
+            return '产品不存在！';
         }
         $data['user_id'] = $user_id['id'];
         $data['number'] = $number;
         $data['product_id'] = $product_id['id'];
         $data['create_time'] = time();
         $add_res = M('trade')->add($data);
-        return $add_res;
+        if(empty($add_res)){
+            return false;
+        }else{
+            return true;
+        }
     }
 
 

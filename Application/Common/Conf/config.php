@@ -9,6 +9,7 @@ return array(
 
     /* 模板替换 */
     'TMPL_PARSE_STRING' => array(
+        '__UPLOADS__'    => __ROOT__ . '/Uploads/download_xlsx',
         '__IMG__'    => __ROOT__ . '/Public/Images',
         '__HIMG__'     => __ROOT__ . '/Public/Home/Images',
         '__HEXCEL__'     => __ROOT__ . '/Public/Home/Excel',

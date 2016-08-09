@@ -3,18 +3,19 @@
  * @param $fileName
  * @param $headArr
  * @param $list
+ * @param bool $show 【true：输出，false：保存】
  * @throws PHPExcel_Exception
  * @throws PHPExcel_Reader_Exception
  * excel导出
  */
-function To_Exel($fileName, $headArr, $list)
+function To_Exel($fileName, $headArr, $list,$show=true)
 {
     //导入PHPExcel类库，因为PHPExcel没有用命名空间，只能import导入
     Vendor("PHPExcel.PHPExcel");
     Vendor("PHPExcel.PHPExcel.Writer.Excel5");
     Vendor("PHPExcel..PHPExcel.IOFactory.php");
 
-    $date = date("Y_m_d", time());
+    $date = date("YmdHis", time());
     $fileName .= "_{$date}.xls";
 
     //创建PHPExcel对象，注意，不能少了\
@@ -47,13 +48,16 @@ function To_Exel($fileName, $headArr, $list)
     $fileName = iconv("utf-8", "gb2312", $fileName);
     $objPHPExcel->setActiveSheetIndex(0);
     ob_end_clean();//清除缓冲区,避免乱码
-    header('Content-Type: application/vnd.ms-Excel');
-    header("Content-Disposition: attachment;filename=\"$fileName\"");
-    header('Cache-Control: max-age=0');
-
     $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-    $objWriter->save('php://output'); //文件通过浏览器下载
-    exit;
+    if($show){
+        header('Content-Type: application/vnd.ms-Excel');
+        header("Content-Disposition: attachment;filename=\"$fileName\"");
+        header('Cache-Control: max-age=0');
+
+        $objWriter->save('php://output'); //文件通过浏览器下载
+    }else{
+        $objWriter->save('Uploads/download_xlsx/'.$fileName);
+    }
 }
 
 /**

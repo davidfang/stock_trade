@@ -541,23 +541,23 @@ class AdminController extends BaseController
      */
     public function add_trading_record($user,$product,$number,$status=false){
         $add_res = $trade_info = D('trade')->add_record($user,$product,$number);
-        if(empty($add_res)){
+        if($add_res===false){
             if($status){
                 return false;
             }else {
                 $this->json_response(array('code' => 2, 'msg' => '失败', 'data' => '添加失败，请重试！'));
             }
-        }elseif($add_res=='no'){
-            if($status){
-                return false;
-            }else {
-                $this->json_response(array('code' => 1, 'msg' => '提示', 'data' => '用户不存在！'));
-            }
-        }else{
+        }elseif($add_res===true){
             if($status){
                 return true;
             }else{
                 $this->json_response(array('code' => 0,'msg' => '成功','data' => '添加成功'));
+            }
+        }else{
+            if($status){
+                return false;
+            }else {
+                $this->json_response(array('code' => 1, 'msg' => '提示', 'data' => $add_res));
             }
         }
     }
@@ -581,17 +581,59 @@ class AdminController extends BaseController
         $sheetData = From_Excel($file);
         $highestRow = count($sheetData);          //取得总行数
         $num=0;     //成功条数
+        $fail = array();//导入失败的数据
         for($row=2;$row<=$highestRow;$row++){                        //从第二行开始读取数据
             $phone = $sheetData[$row]['A'];
             $product = $sheetData[$row]['B'];
             $number = $sheetData[$row]['C'];
             $res = $this->add_trading_record($phone,$product,$number,true);
-            if(!empty($res)){
+            if($res){
                 $num++;
+            }else{
+                array_push($fail,array('phone'=>$phone,'product'=>$product,'num'=>$number));
             }
         }
         unlink($file);
-        $this->json_response(['code'=>'0','msg'=>'成功','data'=>$num.'条数据成功导入']);
+        if(!empty($fail)){
+            foreach ($fail as $k => $info) {
+                $list[$k]["phone"] = $info['phone'];
+                $list[$k]["product"] = $info['product'];
+                $list[$k]["num"] = $info['num'];
+            }
+
+            foreach ($list as $field => $v) {
+                if ($field == 'phone') {
+                    $headArr[] = '手机号';
+                }
+
+                if ($field == 'product') {
+                    $headArr[] = '产品名称';
+                }
+
+                if ($field == 'num') {
+                    $headArr[] = '交易手数';
+                }
+            }
+            $filename = '';
+            To_Exel($filename, $headArr, $list,false);
+        }
+        $this->json_response(['code'=>'0','msg'=>'导入完成','data'=>$num.'条数据成功导入']);
+    }
+
+    public function get_fail_file(){
+        $dir="Uploads/download_xlsx/";
+        $file=scandir($dir);
+        $return_data = array();
+        $today = date('Y/m/d');
+        foreach($file as $key=>$val){
+            if(is_file($dir.$val)){
+                $atime = fileatime($dir.$val);
+                if($today == date("Y/m/d", $atime)){
+                    array_push($return_data,array('file'=>$val,'create_time'=>date("Y/m/d H:i:s", $atime)));
+                }
+            }
+        }
+        $this->json_response(['code'=>'0','msg'=>'','data'=>$return_data]);
     }
 
     /**
