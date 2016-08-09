@@ -120,4 +120,48 @@ class PrepaidModel extends Model
         return $res;
     }
 
+    /**
+     * @param $indent 订单id
+     * @return bool
+     * 完成充值
+     */
+    public function finish($indent){
+        $prepaid_table = M('prepaid');
+        $asset_table = M('asset');
+        $find_indent = $prepaid_table->where('status=0 and id='.$indent)->find();
+        if(empty($find_indent)){
+            return false;
+        }else{
+            $where['user_id'] = $find_indent['user_id'];
+            $where['product_id'] = $find_indent['product_id'];
+            $find_money = $asset_table->where($where)->find();
+            $prepaid_table->startTrans();
+            $asset_table->startTrans();
+            if(empty($find_money)){
+                $add_data['user_id'] = $find_indent['user_id'];
+                $add_data['product_id'] = $find_indent['product_id'];
+                $add_data['money'] = $add_data['usable'] = $find_indent['money'];
+                $recharge = $asset_table->add($add_data);
+            }else{
+                $save_data['money'] = $find_money['money']+$find_indent['money'];
+                $save_data['usable'] = $find_money['usable']+$find_indent['money'];
+                $recharge = $asset_table->where($where)->save($save_data);
+            }
+            if(!empty($recharge)){
+                $indent_res = $prepaid_table->where('status=0 and id='.$indent)->save(array('status'=>1));
+                if(!empty($indent_res)){
+                    $user_money = M('user')->where('id='.$find_indent['user_id'])->setInc('current',$find_indent['money']);
+                    if(!empty($user_money)){
+                        $prepaid_table->commit();
+                        $asset_table->commit();
+                        return true;
+                    }
+                }
+            }
+            $prepaid_table->rollback();
+            $asset_table->rollback();
+            return false;
+        }
+    }
+
 }

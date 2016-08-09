@@ -80,11 +80,34 @@ class UserController extends BaseController
         if(empty($res)){
             $this -> json_response(array('code'=>2,'msg'=>'提示','data'=>'充值失败，请重试！'));
         }else{
-            //调用支付宝接口
-
-            $this -> json_response(array('code'=>0,'msg'=>'成功','data'=>'恭喜，已成功充值。'));
+            $recharge = $this->finish_recharge($res);
+            if(empty($recharge)){
+                $this -> json_response(array('code'=>2,'msg'=>'提示','data'=>'支付失败，请重试！'));
+            }else{
+                $this -> json_response(array('code'=>0,'msg'=>'成功','data'=>'恭喜，已成功充值。'));
+            }
         }
     }
+
+
+    /**
+     * @param $indent 订单id
+     * @return bool
+     * 完成充值
+     */
+    public function finish_recharge($indent){
+        //调用支付宝接口
+
+
+
+        $res = D('prepaid')->finish($indent);
+        if(!empty($res)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     /**
      * 我要退款
