@@ -31,7 +31,7 @@
             <div class="or">登录</div>
         </div>
         <div class="loginbox-warning">
-            <p id="warning-msg"></p>
+            <p id="warning-msg">未知错误</p>
         </div>
         <div class="loginbox-textbox">
             <input type="text" class="form-control" id="account" placeholder="账号" />
@@ -44,6 +44,7 @@
         </div>
         <div class="loginbox-textbox">
             <img class="verifyimg reloadverify" alt="点击切换" src="{:U('Login/verify')}" onClick="this.src=this.src+'?'+Math.random()">
+            <a id="cut_reloadverify" style="margin-left: 10px;" href="javascript:void(0);">看不清，换一张?</a>
         </div>
 
         <div class="loginbox-submit">

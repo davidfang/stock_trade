@@ -13,6 +13,9 @@ $(function(){
             do_post(data);
         }
     })
+    $("#cut_reloadverify").click(function(){
+        $(".reloadverify").click();
+    })
 })
 
 function filter(){
@@ -38,7 +41,7 @@ function L_trim(str){
 }
 function L_alert(msg){
     msg = msg ? msg : '未知错误';
-    $('.loginbox-warning').show();
+    $('#warning-msg').css({'color':'red'});
     $('#warning-msg').text(msg);
     shake('#warning-msg');
 }
