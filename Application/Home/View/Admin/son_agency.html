@@ -103,6 +103,7 @@
                                 <if condition="$vo.grade_id neq 3">
                                     <a class="subordinate" grade="{$vo.grade_id}" user="{$vo.id}" href="javascript:void(0);">下一级</a>
                                 </if>
+                                <a user="{$vo.id}" class="del_grade" href="javascript:void(0);">删除</a>
                             </td>
                         </tr>
                     </foreach>
@@ -112,6 +113,8 @@
             </div><!--Widget Body-->
         </div><!--Widget-->
     </div>
+
+    <input type="hidden" id="del_agency" value="{:U('Admin/del_agency')}" />
 
 </block>
 <block name="script">

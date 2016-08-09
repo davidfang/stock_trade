@@ -152,9 +152,31 @@ class UserModel extends Model
      * 删除代理并将其下的用户归系统
      */
     public function del_agency($user){
+        $where['status'] = 0;
         $where['type'] = 1;
-        $where['id'] = $user;
-
+        $where['superior'] = $user;
+        $find_res = M('user')->where($where)->select();
+        if(!empty($find_res)){
+            return '有下级子代理！';
+        }else{
+            $grade_rank = M('user')->where('status=0 and type=1 and id='.$user)->find();
+            if($grade_rank['grade_id']==3){
+                $now=time();
+                $user_table = M('user');
+                $user_table->startTrans();
+                $save_res = $user_table->where('type=0 and superior='.$user)->save(array('superior'=>0,'update_time'=>$now));
+                if(!empty($save_res)){
+                    $del_res = M('user')->where('id='.$user)->save(array('status'=>1,'update_time'=>$now));
+                    if(!empty($del_res)){
+                        $user_table->commit();
+                        return true;
+                    }
+                }
+                $user_table->rollback();
+                return false;
+            }
+            return '代理不存在！';
+        }
     }
 
     /**

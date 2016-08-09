@@ -133,7 +133,14 @@ class AdminController extends BaseController
      */
     public function del_agency(){
         $user = I("post.user");
-
+        $res = D('user')->del_agency($user);
+        if($res===false){
+            $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '删除失败，请重试'));
+        }elseif($res===true){
+            $this->json_response(array('code' => 0, 'msg' => '成功', 'data' => '已删除。'));
+        }else{
+            $this->json_response(array('code' => 2, 'msg' => '提示', 'data' => $res));
+        }
     }
 
     /**
