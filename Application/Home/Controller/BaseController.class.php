@@ -90,9 +90,9 @@ class BaseController extends Controller
                 ['name'=>'交易记录','url'=>U('Admin/trading_record'),'ico'=>'fa fa-list'],
                 ['name'=>'提成记录','url'=>U('Admin/push_list'),'ico'=>'fa fa-align-left'],
                 ['name'=>'手续费记录','url'=>U('Admin/poundage_list'),'ico'=>'fa fa-th'],
-                ['name'=>'提款管理','ico'=>'fa fa-minus', 'children' => [
-                    ['name'=>'提款申请','url'=>U('Admin/drawings_apply')],
-                    ['name'=>'提款记录','url'=>U('Admin/drawings_list')],
+                ['name'=>'退款管理','ico'=>'fa fa-minus', 'children' => [
+                    ['name'=>'退款申请','url'=>U('Admin/drawings_apply')],
+                    ['name'=>'退款记录','url'=>U('Admin/drawings_list')],
                 ]],
                 ['name'=>'个人信息管理','ico'=>'fa fa-gear', 'children' => [
                     ['name'=>'个人信息','url'=>U('Personal/personal_info')],

@@ -436,13 +436,13 @@ class AdminController extends BaseController
     }
 
     /**
-     * 提款申请记录
+     * 退款申请记录
      */
     public function drawings_apply(){
         $apply_info = D("refund")->get_drawings_apply();
-        $this -> assign('title','提款申请');
-        $this -> assign('route','提款管理 / 提款申请');
-        $this -> assign('header_title','提款申请');
+        $this -> assign('title','退款申请');
+        $this -> assign('route','退款管理 / 退款申请');
+        $this -> assign('header_title','退款申请');
         $this -> assign('apply_info',$apply_info[0]);
         $this -> assign('show_page',$apply_info[1]);
         $this -> display();
@@ -475,16 +475,16 @@ class AdminController extends BaseController
     }
 
     /**
-     * @param string $status 提款状态
+     * @param string $status 退款状态
      * @param string $phone 用户手机号
      * @param string $name 用户名
-     * 提款记录
+     * 退款记录
      */
     public function drawings_list($status='',$phone='',$name=''){
         $drawings_list = D("refund")->get_drawings_list($status,$phone,$name);
-        $this -> assign('title','提款记录');
-        $this -> assign('route','提款管理 / 提款记录');
-        $this -> assign('header_title','提款记录');
+        $this -> assign('title','退款记录');
+        $this -> assign('route','退款管理 / 退款记录');
+        $this -> assign('header_title','退款记录');
         $this -> assign('drawings_list',$drawings_list[0]);
         $this -> assign('show_page',$drawings_list[1]);
         $this -> assign('where',$status);
@@ -498,7 +498,7 @@ class AdminController extends BaseController
      */
     public function poundage_list($phone='',$name=''){
         $poundage_list = D("refund")->get_poundage_list($phone,$name);
-        $this -> assign('title','提款信息');
+        $this -> assign('title','手续费记录');
         $this -> assign('route','手续费记录');
         $this -> assign('header_title','手续费记录');
         $this -> assign('poundage_list',$poundage_list[0]);

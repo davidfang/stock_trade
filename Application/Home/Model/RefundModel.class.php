@@ -210,7 +210,7 @@ class RefundModel extends Model
      * @param $status 退款状态【'':全部，0：审核中的，1：已退款的，2：已拒绝的】
      * @param $user
      * @return array
-     * 按状态获取某个用户的提款申请记录
+     * 按状态获取某个用户的退款申请记录
      */
     public function get_refund_apply_list($status,$user){
         if($status!=''){
