@@ -17,6 +17,7 @@ return array(
         '__HJS__'     => __ROOT__ . '/Public/Home/Js',
         '__ASSETS__'     =>__ROOT__ . '/Public/assets',
         '__STAICK__'     =>__ROOT__ . '/Public/Staick',
+        '__ADHIBITION__'     =>__ROOT__ . '/Public/adhibition',
     ),
 
     'DB_TYPE'   => 'mysql', // 数据库类型
