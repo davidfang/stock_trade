@@ -11,7 +11,7 @@ class UserModel extends Model
      */
     protected $_validate = array(
         array('name','require','姓名为必填项！'),
-//        array('phone','','帐号已经存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
+        array('phone','','帐号已经存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
         array('phone','require','手机号为必填项！'),
         array('phone','/^1[3|4|5|7|8]\d{9}$/','电话未填写或填写有误！'),
 //        array('email','/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/','邮箱填写有误！'),
@@ -306,6 +306,27 @@ class UserModel extends Model
         $sql.=' limit '.$Page->firstRow.','.$Page->listRows;
         $res = M()->query($sql);
         return array($res,$show);
+    }
+
+    /**
+     * @return array
+     * 获取所有有效管理员
+     */
+    public function get_admin(){
+        $where['type'] = 2;
+        $where['status'] = 0;
+        $user_table = M('user');
+        $total = $user_table->where($where)->count();
+        $per = C('PAGE_NUM');
+        $Page = new  \Think\Page($total, $per);
+        $Page->setConfig('last','尾页');//最后一页显示"尾页"
+        $show = $Page->show();
+        $info = $user_table
+            -> where($where)
+            -> limit($Page->firstRow.','.$Page->listRows)
+            -> order('create_time desc')
+            -> select();
+        return array($info, $show);
     }
 
 }

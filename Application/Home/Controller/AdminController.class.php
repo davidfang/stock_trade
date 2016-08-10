@@ -801,4 +801,48 @@ class AdminController extends BaseController
         }
     }
 
+    /**
+     * 管理员列表
+     */
+    public function admin_list(){
+        $this -> assign('title','管理员列表');
+        $this -> assign('route','系统管理 / 管理员列表');
+        $this -> assign('header_title','管理员列表');
+        $admin_info = D('user')->get_admin();
+        $this->assign('admin_info', $admin_info[0]);
+        $this->assign('show_page', $admin_info[1]);
+        $this -> display();
+    }
+
+    /**
+     * 添加管理员
+     */
+    public function add_admin(){
+        $data = I('post.');
+        if(empty($data)){
+            $this -> assign('title','添加管理员');
+            $this -> assign('route','系统管理 / 添加管理员');
+            $this -> assign('header_title','添加管理员');
+            $this -> display();
+        }else{
+            $user_model = D('user');
+            if(!$user_model->create($data)){
+                $this->json_response(array('code' => 2,'msg' => '提示','data' => $user_model->getError()));
+            }else{
+                $find = M('user')->where('status=0 and phone='.$data['phone'])->find();
+                if(!empty($find)){
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '账号已被占用！'));
+                }
+                $data['password'] = md5(substr($data['identity_card'],12));
+                $data['type'] = 2;
+                $res = $user_model->add_user($data);
+                if($res == false){
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '添加失败,请重试！'));
+                }else{
+                    $this->json_response(array('code' => 0,'msg' => '成功','data' => '添加成功！'));
+                }
+            }
+        }
+    }
+
 }

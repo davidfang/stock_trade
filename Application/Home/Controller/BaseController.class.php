@@ -104,6 +104,8 @@ class BaseController extends Controller
                     ['name'=>'添加产品','url'=>U('Admin/add_save_product')],
                 ]],
                 ['name'=>'系统管理','ico'=>'fa fa-wrench', 'children' => [
+                    ['name'=>'管理员列表','url'=>U('Admin/admin_list')],
+                    ['name'=>'添加管理员','url'=>U('Admin/add_admin')],
                     ['name'=>'提成设置','url'=>U('Admin/push_info')],
                     ['name'=>'手续费设置','url'=>U('Admin/poundage')],
                     ['name'=>'数据管理','url'=>U('Admin/data_manage')],
