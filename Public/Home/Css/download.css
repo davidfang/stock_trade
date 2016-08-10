@@ -100,4 +100,5 @@ h2{
 .small_title{
     color: goldenrod;
     font-weight: 500;
+    display: inline-block;
 }
