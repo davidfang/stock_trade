@@ -1,6 +1,7 @@
 $(function(){
     var verify_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;//验证邮箱
     var verify_id = /^\d{17}([0-9]|X|x)$/;//验证身份证号
+    var verify_bank_card = /^\d{16}|\d{19}$/;//验证银行卡号
     var post = true;
     $(".save_info").click(function(){
         post = true;
@@ -8,9 +9,23 @@ $(function(){
         var to_url = $(this).attr('to-url');
         try {
             var name = get_verify_data($("#name"),false,true,'姓名');
-            var ID = get_verify_data($("#identity_card"),verify_id,true,'身份证号');
-            var email = get_verify_data($("#email"),verify_email,true,'邮箱');
-            var address = get_verify_data($("#address"),false,true,'地址');
+            var bank_card = get_verify_data($("#bank_card"),verify_bank_card,true,'银行卡号');
+            var bank_address = get_verify_data($("#bank_address"),false,true,'开户行及网点');
+            var ID = get_verify_data($("#identity_card"),verify_id,false,'身份证号');
+            var email = get_verify_data($("#email"),verify_email,false,'邮箱');
+            var address = get_verify_data($("#address"),false,false,'地址');
+            var post_data={
+                name:name,
+                identity_card:ID,
+                email:email,
+                address:address,
+            }
+            if(bank_card){
+                post_data.bank_card=bank_card;
+            }
+            if(bank_address){
+                post_data.bank_address=bank_address;
+            }
         }catch(that){
             if(that){
                 that.css('border', '1px solid red');
@@ -20,12 +35,8 @@ $(function(){
         if(post){
             $.post(
                 url,
-                {
-                    name:name,
-                    identity_card:ID,
-                    email:email,
-                    address:address,
-                },function(data){
+                post_data,
+                function(data){
                     if(data['code']==0){
                         hint('success',data['msg'],data['data']);
                         setTimeout(function(){
@@ -41,6 +52,9 @@ $(function(){
         }
     })
     function get_verify_data(that,condition,must,info){
+        if(!that.length>0){
+            return false;
+        }
         var get_data = $.trim(that.val());
         if(must && get_data==''){
             hint('warning', '提示', info+'为必填项！！！');

@@ -29,6 +29,9 @@
         .eye{
             cursor: pointer;
         }
+        .required{
+            color: red;
+        }
     </style>
 </block>
 <block name="main">
@@ -36,27 +39,42 @@
         <div class="widget flat">
             <div class="widget-header">
                 <span class="widget-caption">基本信息</span>
+                <notempty name="user_id">
+                    <div class="widget-buttons">
+                        <a href="javascript:void(0);" onclick="self.location=document.referrer;" style="margin-right: 20px;"><< 取消</a>
+                    </div>
+                </notempty>
             </div><!--Widget Header-->
             <div class="widget-body">
                 <div class="form-group" style="margin-top: 40px;">
-                    <label for="name" class="col-sm-2 control-label text-align-right form_label">姓名：</label>
-                    <input type="text" maxlength="5" class="form-control form_text" value="{$user_info['name']}" name="name" id="name">
+                    <label for="name" class="col-sm-2 control-label text-align-right form_label">姓名：<span class=" required">*</span></label>
+                    <input type="text" placeholder="请输入真实姓名" maxlength="5" class="form-control form_text" value="{$user_info['name']}" name="name" id="name">
                 </div>
                 <div class="form-group">
-                    <label for="identity_card" class="col-sm-2 control-label text-align-right form_label">身份证号：</label>
-                    <input type="text" maxlength="18" class="form-control form_text" value="{$user_info['identity_card']}" name="identity_card" id="identity_card">
+                    <label for="identity_card" class="col-sm-2 control-label text-align-right form_label">身份证号：<span class=" required">*</span></label>
+                    <input type="text" placeholder="请输入身份证号" maxlength="18" class="form-control form_text" value="{$user_info['identity_card']}" name="identity_card" id="identity_card">
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label text-align-right form_label">手机号：</label>
-                    <input type="tel" maxlength="11" class="form-control form_text" value="{$user_info['phone']}" name="phone" id="phone">
+                    <label for="phone" class="col-sm-2 control-label text-align-right form_label">手机号：<span class=" required">*</span></label>
+                    <input type="tel" placeholder="请输入手机号" maxlength="11" class="form-control form_text" value="{$user_info['phone']}" name="phone" id="phone">
                 </div>
+                <if condition="$type eq 'user'">
+                    <div class="form-group">
+                        <label for="bank_card" class="col-sm-2 control-label text-align-right form_label">银行卡号：</label>
+                        <input type="text" maxlength="19" value="{$user_info['bank_card']}" placeholder="请输入银行卡号" class="form-control form_text" name="bank_card" id="bank_card">
+                    </div>
+                    <div class="form-group">
+                        <label for="bank_address" class="col-sm-2 control-label text-align-right form_label">开户行及网点：</label>
+                        <input type="text" value="{$user_info['bank_address']}" placeholder="请输入开户行及网点" class="form-control form_text" name="bank_address" id="bank_address">
+                    </div>
+                </if>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label text-align-right form_label">邮箱：</label>
-                    <input type="text" class="form-control form_text" value="{$user_info['email']}" name="email" id="email">
+                    <input type="text" placeholder="请输入邮箱" class="form-control form_text" value="{$user_info['email']}" name="email" id="email">
                 </div>
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label text-align-right form_label">地址：</label>
-                    <input type="text" maxlength="100" class="form-control form_text" value="{$user_info['address']}" name="address" id="address">
+                    <input type="text" placeholder="请输入居住地址" maxlength="100" class="form-control form_text" value="{$user_info['address']}" name="address" id="address">
                 </div>
                 <if condition="$type eq 'user'">
                     <div class="form-group">

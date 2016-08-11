@@ -2,6 +2,7 @@ $(function(){
     var verify_phone = /^1\d{10}$/;//验证手机
     var verify_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;//验证邮箱
     var verify_id = /^\d{17}([0-9]|X|x)$/;//验证身份证号
+    var verify_bank_card = /^\d{16}|\d{19}$/;//验证银行卡号
     //获取手机验证码
     $("#verify_button").click(function(){
         var url = $(this).attr('url');
@@ -59,9 +60,11 @@ $(function(){
                 return;
             }
             var name = get_verify_data($("#name"),false,true,'姓名');
-            var ID = get_verify_data($("#ID"),verify_id,true,'身份证号');
-            var email = get_verify_data($("#email"),verify_email,true,'邮箱');
-            var address = get_verify_data($("#address"),false,true,'地址');
+            var bank_card = get_verify_data($("#bank_card"),verify_bank_card,true,'银行卡号');
+            var bank_address = get_verify_data($("#bank_address"),false,true,'银行及开户网点');
+            var ID = get_verify_data($("#ID"),verify_id,false,'身份证号');
+            var email = get_verify_data($("#email"),verify_email,false,'邮箱');
+            var address = get_verify_data($("#address"),false,false,'地址');
             var verify_text = get_verify_data($("#verify_text"),false,true,'验证码');
         }catch(that){
             if(that){
@@ -77,6 +80,8 @@ $(function(){
                 {
                     phone:phone,
                     name:name,
+                    bank_card:bank_card,
+                    bank_address:bank_address,
                     identity_card:ID,
                     email:email,
                     address:address,

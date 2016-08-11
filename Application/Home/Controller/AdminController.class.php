@@ -47,6 +47,7 @@ class AdminController extends BaseController
             $this -> assign('title','添加用户');
             $this -> assign('route','用户管理 / 添加用户');
             $this -> assign('header_title','添加用户');
+            $this -> assign('type','user');
             $this->display();
         }else{
             $user_model = D('user');
