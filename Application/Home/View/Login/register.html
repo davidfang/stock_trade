@@ -43,10 +43,13 @@
 <!--Body-->
 <body>
 <div class="register-container animated fadeInDown">
-    <div class="registerbox bg-white" style="height: 750px!important;">
+    <div class="registerbox bg-white" style="height: 450px!important;">
         <div class="registerbox-title">注册</div>
 
         <div class="registerbox-caption ">请填写您的资料信息</div>
+        <div class="registerbox-textbox">
+            <input type="text" class="form-control" placeholder="姓名（必填项）" id="name" />
+        </div>
         <div class="registerbox-textbox">
             <input type="tel" maxlength="11" class="form-control" placeholder="手机号（必填项）" id="phone" />
         </div>
@@ -56,25 +59,24 @@
         <div class="registerbox-textbox">
             <input type="password" class="form-control" placeholder="确认密码（必填项）" id="password_verify" />
         </div>
-        <hr class="wide" />
-        <div class="registerbox-textbox">
-            <input type="text" class="form-control" placeholder="姓名（必填项）" id="name" />
-        </div>
-        <div class="registerbox-textbox">
-            <input type="text" maxlength="19" class="form-control" placeholder="银行卡号（必填项）" id="bank_card" />
-        </div>
-        <div class="registerbox-textbox">
-            <input type="text" class="form-control" placeholder="银行及开户网点（必填项）" id="bank_address" />
-        </div>
-        <div class="registerbox-textbox">
-            <input type="text" class="form-control" placeholder="身份证号" id="ID" />
-        </div>
-        <div class="registerbox-textbox">
-            <input type="email" class="form-control" placeholder="email" id="email" />
-        </div>
-        <div class="registerbox-textbox">
-            <input type="text" class="form-control" placeholder="地址" id="address" />
-        </div>
+
+        <!--<hr class="wide" />-->
+
+        <!--<div class="registerbox-textbox">-->
+            <!--<input type="text" maxlength="19" class="form-control" placeholder="银行卡号（必填项）" id="bank_card" />-->
+        <!--</div>-->
+        <!--<div class="registerbox-textbox">-->
+            <!--<input type="text" class="form-control" placeholder="银行及开户网点（必填项）" id="bank_address" />-->
+        <!--</div>-->
+        <!--<div class="registerbox-textbox">-->
+            <!--<input type="text" class="form-control" placeholder="身份证号" id="ID" />-->
+        <!--</div>-->
+        <!--<div class="registerbox-textbox">-->
+            <!--<input type="email" class="form-control" placeholder="email" id="email" />-->
+        <!--</div>-->
+        <!--<div class="registerbox-textbox">-->
+            <!--<input type="text" class="form-control" placeholder="地址" id="address" />-->
+        <!--</div>-->
         <div class="registerbox-textbox">
             <input type="text" class="form-control" id="verify_text" placeholder="验证码" />
             <input type="button" class="btn btn-azure shiny" url="{:U('Login/get_phone_verify')}" id="verify_button" value="获取验证码" />
