@@ -7,15 +7,22 @@ $(function(){
         post = true;
         try {
             var name = get_verify_data($("#name"),false,true,'姓名');
-            var ID = get_verify_data($("#identity_card"),verify_id,true,'身份证号');
+            var ID = get_verify_data($("#identity_card"),verify_id,false,'身份证号');
             var phone = get_verify_data($("#phone"),verify_phone,true,'手机号');
             var email = get_verify_data($("#email"),verify_email,false,'邮箱');
             var address = get_verify_data($("#address"),false,false,'地址');
+            var set_pwd = get_verify_data($("#set_pwd"),false,true,'初始密码');
         }catch(that){
             if(that){
                 that.css('border', '1px solid red');
                 that.focus();
             }
+        }
+        if(set_pwd&&(set_pwd.length<6||set_pwd.length>16)){
+            hint('warning', '提示','密码格式有误！！！');
+            $("#set_pwd").focus();
+            $("#set_pwd").css('border', '1px solid red');
+            return;
         }
         var to_url = $(this).attr('to-url');
         var url = $(this).attr('url');

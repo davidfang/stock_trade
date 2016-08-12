@@ -54,11 +54,12 @@ class AdminController extends BaseController
             if(!$user_model->create($data)){
                 $this->json_response(array('code' => 2,'msg' => '提示','data' => $user_model->getError()));
             }else{
-                $find = M('user')->where('status=0 and phone='.$data['phone'])->find();
+                $find = M('user')->where('phone='.$data['phone'])->find();
                 if(!empty($find)){
                     $this->json_response(array('code' => 1,'msg' => '失败','data' => '账号已被占用！'));
                 }
-                $data['password'] = md5(substr($data['identity_card'],12));
+//                $data['password'] = md5(substr($data['identity_card'],12));
+                $data['password'] = md5($data['set_pwd']);
                 $res = $user_model->add_user($data);
                 if($res == false){
                     $this->json_response(array('code' => 1,'msg' => '失败','data' => '添加失败,请重试！'));
@@ -187,7 +188,7 @@ class AdminController extends BaseController
         if(!$user_model->create($data)){
             $this->json_response(array('code' => 2,'msg' => '提示','data' => $user_model->getError()));
         }else {
-            $find_phone = M('user')->where('status=0 and phone=' . $data['phone'])->find();
+            $find_phone = M('user')->where('phone=' . $data['phone'])->find();
             if (!empty($find_phone) && $find_phone['id'] != $data['user']) {
                 $this->json_response(array('code' => 1, 'msg' => '失败', 'data' => '账号已被占用！'));
             } else {
@@ -830,11 +831,12 @@ class AdminController extends BaseController
             if(!$user_model->create($data)){
                 $this->json_response(array('code' => 2,'msg' => '提示','data' => $user_model->getError()));
             }else{
-                $find = M('user')->where('status=0 and phone='.$data['phone'])->find();
+                $find = M('user')->where('phone='.$data['phone'])->find();
                 if(!empty($find)){
                     $this->json_response(array('code' => 1,'msg' => '失败','data' => '账号已被占用！'));
                 }
-                $data['password'] = md5(substr($data['identity_card'],12));
+//                $data['password'] = md5(substr($data['identity_card'],12));
+                $data['password'] = md5($data['set_pwd']);
                 $data['type'] = 2;
                 $res = $user_model->add_user($data);
                 if($res == false){

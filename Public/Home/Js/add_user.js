@@ -8,7 +8,7 @@ $(function(){
         post = true;
         try {
             var name = get_verify_data($("#name"),false,true,'姓名');
-            var ID = get_verify_data($("#identity_card"),verify_id,true,'身份证号');
+            var ID = get_verify_data($("#identity_card"),verify_id,false,'身份证号');
             var phone = get_verify_data($("#phone"),verify_phone,true,'手机号');
             var bank_card = get_verify_data($("#bank_card"),verify_bank_card,false,'银行卡号');
             var bank_address = get_verify_data($("#bank_address"),false,false,'开户行及网点');
@@ -16,6 +16,7 @@ $(function(){
             var address = get_verify_data($("#address"),false,false,'地址');
             var stock = get_verify_data($("#stock"),false,false,'股票账号');
             var stock_psd = get_verify_data($("#stock_psd"),false,false,'股票密码');
+            var set_pwd = get_verify_data($("#set_pwd"),false,true,'初始密码');
         }catch(that){
             if(that){
                 that.css('border', '1px solid red');
@@ -24,6 +25,12 @@ $(function(){
         }
         if((stock==''&&stock_psd!='')||(stock!=''&&stock_psd=='')){
             hint('success','提示','股票信息不完善！');
+            return;
+        }
+        if(set_pwd&&(set_pwd.length<6||set_pwd.length>16)){
+            hint('warning', '提示','密码格式有误！！！');
+            $("#set_pwd").focus();
+            $("#set_pwd").css('border', '1px solid red');
             return;
         }
         var to_url = $(this).attr('to-url');
@@ -48,6 +55,9 @@ $(function(){
         }
         if(bank_address){
             post_data.bank_address=bank_address;
+        }
+        if(set_pwd){
+            post_data.set_pwd=set_pwd;
         }
         if(post){
             $.post(

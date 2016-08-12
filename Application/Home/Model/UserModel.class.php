@@ -13,13 +13,14 @@ class UserModel extends Model
         array('name','require','姓名为必填项！'),
         array('phone','require','手机号为必填项！'),
         array('phone','/^1[3|4|5|7|8]\d{9}$/','电话未填写或填写有误！'),
-        array('phone','','帐号已经存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
+//        array('phone','','帐号已经存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
         array('bank_card','require','银行卡号为必填项！'),
         array('bank_card','/^\d{16}|\d{19}$/','银行卡号填写有误！'),
         array('bank_address','require','开户行及网点为必填项！'),
 //        array('email','/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/','邮箱填写有误！'),
-        array('identity_card','/^\d{17}([0-9]|X|x)$/','身份证号填写有误！'),
+//        array('identity_card','/^\d{17}([0-9]|X|x)$/','身份证号填写有误！'),
 //        array('address','require','地址为必填项！'),
+        array('set_pwd','require','初始密码不能为空！'),//添加用户，代理，管理员时验证
         array('password','require','密码不能为空！'),
         array('verify_password','require','确认密码不能为空！'),
         array('verify_password','password','确认密码不正确',0,'confirm'), // 验证确认密码是否和密码一致

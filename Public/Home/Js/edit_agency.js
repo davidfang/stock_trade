@@ -7,7 +7,7 @@ $(function(){
         post = true;
         try {
             var name = get_verify_data($("#name"),false,true,'姓名');
-            var ID = get_verify_data($("#identity_card"),verify_id,true,'身份证号');
+            var ID = get_verify_data($("#identity_card"),verify_id,false,'身份证号');
             var phone = get_verify_data($("#phone"),verify_phone,true,'手机号');
             var email = get_verify_data($("#email"),verify_email,false,'邮箱');
             var address = get_verify_data($("#address"),false,false,'地址');
