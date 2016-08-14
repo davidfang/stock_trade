@@ -14,7 +14,7 @@
         .save_info{
             float: right;
             margin-right: 45%;
-            margin-top: 15%;
+            margin-top: 8%;
         }
         .form_label{
             display: inline-block;
@@ -34,7 +34,7 @@
             <div class="widget-header">
                 <span class="widget-caption main_title">汇率设置</span>
             </div><!--Widget Header-->
-            <div class="widget-body">
+            <div class="widget-body" style="min-height: 450px; display: inline-block!important;">
                 <div class="form-group">
                     <label for="conversiorate" class="col-sm-2 control-label text-align-right form_label">美元汇率：</label>
                     <input type="number" min="0" class="form-control form_text" value="{$conversion['conversiorate']}" name="conversiorate" id="conversiorate">
@@ -79,8 +79,8 @@
                         }
                 )
             })
-            $("#conversiorate").blur(function(){
-                var conversiorate = $.trim($("#conversiorate").val());
+            $("#conversiorate").keyup(function(){
+                var conversiorate = parseFloat($.trim($("#conversiorate").val())).toFixed(4);
                 $(".results").text(100*conversiorate);
             })
         })
