@@ -36,7 +36,7 @@
             </div><!--Widget Header-->
             <div class="widget-body">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label text-align-right form_label">名字：<span style="color: red;">*</span></label>
+                    <label for="name" class="col-sm-2 control-label text-align-right form_label">名字：</label>
                     <input type="text" maxlength="5" class="form-control form_text" value="{$product['name']}" name="name" id="name">
                 </div>
                 <div class="form-group no-margin-top">
@@ -112,9 +112,9 @@
                         function(data){
                             if(data['code']==0){
                                 hint('success',data['msg'],data['data']);
-//                                setTimeout(function(){
-//                                    window.location.href=to_url;
-//                                },2000)
+                                setTimeout(function(){
+                                    window.location.href=to_url;
+                                },2000)
                             }else if(data['code']==1){
                                 hint('warning',data['msg'],data['data']);
                             }else{

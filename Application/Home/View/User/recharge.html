@@ -32,6 +32,12 @@
             height: 104px;
         }
     </style>
+    <script>
+        var conversiorate = {$conversion['conversiorate']};
+        function matrixing(that){
+            $("#dollar").val(parseFloat(that*conversiorate).toFixed(4));
+        }
+    </script>
 </block>
 <block name="main">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -42,21 +48,25 @@
             <div class="widget-body">
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-align-right form_label">选择产品：</label>
-                    <!--<table class="table">-->
-                        <!--<tr>-->
-                            <!--<td></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                    <!--<select id="product" class="form_text" data="{$product}">-->
-                        <!--<option value="">请选择产品</option>-->
-                        <!--<foreach name="product_list" item="vo" >-->
-                            <!--<option value="{$vo.id}">{$vo.name}</option>-->
-                        <!--</foreach>-->
+                    <foreach name="product_list" item="vo" key="k" >
+                        <label class="col-sm-2 control-label form_label" style="width: 12%;">
+                            <input value="{$vo.id}" name="product" type="radio" class="colored-blue">
+                            <span class="text"> {$vo.name}</span>
+                            <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="{$vo.intro}">?</span>
+                        </label>
+                        <if condition="($k+1)%3 eq 0">
+                            <br/>
+                        </if>
+                    </foreach>
                     <!--</select>-->
                 </div>
                 <div class="form-group">
                     <label for="money" class="col-sm-2 control-label text-align-right form_label">充值金额（元）：</label>
-                    <input type="number" min="0.01" placeholder="请输入充值金额" class="form-control form_text" name="money" id="money">
+                    <input type="number" min="0.01" onkeyup="matrixing(this.value);" placeholder="请输入充值金额" class="form-control form_text" name="money" id="money">
+                </div>
+                <div class="form-group">
+                    <label for="dollar" class="col-sm-2 control-label text-align-right form_label">换算为美金为：</label>
+                    <input type="number" disabled min="0.01" class="form-control form_text" id="dollar">
                 </div>
                 <div class="form-group">
                     <label for="remarks" class="col-sm-2 control-label text-align-right form_label">备注：</label>
@@ -100,12 +110,13 @@
             </div><!--Widget Body-->
         </div><!--Widget-->
     </div>
+    <input value="{$conversion['conversiorate']}" id="conversiorate" type="hidden" />
 </block>
 <block name="script">
     <script>
         $(function(){
             $('.save_info').click(function(){
-                var product_id = $.trim($("#product").val());
+                var product_id = $('input[name="product"]:checked').val();
                 var money = $.trim($("#money").val());
                 var remarks = $.trim($("#remarks").val());
                 console.log(money);
