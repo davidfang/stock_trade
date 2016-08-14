@@ -438,13 +438,13 @@ class AdminController extends BaseController
     }
 
     /**
-     * 退款申请记录
+     * 出金申请记录
      */
     public function drawings_apply(){
         $apply_info = D("refund")->get_drawings_apply();
-        $this -> assign('title','退款申请');
-        $this -> assign('route','退款管理 / 退款申请');
-        $this -> assign('header_title','退款申请');
+        $this -> assign('title','出金申请');
+        $this -> assign('route','出金管理 / 出金申请');
+        $this -> assign('header_title','出金申请');
         $this -> assign('apply_info',$apply_info[0]);
         $this -> assign('show_page',$apply_info[1]);
         $this -> display();
@@ -477,16 +477,16 @@ class AdminController extends BaseController
     }
 
     /**
-     * @param string $status 退款状态
+     * @param string $status 出金状态
      * @param string $phone 用户手机号
      * @param string $name 用户名
-     * 退款记录
+     * 出金记录
      */
     public function drawings_list($status='',$phone='',$name=''){
         $drawings_list = D("refund")->get_drawings_list($status,$phone,$name);
-        $this -> assign('title','退款记录');
-        $this -> assign('route','退款管理 / 退款记录');
-        $this -> assign('header_title','退款记录');
+        $this -> assign('title','出金记录');
+        $this -> assign('route','出金管理 / 出金记录');
+        $this -> assign('header_title','出金记录');
         $this -> assign('drawings_list',$drawings_list[0]);
         $this -> assign('show_page',$drawings_list[1]);
         $this -> assign('where',$status);

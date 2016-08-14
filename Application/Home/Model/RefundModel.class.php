@@ -8,7 +8,7 @@ class RefundModel extends Model
 
     /**
      * @return mixed
-     * 获取所有未审核的退款申请
+     * 获取所有未审核的出金申请
      */
     public function get_drawings_apply(){
         $where['r.status'] = 0;
@@ -47,10 +47,10 @@ class RefundModel extends Model
         }
 //        if($data_old['money']<=$poundage['money']){
 //            $trans->rollback();
-//            return '退款金额小于手续费！';
+//            return '出金金额小于手续费！';
 //        }
         $data['poundage'] = round($data_old['money']*$poundage['money']/100,2);//手续费四舍五入（两位小数）
-        $data['actual_refund'] = $data_old['money']-$data['poundage'];//实际退款金额
+        $data['actual_refund'] = $data_old['money']-$data['poundage'];//实际出金金额
         $res = $trans->where('id='.$id)->save($data);
         $user_trans = M('user');
         $user_trans->startTrans();
@@ -182,10 +182,10 @@ class RefundModel extends Model
     }
 
     /**
-     * @param $data 退款申请数据
+     * @param $data 出金申请数据
      * @param $user 用户
      * @return bool
-     * 退款申请
+     * 出金申请
      */
     public function refund_apply($data,$user){
         $refund = M('refund');
@@ -207,10 +207,10 @@ class RefundModel extends Model
     }
 
     /**
-     * @param $status 退款状态【'':全部，0：审核中的，1：已退款的，2：已拒绝的】
+     * @param $status 出金状态【'':全部，0：审核中的，1：已出金的，2：已拒绝的】
      * @param $user
      * @return array
-     * 按状态获取某个用户的退款申请记录
+     * 按状态获取某个用户的出金申请记录
      */
     public function get_refund_apply_list($status,$user){
         if($status!=''){

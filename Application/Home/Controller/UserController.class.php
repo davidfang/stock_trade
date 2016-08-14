@@ -110,12 +110,12 @@ class UserController extends BaseController
 
 
     /**
-     * 我要退款
+     * 我要出金
      */
     public function refund(){
-        $this -> assign('title','我要退款');
-        $this -> assign('route','退款管理 / 我要退款');
-        $this -> assign('header_title','我要退款');
+        $this -> assign('title','我要出金');
+        $this -> assign('route','出金管理 / 我要出金');
+        $this -> assign('header_title','我要出金');
         $user_asset = D('asset')->get_user_asset(session('user')['id']);
         $this -> assign('user_asset',$user_asset[0]);
         $this -> assign('show_page',$user_asset[1]);
@@ -125,7 +125,7 @@ class UserController extends BaseController
     }
 
     /**
-     * 退款操作
+     * 出金操作
      */
     public function refund_handle(){
         $data = I('post.');
@@ -139,13 +139,13 @@ class UserController extends BaseController
     }
 
     /**
-     * @param string $status 退款状态【'':全部，0：审核中的，1：已退款的，2：已拒绝的】
-     * 我的退款记录
+     * @param string $status 出金状态【'':全部，0：审核中的，1：已出金的，2：已拒绝的】
+     * 我的出金记录
      */
     public function refund_apply_list($status=''){
-        $this -> assign('title','退款记录');
-        $this -> assign('route','退款管理 / 退款记录');
-        $this -> assign('header_title','退款记录');
+        $this -> assign('title','出金记录');
+        $this -> assign('route','出金管理 / 出金记录');
+        $this -> assign('header_title','出金记录');
         $this -> assign('status',$status);
         $user = session('user')['id'];
         $apply_list = D('refund')->get_refund_apply_list($status,$user);

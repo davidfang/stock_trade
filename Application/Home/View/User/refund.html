@@ -56,7 +56,7 @@
                             <td>{$vo.product}</td>
                             <td>{$vo.usable}</td>
                             <td>
-                                <a product_id="{$vo.id}" usable="{$vo.usable}" class="refund" href="javascript:void(0);">提款</a>
+                                <a product_id="{$vo.id}" usable="{$vo.usable}" class="refund" href="javascript:void(0);">出金</a>
                             </td>
                         </tr>
                     </foreach>
@@ -72,7 +72,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">提款</h4>
+                    <h4 class="modal-title">出金</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -96,6 +96,12 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <if condition="empty(session('user')['bank_card']) or empty(session('user')['bank_address'])">
+        <input type="hidden" value="false" id="pass_refund" /><!--不允许出金-->
+    <else />
+        <input type="hidden" value="true" id="pass_refund" /><!--允许出金-->
+    </if>
+
 </block>
 <block name="script">
     <script>
@@ -104,19 +110,23 @@
             var usable = '';//用户可用金额
             $("#product").attr('disabled',true);
             $(".refund").click(function(){
+                if($('#pass_refund').val()=='false'){
+                    hint('warning','提示','请去完善银行卡及网点信息！');
+                    return;
+                }
                 product = $.trim($(this).attr('product_id'));
-                usable = $.trim($(this).attr('usable'));
+                usable = Math.round(parseFloat($.trim($(this).attr('usable')))*100)/100;
                 $("#product").val(product);
                 $("#money").val(null);
-                $("#money").attr('placeholder','提款上线'+usable);
+                $("#money").attr('placeholder','出金上线'+usable);
                 $('.refund_modal').modal({show:true})
             })
             var url = $(".affirm_save").attr('url');
             $(".affirm_save").click(function(){
-                var money = $.trim($("#money").val());
+                var money = Math.round(parseFloat($.trim($("#money").val()))*100)/100;
                 if(money==''){
                     $("#money").focus();
-                    hint('warning','提示','请输入提款金额');
+                    hint('warning','提示','请输入出金金额');
                     return;
                 }
                 if(isNaN(money)||money<0.01||money>usable){
@@ -124,22 +134,34 @@
                     hint('warning','提示','金额超出上限！');
                     return;
                 }
-                $.post(
-                    url,
-                    {
-                        product_id:product,
-                        money:money,
-                    },function(data){
-                        if(data['code']==0){
-                            hint('success',data['msg'],data['data']);
-                            setTimeout(function(){
-                                location.reload();
-                            },1000)
-                        }else if(data['code']==1){
-                            hint('warning',data['msg'],data['data']);
-                        }
+                bootbox.setDefaults("locale","zh_CN");
+                bootbox.confirm("您的出金金额为 "+money+" 元?", function (result) {
+                    if (!result) {
+                        return;
+                    } else {
+                        $.post(
+                            url,
+                            {
+                                product_id:product,
+                                money:money,
+                            },function(data){
+                                if(data['code']==0){
+                                    hint('success',data['msg'],data['data']);
+                                    setTimeout(function(){
+                                        location.reload();
+                                    },1000)
+                                }else if(data['code']==1){
+                                    hint('warning',data['msg'],data['data']);
+                                }
+                            }
+                        )
                     }
-                )
+                })
+
+            })
+            $("#money").blur(function(){
+                var money = Math.round(parseFloat($.trim($("#money").val()))*100)/100;
+                $("#money").val(money);
             })
         })
     </script>

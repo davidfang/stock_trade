@@ -29,9 +29,9 @@ return array(
     'DB_PREFIX' => '', // 数据库表前缀
 
     //短信验证
-    'RONGLIAN_ACCOUNT_SID'   => '8aaf07085600cabd015601be4eec0178', //容联云通讯 主账号 accountSid
-    'RONGLIAN_ACCOUNT_TOKEN' => '3705c23cf81741b9827150b64ca18f7b', //容联云通讯 主账号token accountToken
-    'RONGLIAN_APPID'         => '8aaf07085600cabd015601be4f63017e', //容联云通讯 应用Id appid
+    'RONGLIAN_ACCOUNT_SID'   => '8a48b5514c7d3d77014c8dbc5ef8079f', //容联云通讯 主账号 accountSid
+    'RONGLIAN_ACCOUNT_TOKEN' => 'b9cf811c8c454d2d83cfdab6e00fa0c1', //容联云通讯 主账号token accountToken
+    'RONGLIAN_APPID'         => '8aaf0708567749f0015686b6ab9b0a31', //容联云通讯 应用Id appid
     'RONGLIAN_TEMPLATE_ID'   => '1', //容联云通讯 模板Id【1：代表测试模板】
-    'PAST_DUE_TIME'   => '1', //验证码过期时间
+    'PAST_DUE_TIME'   => '60s', //验证码过期时间
 );

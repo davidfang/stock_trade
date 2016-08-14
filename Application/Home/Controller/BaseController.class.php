@@ -50,9 +50,9 @@ class BaseController extends Controller
                     ['name'=>'我要充值','url'=>U('User/recharge')],
                     ['name'=>'充值记录','url'=>U('User/prepaid_records')],
                 ]],
-                ['name'=>'退款管理','ico'=>'fa fa-minus-square', 'children' => [
-                    ['name'=>'我要退款','url'=>U('User/refund')],
-                    ['name'=>'退款记录','url'=>U('User/refund_apply_list')],
+                ['name'=>'出金管理','ico'=>'fa fa-minus-square', 'children' => [
+                    ['name'=>'我要出金','url'=>U('User/refund')],
+                    ['name'=>'出金记录','url'=>U('User/refund_apply_list')],
                 ]],
                 ['name'=>'个人信息管理','ico'=>'glyphicon glyphicon-user', 'children' => [
                     ['name'=>'个人信息','url'=>U('Personal/personal_info')],
@@ -90,9 +90,9 @@ class BaseController extends Controller
                 ['name'=>'交易记录','url'=>U('Admin/trading_record'),'ico'=>'fa fa-list'],
                 ['name'=>'提成记录','url'=>U('Admin/push_list'),'ico'=>'fa fa-align-left'],
                 ['name'=>'手续费记录','url'=>U('Admin/poundage_list'),'ico'=>'fa fa-th'],
-                ['name'=>'退款管理','ico'=>'fa fa-minus', 'children' => [
-                    ['name'=>'退款申请','url'=>U('Admin/drawings_apply')],
-                    ['name'=>'退款记录','url'=>U('Admin/drawings_list')],
+                ['name'=>'出金管理','ico'=>'fa fa-minus', 'children' => [
+                    ['name'=>'出金申请','url'=>U('Admin/drawings_apply')],
+                    ['name'=>'出金记录','url'=>U('Admin/drawings_list')],
                 ]],
                 ['name'=>'个人信息管理','ico'=>'fa fa-gear', 'children' => [
                     ['name'=>'个人信息','url'=>U('Personal/personal_info')],
