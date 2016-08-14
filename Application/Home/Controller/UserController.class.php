@@ -72,6 +72,13 @@ class UserController extends BaseController
     }
 
     /**
+     * 合作协议
+     */
+    public function agreement(){
+        $this->display();
+    }
+
+    /**
      * 用户充值操作
      */
     public function recharge_handle(){

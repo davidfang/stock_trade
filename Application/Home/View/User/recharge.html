@@ -42,12 +42,17 @@
             <div class="widget-body">
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-align-right form_label">选择产品：</label>
-                    <select id="product" class="form_text" data="{$product}">
-                        <option value="">请选择产品</option>
-                        <foreach name="product_list" item="vo" >
-                            <option value="{$vo.id}">{$vo.name}</option>
-                        </foreach>
-                    </select>
+                    <!--<table class="table">-->
+                        <!--<tr>-->
+                            <!--<td></td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                    <!--<select id="product" class="form_text" data="{$product}">-->
+                        <!--<option value="">请选择产品</option>-->
+                        <!--<foreach name="product_list" item="vo" >-->
+                            <!--<option value="{$vo.id}">{$vo.name}</option>-->
+                        <!--</foreach>-->
+                    <!--</select>-->
                 </div>
                 <div class="form-group">
                     <label for="money" class="col-sm-2 control-label text-align-right form_label">充值金额（元）：</label>
@@ -57,7 +62,41 @@
                     <label for="remarks" class="col-sm-2 control-label text-align-right form_label">备注：</label>
                     <textarea id="remarks" maxlength="100" placeholder="请填写备注(100字符)"></textarea>
                 </div>
+                <div class="form-group no-margin">
+                    <div class="checkbox">
+                        <label for="remarks" class="col-sm-2 control-label text-align-right "></label>
+                        <label>
+                            <input id="consent_agreement" checked type="checkbox">
+                            <span class="text">我已阅读并同意 <a target="_blank" href="{:U('User/agreement')}">《合作协议》</a></span>
+                        </label>
+                    </div>
+                </div>
                 <a class="btn btn-blue shiny save_info" to-url="{:U('User/prepaid_records')}" url="{:U('User/recharge_handle')}">充值</a>
+
+                <div class="form-group">
+                    <hr/>
+                    <label for="remarks" class="col-sm-8 control-label margin-left-50">
+                    <h3 style="line-height: 28px;">
+                        操盘须知：
+                    </h3>
+                    <p style="line-height: 28px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;1、所属期货公司合规合法，所有交易均有港交所交割单。
+                    </p>
+                    <p style="line-height: 28px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;2、外盘交易由多方构成：港交所、期货公司、博易大师、易盛、信管家、互联网线路公司等。恒铭软件仅提供程序化自动交易软件和相关资金支持，恒铭软件不承担任何交易风险以及因不可抗拒因素引发的系统风险和非系统风险。
+                    </p>
+                    <p style="line-height: 28px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;3、投资者务必评估自身的经济承受能力、风险控制能力、身体及心理承受能力，审慎决定是否参与交易。
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;4<span style="font-family:宋体">、如出入金统一汇率调整，未出金的账户资金将自动按照新的汇率折算。</span>
+                    </p>
+                    <p>
+                        <br/>
+                    </p>
+                    </label>
+                </div>
+
             </div><!--Widget Body-->
         </div><!--Widget-->
     </div>
@@ -83,6 +122,10 @@
                 if(isNaN(money)||money<0.01){
                     $("#money").focus();
                     hint('warning','提示','金额输入不合法！');
+                    return;
+                }
+                if(!$("#consent_agreement").is(':checked')){
+                    hint('warning','提示','请您阅读并同意《合作协议》');
                     return;
                 }
                 var url = $(this).attr('url');

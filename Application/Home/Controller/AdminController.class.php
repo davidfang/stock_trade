@@ -407,6 +407,34 @@ class AdminController extends BaseController
     }
 
     /**
+     * 汇率设置
+     */
+    public function conversion(){
+        $data=I("post.conversiorate",-1);
+        if($data<0){
+            $this -> assign('title','汇率设置');
+            $this -> assign('route','系统管理 / 汇率设置');
+            $this -> assign('header_title','汇率设置');
+            $conversion = M('conversion')->find();
+            $this -> assign('conversion',$conversion);
+            $this -> display();
+        }else{
+            if(is_numeric($data)){
+                $save_data['conversiorate'] = $data;
+                $save_data['update_time'] = time();
+                $save_res = M('conversion')->where('id=1')->save($save_data);
+                if(empty($save_res)){
+                    $this->json_response(array('code' => 1,'msg' => '失败','data' => '设置失败，请重试！'));
+                }else{
+                    $this->json_response(array('code' => 0,'msg' => '成功','data' => '设置成功。'));
+                }
+            }else{
+                $this->json_response(array('code' => 1,'msg' => '提示','data' => '输入不合法！'));
+            }
+        }
+    }
+
+    /**
      * 数据管理
      * 清除某时间前的提成数据
      */
