@@ -484,7 +484,7 @@ class AdminController extends BaseController
     public function apply_dispose(){
         $data = I("post.");
         if($data['status']=='pass'){
-            $res = D('refund')->pass_apply($data['id']);
+            $res = D('refund')->pass_apply($data['id'],$data['product']);
             if(empty($res)){
                 $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请重试！'));
             }else{
@@ -495,7 +495,7 @@ class AdminController extends BaseController
                 }
             }
         }elseif($data['status']=='refuse'){
-            $res = D('refund')->refuse_apply($data['id'],$data['remarks']);
+            $res = D('refund')->refuse_apply($data['id'],$data['remarks'],$data['product']);
             if(empty($res)){
                 $this->json_response(array('code' => 1,'msg' => '失败','data' => '操作失败,请重试！'));
             }else{

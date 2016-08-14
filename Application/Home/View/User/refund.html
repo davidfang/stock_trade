@@ -41,7 +41,13 @@
                 <span class="widget-caption">我的资产</span>
             </div><!--Widget Header-->
             <div class="widget-body">
-
+                <div class="table-toolbar operation">
+                    <div class="btn-group">
+                        <a type="button" product_id="0" usable="" class="refund btn btn-default" href="javascript:void(0);">
+                            <i class=""></i>账户出金
+                        </a>
+                    </div>
+                </div>
                 <table class="table_data table table-striped table-hover table-bordered">
                     <thead>
                     <tr role="row">
@@ -78,6 +84,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label text-align-right form_label">产品：</label>
                         <select id="product">
+                            <option value="0">账户出金</option>
                             <foreach name="product_list" item="vo" >
                                 <option value="{$vo.id}">{$vo.name}</option>
                             </foreach>
@@ -116,9 +123,12 @@
                 }
                 product = $.trim($(this).attr('product_id'));
                 usable = Math.round(parseFloat($.trim($(this).attr('usable')))*100)/100;
+                if(!usable){
+                    usable='';
+                }
                 $("#product").val(product);
                 $("#money").val(null);
-                $("#money").attr('placeholder','出金上线'+usable);
+                $("#money").attr('placeholder','出金上限'+usable);
                 $('.refund_modal').modal({show:true})
             })
             var url = $(".affirm_save").attr('url');
@@ -129,7 +139,7 @@
                     hint('warning','提示','请输入出金金额');
                     return;
                 }
-                if(isNaN(money)||money<0.01||money>usable){
+                if(usable&&(isNaN(money)||money<0.01||money>usable)){
                     $("#money").focus();
                     hint('warning','提示','金额超出上限！');
                     return;

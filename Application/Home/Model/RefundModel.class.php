@@ -19,9 +19,9 @@ class RefundModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $apply_info = $refund_table
-            -> field('r.id,r.user_id,u.name,u.phone,p.name as product,r.money')
+            -> field('r.id,r.user_id,u.name,u.phone,p.name as product,r.product_id,r.money')
             -> join('user as u on r.user_id=u.id')
-            -> join('product as p on r.product_id=p.id')
+            -> join('left join product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
             -> order('r.create_time desc')
@@ -31,10 +31,11 @@ class RefundModel extends Model
 
     /**
      * @param $id
+     * @param $product_id 产品id
      * @return bool
      * 同意申请
      */
-    public function pass_apply($id){
+    public function pass_apply($id,$product_id){
         $data['update_time'] = time();
         $data['status'] = 1;
         $trans = M("refund");
@@ -52,6 +53,15 @@ class RefundModel extends Model
         $data['poundage'] = round($data_old['money']*$poundage['money']/100,2);//手续费四舍五入（两位小数）
         $data['actual_refund'] = $data_old['money']-$data['poundage'];//实际出金金额
         $res = $trans->where('id='.$id)->save($data);
+        if(empty($product_id)){
+            if(!empty($res)){
+                $trans->commit();
+                return true;
+            }else{
+                $trans->rollback();
+                return true;
+            }
+        }
         $user_trans = M('user');
         $user_trans->startTrans();
         if(!empty($res)){
@@ -73,10 +83,11 @@ class RefundModel extends Model
     /**
      * @param $id
      * @param $remarks
+     * @param $product_id
      * @return bool
      * 拒绝申请
      */
-    public function refuse_apply($id,$remarks){
+    public function refuse_apply($id,$remarks,$product_id){
         $data['remarks'] = $remarks;
         $data['update_time'] = time();
         $data['status'] = 2;
@@ -89,6 +100,15 @@ class RefundModel extends Model
             return false;
         }
         $res = $trans->where('id='.$id)->save($data);
+        if(empty($product_id)){
+            if(!empty($res)){
+                $trans->commit();
+                return true;
+            }else{
+                $trans->rollback();
+                return true;
+            }
+        }
         if(!empty($res)){
             $where['user_id'] = $data_old['user_id'];
             $where['product_id'] = $data_old['product_id'];
@@ -123,7 +143,7 @@ class RefundModel extends Model
         $refund_table = M('refund as r');
         $total = $refund_table
             -> join('user as u on r.user_id=u.id')
-            -> join('product as p on r.product_id=p.id')
+            -> join('left join product as p on r.product_id=p.id')
             -> where($where)
             -> count();
         $per = C('PAGE_NUM');
@@ -133,7 +153,7 @@ class RefundModel extends Model
         $apply_info = $refund_table
             -> field('r.id,r.user_id,u.name,u.phone,p.name as product,r.money,r.poundage,r.actual_refund,r.status,r.remarks')
             -> join('user as u on r.user_id=u.id')
-            -> join('product as p on r.product_id=p.id')
+            -> join('left join product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
             -> order('r.update_time desc')
@@ -190,9 +210,12 @@ class RefundModel extends Model
     public function refund_apply($data,$user){
         $refund = M('refund');
         $refund->startTrans();
-        $asset_where['user_id']=$user;
-        $asset_where['product_id']=$data['product_id'];
-        $save_res = M('asset')->where($asset_where)->setDec('usable',$data['money']);
+        $save_res = true;
+        if(!empty($data['product_id'])){
+            $asset_where['user_id']=$user;
+            $asset_where['product_id']=$data['product_id'];
+            $save_res = M('asset')->where($asset_where)->setDec('usable',$data['money']);
+        }
         if(!empty($save_res)){
             $data['user_id'] = $user;
             $data['create_time'] = $data['update_time'] = time();
@@ -225,7 +248,7 @@ class RefundModel extends Model
         $show = $Page->show();
         $apply_info = $refund_table
             -> field('p.name as product,r.money,r.poundage,r.actual_refund,r.remarks,r.create_time,r.update_time,r.status')
-            -> join('product as p on r.product_id=p.id')
+            -> join('left join product as p on r.product_id=p.id')
             -> where($where)
             -> limit($Page->firstRow.','.$Page->listRows)
             -> order('r.create_time desc')
