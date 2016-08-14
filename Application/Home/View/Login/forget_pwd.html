@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>忘记密码</title>
+    <!--Basic Styles-->
+    <link href="__ASSETS__/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="__ASSETS__/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="__ASSETS__/css/dataTables.bootstrap.css" rel="stylesheet"/>
+
+    <!--Beyond styles-->
+    <link href="__ASSETS__/css/beyond.min.css" rel="stylesheet"/>
+    <link href="__ASSETS__/css/demo.min.css" rel="stylesheet"/>
+    <link href="__ASSETS__/css/typicons.min.css" rel="stylesheet"/>
+    <link href="__ASSETS__/css/animate.min.css" rel="stylesheet"/>
+    <link href="__HCSS__/download.css" rel="stylesheet" />
+    <style>
+        .form-bordered .form-group{
+            border-top: 0px;
+        }
+        .row_1{
+            display: block;
+            width: 80%;
+            margin: 5% 10%;
+        }
+        #verify_yes,#phone_verify,#affirm_save{
+            float: right;
+            width: 30%;
+            margin-top: 5%;
+        }
+        .required{
+            color: red;
+        }
+        #verify{
+            width: 50%;
+            display: inline-block;
+        }
+        .verifyimg{
+            margin-left: 10%;
+        }
+        .row_1 a{
+            color: black;
+        }
+        .row_1 a:hover{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="row" style="text-align: center; border-top: 1px solid #FE0000;background: #FE0000;">
+    <div class="title">
+        <a target="_blank" href="{:U('Index/index')}"><span style="margin-left: 40%;">恒铭软件</span></a>
+        <a target="_blank" href="{:U('Index/download')}"><span style="margin-left: 30px;font-size: 14px;">下载中心</span></a>
+    </div>
+    <div class="login">
+        <span><a target="_blank" href="{:U('Login/login')}">登录</a></span>
+        <span><a target="_blank" target="_blank" href="{:U('Login/register')}">注册</a></span>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-8 row_1">
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <h5 class="row-title before-themeprimary"><i class="fa fa-folder themeprimary"></i>找回密码</h5>
+                    <div id="tabbedwizard" class="wizard wizard-tabbed" data-target="#tabbedwizardsteps">
+                        <ul class="steps">
+                            <li data-target="#tabbedwizardstep1" class="active"><span class="step">1</span>用户验证<span class="chevron"></span></li>
+                            <li data-target="#tabbedwizardstep2" class=""><span class="step">2</span>输入验证码<span class="chevron"></span></li>
+                            <li data-target="#tabbedwizardstep3" class=""><span class="step">3</span>修改密码<span class="chevron"></span></li>
+                        </ul>
+                    </div>
+                    <div class="step-content" id="tabbedwizardsteps">
+                        <div class="step-pane active" id="tabbedwizardstep1">
+                            <div class="widget">
+                                <div class="widget-header bordered-bottom bordered-lightred">
+                                    <span class="widget-caption">用户验证</span>
+                                </div>
+                                <div class="widget-body" style="height: 300px;">
+                                    <form class="form-horizontal form-bordered" style="margin-top: 5%;" role="form">
+                                        <div class="form-group">
+                                            <label for="phone" class="col-sm-2 control-label no-padding-right">手机号：<span class=" required">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="tel" class="form-control" id="phone" placeholder="手机号">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="verify" class="col-sm-2 control-label no-padding-right">验证码：<span class=" required">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="verify" placeholder="验证码">
+                                                <img class="verifyimg reloadverify" alt="点击切换" src="{:U('Login/verify')}" onClick="this.src=this.src+'?'+Math.random()">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-5">
+                                                <button type="button" id="verify_yes" class="btn btn-blue">确定</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="tabbedwizardstep2">
+                            <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-lightred">
+                                <span class="widget-caption">输入验证码</span>
+                            </div>
+                            <div class="widget-body" style="height: 300px;">
+                                <form class="form-horizontal form-bordered" style="margin-top: 5%;" role="form">
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-5">
+                                            <span>
+                                                验证码已经发送到您的手机 &nbsp;
+                                                <span class="return_phone"></span>
+                                                &nbsp;上，请在下框中输入验证码
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone_verify_text" class="col-sm-2 control-label no-padding-right">手机验证码：<span class=" required">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="phone_verify_text" placeholder="手机验证码">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-5">
+                                            <span>没收到短信？ &nbsp;
+                                                <span class="timer">60s 后</span>
+                                                <a class="" id="again_get" href="javascript:void (0);">点击再次获取验证码</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-5">
+                                            <button type="button" id="phone_verify" class="btn btn-blue">确定</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="step-pane" id="tabbedwizardstep3">
+                            <div class="widget">
+                                <div class="widget-header bordered-bottom bordered-lightred">
+                                    <span class="widget-caption">修改密码</span>
+                                </div>
+                                <div class="widget-body" style="height: 300px;">
+                                    <form class="form-horizontal form-bordered" style="margin-top: 5%;" role="form">
+                                        <div class="form-group">
+                                            <label for="password" class="col-sm-2 control-label no-padding-right">新密码：<span class=" required">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="password" class="form-control" id="password" placeholder="新密码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="affirm_pwd" class="col-sm-2 control-label no-padding-right">确认密码：<span class=" required">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="password" class="form-control" id="affirm_pwd" placeholder="确认密码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-5">
+                                                <button type="button" id="affirm_save" class="btn btn-blue">确定</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions actions-footer" id="tabbedwizard-actions">
+                        <div class="btn-group">
+                            <button style="display: none;" type="button" class="btn btn-default btn-sm btn-next" data-last="Finish">Finish<i class="fa fa-angle-right"></i></button>
+                            <!--<button type="button" class="btn btn-default btn-sm btn-next" data-last="Finish">Finish<i class="fa fa-angle-right"></i></button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+</div>
+<div class="row">
+    <div class="col-sm-8" style="margin-left: 20%;">
+        <div class="foot">
+            <div class="foot-content">
+                <h4>版权信息</h4>
+                <p>© 2015 hnhmrj | 河南恒铭软甲有限公司.All Rights Reserved.</p>
+                <p>备案：豫ICP备13550568532号-1</p>
+            </div>
+        </div>
+        <div class="foot" style="margin-left: 14%;">
+            <div class="foot-content">
+                <h4>关于我们</h4>
+                <p>
+                    公司致力于开发功能更全，用户体验更好，性价比更高的
+                    开源股票产品，真正帮助您实现'股票+赚钱'转型让您轻松进军股票市场。
+                </p>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="foot-content text-align-right" >
+                <img src="__HIMG__/scan_code.png">
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:hint"/>
+<input type="hidden" value="{:U('Login/verify_forget_pwd')}" id="verify_url" />
+<input type="hidden" value="{:U('Login/verify_phone')}" id="verify_phone" />
+<input type="hidden" value="{:U('Login/save_pwd')}" id="save_pwd" />
+<input type="hidden" value="{:U('Login/login')}" id="to_login" />
+<input type="hidden" value="{:U('Login/again_get_verify')}" id="again_get_verify" />
+<input type="hidden" value="" id="now_phone" />
+<script src="__ASSETS__/js/jquery-2.0.3.min.js"></script>
+<script src="__ASSETS__/js/bootstrap.min.js"></script>
+<script src="__ASSETS__/js/fuelux/wizard/wizard-custom.js"></script>
+<script src="__STAICK__/md5.js"></script>
+<script src="__HJS__/hint.js"></script>
+<script>
+    $(function(){
+        $('#tabbedwizard').wizard().on('finished', function (e) {
+            Notify('Thank You! All of your information saved successfully.', 'bottom-right', '5000', 'blue', 'fa-check', true);
+        });
+        var verify_phone = /^1\d{10}$/;//验证手机
+        var post = true;
+        $("#verify_yes").click(function(){
+            post = true;
+            try {
+                var phone = get_verify_data($("#phone"),verify_phone,true,'手机号');
+                var verify_text = get_verify_data($("#verify"),false,true,'验证码');
+            }catch(that){
+                if(that){
+                    that.css('border', '1px solid red');
+                    that.focus();
+                }
+            }
+            if(post){
+                var url = $("#verify_url").val();
+                $.post(
+                    url,
+                    {
+                        phone:phone,
+                        verify:verify_text,
+                    },
+                    function(data){
+                        if(data['code']==0){
+                            $("#now_phone").val(data['data']);
+                            $("#return_phone").text(data['data']);
+                            $(".btn-next").click();
+                        }else if(data['code']==1){
+                            hint('warning','提示','验证码获取失败，请重试！');
+                        }else if(data['code']==2){
+                            hint('warning',data['msg'],data['data']);
+                        }
+                    }
+                )
+            }
+        })
+        $("#phone_verify").click(function(){
+            var phone = $("#now_phone").val();
+            var phone_verify_text = $("#phone_verify_text").val();
+            if(phone_verify_text==''){
+                hint('warning','提示','请输入验证码');
+                $("#phone_verify_text").focus();
+                return;
+            }
+            var url = $("#verify_phone").val();
+            $.post(
+                url,
+                {
+                    phone:phone,
+                    verify_text:phone_verify_text
+                },
+                function(data){
+                    if(data['code']==0){
+                        $(".btn-next").click()
+                    }else if(data['code']==1){
+                        hint('warning',data['msg'],data['data']);
+                    }
+                }
+            )
+        })
+        $("#affirm_save").click(function(){
+            post = true;
+            var phone = $("#now_phone").val();
+            try {
+                var password = get_verify_data($("#password"),false,true,'新密码');
+                var affirm_pwd = get_verify_data($("#affirm_pwd"),false,true,'确认密码');
+            }catch(that){
+                if(that){
+                    that.css('border', '1px solid red');
+                    that.focus();
+                }
+            }
+            if(password!=affirm_pwd){
+                hint('warning','提示','密码前后不一致');
+                $("#affirm_pwd").focus();
+                return;
+            }
+            if(post) {
+                var url = $("#save_pwd").val();
+                var to_url = $("#to_login").val();
+                $.post(
+                    url,
+                    {
+                        phone: phone,
+                        password: hex_md5(password)
+                    },
+                    function (data) {
+                        if (data['code'] == 0) {
+                            hint('success', data['msg'], data['data']);
+                            setTimeout(function(){
+                                location.href=to_url;
+                            },1000)
+                        } else if (data['code'] == 1) {
+                            hint('warning', data['msg'], data['data']);
+                        }
+                    }
+                )
+            }
+        })
+        function get_verify_data(that,condition,must,info){
+            var get_data = $.trim(that.val());
+            if(must && get_data==''){
+                hint('warning', '提示', info+'为必填项！！！');
+                post = false;
+                throw that
+            }else{
+                that.css('border','1px solid #d5d5d5');
+            }
+            if(condition && get_data!=''){
+                var condition = new RegExp(condition);
+                if(!condition.test(get_data)){
+                    hint('warning','提示',info+'信息填写有误！！！');
+                    post = false;
+                    throw that
+                }else{
+                    that.css('border','1px solid #d5d5d5');
+                }
+            }
+            return get_data;
+        }
+
+        $(document).on('click','.again_get',function(){
+            var phone = $("#now_phone").val();
+            var url = $("#again_get_verify").val();
+            $.post(
+                url,
+                {
+                    phone: phone,
+                },
+                function (data) {
+                    if (data['code'] == 0) {
+                        verify_timer();
+                    } else if (data['code'] == 1) {
+                        hint('warning', data['msg'], data['data']);
+                    }
+                }
+            )
+        })
+        var get_verify_timer = '';
+        function verify_timer(){
+            clearInterval(get_verify_timer);
+            $("#again_get").removeClass('again_get');
+            var timer=60;
+            get_verify_timer = setInterval(function(){
+                $(".timer").text(timer+'s 后');
+                timer--;
+                if(timer==-1){
+                    clearInterval(get_verify_timer);
+                    $("#again_get").addClass('again_get');
+                    $(".timer").text();
+                }
+            },1000)
+        }
+        $(".btn-next").click(function(){
+            verify_timer();
+        });
+    })
+</script>
+</body>
+</html>

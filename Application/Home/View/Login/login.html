@@ -51,7 +51,7 @@
             <input type="button" class="btn btn-primary btn-block" id="submit-btn" value="登录">
         </div>
         <div class="loginbox-forgot forget" style="float: none;">
-            <a href="javascript:void(0);">忘记密码？</a>
+            <a href="{:U('Login/forget_pwd')}">忘记密码？</a>
         </div>
         <div class="loginbox-forgot">
             <a href="{:U('Login/register')}">注册>></a>
@@ -77,7 +77,7 @@
 <!--Extend Scripts-->
 <script src="__HJS__/login.js"></script>
 <script>
-    $(function(){
+    /*$(function(){
         var time = 0;
         $(".forget").click(function(){
             clearTimeout(time);
@@ -90,7 +90,7 @@
             clearTimeout(time);
             $(".notify").hide();
         })
-    })
+    })*/
 </script>
 </body>
 <!--Body Ends-->
