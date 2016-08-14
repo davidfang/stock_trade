@@ -25,8 +25,9 @@ class ProductModel extends Model
         $find_where['name']=$product['name'];
         $find_where['status']=0;
         $find_res = $table->where($find_where)->find();
-        if(empty($find_res)) {
+        if(empty($find_res)||$find_res['id']==$product['product']) {
             $data['name'] = $product['name'];
+            $data['intro'] = $product['intro'];
             if (empty($product['product'])) {
                 $data['create_time'] = $data['update_time'] = time();
                 $res = $table->add($data);
@@ -44,8 +45,6 @@ class ProductModel extends Model
                     return array('code' => 0, 'msg' => '成功', 'data' => '修改成功！');
                 }
             }
-        }elseif(!empty($product['product'])&&$find_res['id']==$product['product']){
-            return array('code' => 1, 'msg' => '提示', 'data' => '产品无修改！');
         }else{
             return array('code' => 1,'msg' => '提示','data' => '产品已存在！');
         }

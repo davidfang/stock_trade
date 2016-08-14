@@ -4,7 +4,7 @@
         .form-group{
             display: inline-block;
             width: 100%;
-            margin-top: 10%;
+            margin-top: 5%;
         }
         .widget-body{
             display: inline-block;
@@ -12,9 +12,9 @@
             min-height: 450px;
         }
         .save_info{
-            float: right;
-            margin-right: 45%;
-            margin-top: 15%;
+             float: right;
+            margin-right: 20%;
+            margin-bottom: 5%;
         }
         .form_label{
             display: inline-block;
@@ -23,7 +23,7 @@
             line-height: 34px;
         }
         .form_text{
-            width: 40%;
+            width: 67%;
             display: inline-block;
         }
     </style>
@@ -36,8 +36,16 @@
             </div><!--Widget Header-->
             <div class="widget-body">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label text-align-right form_label">名字：</label>
+                    <label for="name" class="col-sm-2 control-label text-align-right form_label">名字：<span style="color: red;">*</span></label>
                     <input type="text" maxlength="5" class="form-control form_text" value="{$product['name']}" name="name" id="name">
+                </div>
+                <div class="form-group no-margin-top">
+                    <label for="name" class="col-sm-2 control-label text-align-right form_label">产品简介：</label>
+                    <div class="col-lg-8 col-sm-8 col-xs-12 no-padding">
+                        <script id="editor" type="text/plain" style="width:100%;height:500px;float: right;">
+                            {$product['intro']|html_entity_decode}
+                        </script>
+                    </div>
                 </div>
                 <a class="btn btn-blue shiny save_info" product="{$product['id']}" to-url="{:U('Admin/product')}" url="{:U('Admin/add_save_product')}">提交</a>
             </div><!--Widget Body-->
@@ -45,25 +53,68 @@
     </div>
 </block>
 <block name="script">
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/lang/zh-cn/zh-cn.js"></script>
     <script>
         $(function(){
+            //实例化编辑器
+            var ue = UE.getEditor('editor',{
+                toolbars: [
+                    [
+                        'bold', //加粗
+                        'indent', //首行缩进
+                        'italic', //斜体
+                        'underline', //下划线
+                        'strikethrough', //删除线
+                        'horizontal', //分隔线
+                        'cleardoc', //清空文档
+                        'fontfamily', //字体
+                        'fontsize', //字号
+                        'paragraph', //段落格式
+                        'link', //超链接
+                        'emotion', //表情
+                        'justifyleft', //居左对齐
+                        'justifyright', //居右对齐
+                        'justifycenter', //居中对齐
+                        'justifyjustify', //两端对齐
+                        'forecolor', //字体颜色
+                        'insertorderedlist', //有序列表
+                        'insertunorderedlist', //无序列表
+                        'fullscreen', //全屏
+                        'directionalityltr', //从左向右输入
+                        'directionalityrtl', //从右向左输入
+                        'rowspacingtop', //段前距
+                        'rowspacingbottom', //段后距
+                        'imagenone', //默认
+                        'imageleft', //左浮动
+                        'imageright', //右浮动
+                        'imagecenter', //居中
+                        'lineheight', //行间距
+                        'touppercase', //字母大写
+                        'tolowercase', //字母小写
+                    ]
+                ]
+            });
             $(".save_info").click(function(){
                 var url = $(this).attr("url");
                 var product = $(this).attr('product');
                 var name = $.trim($("#name").val());
                 var to_url = $(this).attr('to-url');
+                var intro = ue.getContent();
                 $.post(
                         url,
                         {
                             product:product,
-                            name:name
+                            name:name,
+                            intro:intro,
                         },
                         function(data){
                             if(data['code']==0){
                                 hint('success',data['msg'],data['data']);
-                                setTimeout(function(){
-                                    window.location.href=to_url;
-                                },2000)
+//                                setTimeout(function(){
+//                                    window.location.href=to_url;
+//                                },2000)
                             }else if(data['code']==1){
                                 hint('warning',data['msg'],data['data']);
                             }else{
