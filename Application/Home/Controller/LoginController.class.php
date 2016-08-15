@@ -140,10 +140,14 @@ class LoginController extends Controller
     }
 
     /**
-     * 获取手机验证
+     * 注册时获取手机验证
      */
     public function get_phone_verify(){
         $phone = I('post.phone');
+        $find_user = M('user')->where('phone='.$phone)->find();
+        if(!empty($find_user)){
+            $this->json_response(array('code' => 1,'msg' => '提示','data' => '账号已存在！'));
+        }
         $this->get_verify($phone,'verify',$phone);
     }
 
