@@ -249,7 +249,7 @@
                     function(data){
                         if(data['code']==0){
                             $("#now_phone").val(data['data']);
-                            $("#return_phone").text(data['data']);
+                            $(".return_phone").text(data['data']);
                             $(".btn-next").click();
                         }else if(data['code']==1){
                             hint('warning','提示','验证码获取失败，请重试！');
@@ -356,6 +356,7 @@
                 function (data) {
                     if (data['code'] == 0) {
                         verify_timer();
+                        hint('success', '提示', '验证码已成功发送，请注意查收。');
                     } else if (data['code'] == 1) {
                         hint('warning', data['msg'], data['data']);
                     }

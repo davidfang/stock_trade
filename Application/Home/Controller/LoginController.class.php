@@ -69,6 +69,7 @@ class LoginController extends Controller
     public function save_pwd(){
         $data = I("post.");
         $save_data['password'] = md5($data['password']);
+        $save_data['update_time'] = time();
         $save_res = M('user')->where('phone='.$data['phone'])->save($save_data);
         if(empty($save_res)){
             $this->json_response(array('code' => 1,'msg' => '提示','data' => '修改失败，请重试！'));

@@ -32,6 +32,6 @@ return array(
     'RONGLIAN_ACCOUNT_SID'   => '8a48b5514c7d3d77014c8dbc5ef8079f', //容联云通讯 主账号 accountSid
     'RONGLIAN_ACCOUNT_TOKEN' => 'b9cf811c8c454d2d83cfdab6e00fa0c1', //容联云通讯 主账号token accountToken
     'RONGLIAN_APPID'         => '8aaf0708567749f0015686b6ab9b0a31', //容联云通讯 应用Id appid
-    'RONGLIAN_TEMPLATE_ID'   => '1', //容联云通讯 模板Id【1：代表测试模板】
+    'RONGLIAN_TEMPLATE_ID'   => '108827', //容联云通讯 模板Id【1：代表测试模板】
     'PAST_DUE_TIME'   => '1', //验证码过期时间【单位：分钟】
 );

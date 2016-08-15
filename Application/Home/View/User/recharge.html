@@ -119,9 +119,7 @@
                 var product_id = $('input[name="product"]:checked').val();
                 var money = $.trim($("#money").val());
                 var remarks = $.trim($("#remarks").val());
-                console.log(money);
-                if(product_id==''){
-                    $("#product").focus();
+                if(!product_id){
                     hint('warning','提示','请选择产品');
                     return;
                 }
