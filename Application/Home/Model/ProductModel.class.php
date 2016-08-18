@@ -11,7 +11,7 @@ class ProductModel extends Model
      */
     public function get_product(){
         $where['status'] = 0;
-        $product = M('product')->where($where)->order('create_time desc')->select();
+        $product = M('product')->where($where)->order('weight desc,create_time asc')->select();
         return $product;
     }
 
@@ -28,6 +28,7 @@ class ProductModel extends Model
         if(empty($find_res)||$find_res['id']==$product['product']) {
             $data['name'] = $product['name'];
             $data['intro'] = $product['intro'];
+            $data['weight'] = $product['weight'];
             if (empty($product['product'])) {
                 $data['create_time'] = $data['update_time'] = time();
                 $res = $table->add($data);
