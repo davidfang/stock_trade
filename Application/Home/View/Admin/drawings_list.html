@@ -71,9 +71,9 @@
                 <table class="table_data table table-striped table-hover table-bordered">
                     <thead>
                     <tr role="row">
-                        <th>出金类型</th>
+                        <!--<th>出金类型</th>-->
                         <th>用户</th>
-                        <th>产品</th>
+                        <!--<th>产品</th>-->
                         <th>申请金额</th>
                         <th>手续费</th>
                         <th>实际出金金额</th>
@@ -84,15 +84,15 @@
                     <tbody class="data_user">
                     <foreach name="drawings_list" item="vo">
                         <tr>
-                            <td>
-                                <empty name="vo.product">
-                                    账户出金
-                                    <else/>
-                                    产品出金
-                                </empty>
-                            </td>
+                            <!--<td>-->
+                                <!--<empty name="vo.product">-->
+                                    <!--账户出金-->
+                                    <!--<else/>-->
+                                    <!--产品出金-->
+                                <!--</empty>-->
+                            <!--</td>-->
                             <td>{$vo.name}</td>
-                            <td>{$vo.product}</td>
+                            <!--<td>{$vo.product}</td>-->
                             <td>{$vo.money}</td>
                             <td>{$vo.poundage}</td>
                             <td>{$vo.actual_refund}</td>

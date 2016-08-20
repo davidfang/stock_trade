@@ -4,104 +4,61 @@
         .form-group{
             display: inline-block;
             width: 100%;
+            margin-top: 15px;
         }
         .widget-body{
             display: inline-block;
             width: 100%;
             height: 450px;
         }
-        .form-control{
-            width: 50%;
-            display: inline-block;
-        }
-        .control-label{
-            line-height: 34px;
-            margin-bottom: 0px;
+        .save_info{
+            float: right;
+            margin-right: 45%;
+            margin-top: 7%;
         }
         .form_label{
             display: inline-block;
             max-width: 100%;
             margin-bottom: 0px;
             line-height: 34px;
-            float: none;
         }
-        .form_text{
-            width: 50%;
-            display: inline-block;
-        }
-        .refund_modal select{
-            width: 50%;
+        .input-group{
+            width: 18.5%;
+            float: left;
         }
     </style>
+    <script>
+        var conversiorate = {$conversion['conversiorate']};
+        function matrixing(that){
+            $("#dollar").val(parseFloat(that*conversiorate).toFixed(2));
+        }
+    </script>
 </block>
 <block name="main">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget flat">
             <div class="widget-header">
-                <span class="widget-caption">我的资产</span>
+                <span class="widget-caption">我要出金</span>
             </div><!--Widget Header-->
             <div class="widget-body">
-                <div class="table-toolbar operation">
-                    <div class="btn-group">
-                        <a type="button" product_id="0" usable="" class="refund btn btn-default" href="javascript:void(0);">
-                            <i class=""></i>账户出金
-                        </a>
+                <div class="form-group">
+                    <label for="money" class="col-sm-2 control-label text-align-right form_label">出金金额（元）：</label>
+                    <!--<input type="number" min="0.01" onkeyup="matrixing(this.value);" placeholder="请输入充值金额" class="form-control form_text" name="money" id="money">-->
+                    <div class="input-group">
+                        <span class="input-group-addon">￥</span>
+                        <input type="number" min="0.01" onkeyup="matrixing(this.value);" placeholder="请输入出金金额" class="form-control" name="money" id="money">
                     </div>
+                    <big style="float: left; margin: 0px 10px;line-height: 34px;"> ≈ </big>
+                    <!--<input type="number" disabled min="0.01" class="form-control form_text" id="dollar">-->
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" disabled min="0.01" placeholder="换算成美金" class="form-control" id="dollar">
+                    </div>
+                    <a class="btn btn-blue shiny save_info" to-url="{:U('User/refund_apply_list')}" url="{:U('User/refund_handle')}">出金</a>
                 </div>
-                <table class="table_data table table-striped table-hover table-bordered">
-                    <thead>
-                    <tr role="row">
-                        <th>产品</th>
-                        <th>可用资金（元）</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody class="data_user">
-                    <foreach name="user_asset" item="vo">
-                        <tr>
-                            <td>{$vo.product}</td>
-                            <td>{$vo.usable}</td>
-                            <td>
-                                <a product_id="{$vo.id}" usable="{$vo.usable}" class="refund" href="javascript:void(0);">出金</a>
-                            </td>
-                        </tr>
-                    </foreach>
-                    </tbody>
-                </table>
-                <div class="page">{$show_page}</div>
             </div><!--Widget Body-->
         </div><!--Widget-->
     </div>
-
-    <div class="refund_modal modal modal-darkorange">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">出金</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label text-align-right form_label">产品：</label>
-                        <select id="product">
-                            <option value="0">账户出金</option>
-                            <foreach name="product_list" item="vo" >
-                                <option value="{$vo.id}">{$vo.name}</option>
-                            </foreach>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="money" class="col-sm-3 control-label text-align-right form_label">金额（元）：</label>
-                        <input type="number" min="0.01" placeholder="" class="form-control form_text" name="money" id="money">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="modal_close btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" url="{:U('User/refund_handle')}" class="affirm_save btn btn-default">确认</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <if condition="empty(session('user')['bank_card']) or empty(session('user')['bank_address'])">
         <input type="hidden" value="false" id="pass_refund" /><!--不允许出金-->
@@ -113,35 +70,17 @@
 <block name="script">
     <script>
         $(function(){
-            var product = '';//操作产品对象
-            var usable = '';//用户可用金额
-            $("#product").attr('disabled',true);
-            $(".refund").click(function(){
+            var url = $(".save_info").attr('url');
+            var to_url = $(".save_info").attr('to-url');
+            $(".save_info").click(function(){
                 if($('#pass_refund').val()=='false'){
                     hint('warning','提示','请去完善银行卡及网点信息！');
                     return;
                 }
-                product = $.trim($(this).attr('product_id'));
-                usable = Math.round(parseFloat($.trim($(this).attr('usable')))*100)/100;
-                if(!usable){
-                    usable='';
-                }
-                $("#product").val(product);
-                $("#money").val(null);
-                $("#money").attr('placeholder','出金上限'+usable);
-                $('.refund_modal').modal({show:true})
-            })
-            var url = $(".affirm_save").attr('url');
-            $(".affirm_save").click(function(){
                 var money = Math.round(parseFloat($.trim($("#money").val()))*100)/100;
                 if(money==''){
                     $("#money").focus();
                     hint('warning','提示','请输入出金金额');
-                    return;
-                }
-                if(usable&&(isNaN(money)||money<0.01||money>usable)){
-                    $("#money").focus();
-                    hint('warning','提示','金额超出上限！');
                     return;
                 }
                 bootbox.setDefaults("locale","zh_CN");
@@ -152,13 +91,12 @@
                         $.post(
                             url,
                             {
-                                product_id:product,
                                 money:money,
                             },function(data){
                                 if(data['code']==0){
                                     hint('success',data['msg'],data['data']);
                                     setTimeout(function(){
-                                        location.reload();
+                                        location.href = to_url;
                                     },1000)
                                 }else if(data['code']==1){
                                     hint('warning',data['msg'],data['data']);

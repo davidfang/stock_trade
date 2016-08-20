@@ -39,6 +39,30 @@ class RefundModel extends Model
         $data['update_time'] = time();
         $data['status'] = 1;
         $trans = M("refund");
+        $data_old = $trans->where('id='.$id)->find();
+        $poundage = M('poundage')->find();//获取提成百分比
+        if(empty($data_old)||empty($poundage)){
+            return false;
+        }
+        $data['poundage'] = round($data_old['money']*$poundage['money']/100,2);//手续费四舍五入（两位小数）
+        $data['actual_refund'] = $data_old['money']-$data['poundage'];//实际出金金额
+        $res = $trans->where('id='.$id)->save($data);
+        if(!empty($res)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $id
+     * @param $product_id 产品id
+     * @return bool
+     * 同意申请【old】
+     */
+    /*public function pass_apply($id,$product_id){
+        $data['update_time'] = time();
+        $data['status'] = 1;
+        $trans = M("refund");
         $trans->startTrans();
         $data_old = $trans->where('id='.$id)->find();
         $poundage = M('poundage')->find();//获取提成百分比
@@ -78,7 +102,7 @@ class RefundModel extends Model
         $user_trans->rollback();
         $trans->rollback();
         return false;
-    }
+    }*/
 
     /**
      * @param $id
@@ -88,6 +112,26 @@ class RefundModel extends Model
      * 拒绝申请
      */
     public function refuse_apply($id,$remarks,$product_id){
+        $data['remarks'] = $remarks;
+        $data['update_time'] = time();
+        $data['status'] = 2;
+
+        $trans = M("refund");
+        $res = $trans->where('id='.$id)->save($data);
+        if(!empty($res)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $id
+     * @param $remarks
+     * @param $product_id
+     * @return bool
+     * 拒绝申请【old】
+     */
+    /*public function refuse_apply($id,$remarks,$product_id){
         $data['remarks'] = $remarks;
         $data['update_time'] = time();
         $data['status'] = 2;
@@ -120,7 +164,7 @@ class RefundModel extends Model
         }
         $trans->rollback();
         return false;
-    }
+    }*/
 
     /**
      * @param $status
@@ -208,6 +252,25 @@ class RefundModel extends Model
      * 出金申请
      */
     public function refund_apply($data,$user){
+        $data['user_id'] = $user;
+        $data['create_time'] = $data['update_time'] = time();
+        $add_res = M('refund')->add($data);
+        if(!empty($add_res)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 用户产品出金
+     */
+    /**
+     * @param $data 出金申请数据
+     * @param $user 用户
+     * @return bool
+     * 出金申请
+     */
+    /*public function refund_apply($data,$user){
         $refund = M('refund');
         $refund->startTrans();
         $save_res = true;
@@ -227,7 +290,8 @@ class RefundModel extends Model
         }
         $refund->rollback();
         return false;
-    }
+    }*/
+
 
     /**
      * @param $status 出金状态【'':全部，0：审核中的，1：已出金的，2：已拒绝的】

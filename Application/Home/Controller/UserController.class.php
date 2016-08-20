@@ -130,6 +130,8 @@ class UserController extends BaseController
         $this -> assign('show_page',$user_asset[1]);
         $product_list = D('product')->get_product();
         $this -> assign('product_list',$product_list);
+        $conversion = M('conversion')->find();
+        $this -> assign('conversion',$conversion);
         $this -> display();
     }
 
