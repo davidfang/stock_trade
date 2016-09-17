@@ -145,13 +145,12 @@ class UserController extends BaseController
         $v_rcvpost=$v_mid;  //收货人邮编【用商户编号代替】
         $v_ordername=$v_mid;  //订货人姓名与收货人一致【个人设置】
         //end
-
         $key = C('SXY_KEY');//商户的密钥
         $v_rcvtel=session('user')['phone'];   //收货人电话
         $v_amount=$indent[1]; //订单金额
         $v_orderstatus="1";//配货状态:0-未配齐，1-已配
         $v_moneytype="0";  //0为人民币，1为美元，2为欧元，3为英镑，4为日元，5为韩元，6为澳大利亚元，7为卢布(内卡商户币种只能为人民币)
-        $v_url=$_SERVER['SERVER_NAME'].U('User/recharge_res'); //支付完成后的实时返回地址。支付完成后实时先向这个地址做返回?在此地囿下做接收银行返回的支付确认消息?详细的返回参数格式西(接口文档的第二部分或者代码示例的received1.php)
+        $v_url='http://'.$_SERVER['SERVER_NAME'].U('User/recharge_res'); //支付完成后的实时返回地址。支付完成后实时先向这个地址做返回?在此地囿下做接收银行返回的支付确认消息?详细的返回参数格式西(接口文档的第二部分或者代码示例的received1.php)
         $data = $v_moneytype.$v_ymd.$v_amount.$v_rcvname.$v_oid.$v_mid.$v_url;//七个参数的拼串
         $v_md5info=$this->hmac($key, $data);
         echo '<html>
