@@ -34,4 +34,10 @@ return array(
     'RONGLIAN_APPID'         => '8aaf0708567749f0015686b6ab9b0a31', //容联云通讯 应用Id appid
     'RONGLIAN_TEMPLATE_ID'   => '108827', //容联云通讯 模板Id【1：代表测试模板】
     'PAST_DUE_TIME'   => '1', //验证码过期时间【单位：分钟】
+
+
+    //首信易
+    'SXY_KEY'=>'test',//首信易密匙
+    'SXY_URL'=>'http://pay.beijing.com.cn/prs/user_payment.checkit',//首信易支付请求地址
+    'SXY_ID'=>444,//首信易商户id
 );

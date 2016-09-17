@@ -99,7 +99,7 @@ class PrepaidModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $recharge_info = $prepaid_table
-            -> field('pr.name as product,p.money,p.update_time,p.remarks,p.status')
+            -> field('pr.name as product,p.order_number,p.money,p.update_time,p.remarks,p.status')
             -> join('user as u on p.user_id=u.id')
             -> join('product as pr on p.product_id=pr.id')
             -> where($where)
@@ -116,8 +116,17 @@ class PrepaidModel extends Model
     public function recharge($data){
         $data['create_time'] = $data['update_time'] = time();
         $data['user_id'] = session('user')['id'];
+        $v_ymd=date('Ymd'); //订单产生日期，要求订单日期格式yyyymmdd.
+        $v_mid=C('SXY_ID');    //商户编号，和首信签约后获得,测试的商户编号444
+        $v_date=date('His');
+        $v_oid=$v_ymd .'-' . $v_mid . '-' .$v_date; //订单编号。订单编号的格式是yyyymmdd-用户编号-流水号，流水
+        $data['order_number'] = $v_oid;
         $res = M('prepaid')->add($data);
-        return $res;
+        if(empty($res)){
+            return false;
+        }else{
+            return [$v_oid,$data['money']];
+        }
     }
 
     /**

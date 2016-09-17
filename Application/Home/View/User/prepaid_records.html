@@ -87,7 +87,7 @@
                             <td>{$vo.remarks}</td>
                             <td>
                                 <if condition="$vo.status eq 0">
-                                    <a href="#">去充值</a>
+                                    <a href="{:U('User/to_recharge')}?v_oid={$vo.order_number}">去充值</a>
                                 <elseif condition="$vo.status eq 1" />
                                     已充值
                                 </if>
