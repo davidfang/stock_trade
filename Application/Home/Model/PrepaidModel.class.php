@@ -118,7 +118,7 @@ class PrepaidModel extends Model
         $data['user_id'] = session('user')['id'];
         $v_ymd=date('Ymd'); //订单产生日期，要求订单日期格式yyyymmdd.
         $v_mid=C('SXY_ID');    //商户编号，和首信签约后获得,测试的商户编号444
-        $v_date=date('His');
+        $v_date=date('His').$data['user_id'];
         $v_oid=$v_ymd .'-' . $v_mid . '-' .$v_date; //订单编号。订单编号的格式是yyyymmdd-用户编号-流水号，流水
         $data['order_number'] = $v_oid;
         $res = M('prepaid')->add($data);

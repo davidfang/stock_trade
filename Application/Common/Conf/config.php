@@ -38,6 +38,6 @@ return array(
 
     //首信易
     'SXY_KEY'=>'test',//首信易密匙
-    'SXY_URL'=>'http://pay.beijing.com.cn/prs/user_payment.checkit',//首信易支付请求地址
-    'SXY_ID'=>444,//首信易商户id
+    'SXY_URL'=>"https://pay.yizhifubj.com/prs/user_payment.checkit",//首信易支付请求地址
+    'SXY_ID'=>11571,//首信易商户id
 );

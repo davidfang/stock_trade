@@ -135,7 +135,7 @@ class UserController extends BaseController
     public function finish_recharge($indent){
         $arr = explode("-",$indent[0]);
         $v_ymd=$arr[0]; //订单产生日期，要求订单日期格式yyyymmdd.
-        $v_mid=$arr[1];    //商户编号，和首信签约后获得,测试的商户编号444
+        $v_mid=$arr[1];    //商户编号，和首信签约后获得,测试的商户编号
         $v_date=$arr[2];
         $v_oid=$v_ymd .'-' . $v_mid . '-' .$v_date; //订单编号。订单编号的格式是yyyymmdd-商户编号-流水号，流水号可以取系统当前时间，也可以取随机数，也可以商户自己定义的订单号，自己定义的订单号必须保证每?次提交，订单号是唯一的??
 
@@ -236,27 +236,34 @@ class UserController extends BaseController
                     $status = 'true';
                 }
             }else if($v_pstatus=='30'){//支付失败时返回的页面
+                $where['order_number'] = $v_oid;
+                $data['status'] = 2;
+                $data['update_time'] = time();
+                M('prepaid')->where($where)->save($data);
+
                 $title = '支付失败';
                 $sen_title = '支付失败';
                 $content = '付款失败，请重新支付！';
                 $status = 'false';
             }else{//待处理时返回的页面
+                $where['order_number'] = $v_oid;
+                $data['status'] = 3;
+                $data['update_time'] = time();
+                M('prepaid')->where($where)->save($data);
+
                 $title = '订单处理中';
                 $sen_title = '订单处理中';
                 $content = '处理中，如有疑问请联系管理员！';
                 $status = 'true';
             }
+            $this -> assign('title',$title);
+            $this -> assign('sen_title',$sen_title);
+            $this -> assign('content',$content);
+            $this -> assign('status',$status);
+            $this -> display();
         }else{
-            $title = '系统错误';
-            $sen_title = '系统出错了';
-            $content = '系统出错了，请联系管理员！';
-            $status = 'false';
+            echo("验证失败");
         }
-        $this -> assign('title',$title);
-        $this -> assign('sen_title',$sen_title);
-        $this -> assign('content',$content);
-        $this -> assign('status',$status);
-        $this -> display();
     }
 
     /**

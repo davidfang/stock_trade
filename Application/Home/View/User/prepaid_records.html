@@ -90,6 +90,10 @@
                                     <a href="{:U('User/to_recharge')}?v_oid={$vo.order_number}">去充值</a>
                                 <elseif condition="$vo.status eq 1" />
                                     已充值
+                                <elseif condition="$vo.status eq 2" />
+                                    <a href="{:U('User/to_recharge')}?v_oid={$vo.order_number}">支付失败，去充值</a>
+                                <elseif condition="$vo.status eq 3" />
+                                    处理中
                                 </if>
                             </td>
                         </tr>
