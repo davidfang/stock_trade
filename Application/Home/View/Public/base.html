@@ -101,7 +101,11 @@
                             echo '<li>';
                         }
                         if($item['url']){
-                            echo '<a href="'.$item['url'].'">';
+                            if($item['name']=='我要充值'){
+                                echo '<a target="_parent" href="'.$item['url'].'">';
+                            }else{
+                                echo '<a href="'.$item['url'].'">';
+                            }
                         }else{
                             echo '<a href="#" class="menu-dropdown">';
                         }
@@ -119,7 +123,11 @@
                                 }else{
                                     echo '<li>';
                                 }
-                                echo '<a href="'. $value['url'] .'">';
+                                if($value['name']=='我要充值'){
+                                    echo '<a target="_blank" href="'.$value['url'].'">';
+                                }else{
+                                    echo '<a href="'.$value['url'].'">';
+                                }
                                 echo '<span class="menu-text">'.$value['name'].'</span>';
                                 echo '</a></li>';
                             }
