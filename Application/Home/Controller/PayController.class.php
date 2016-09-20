@@ -44,10 +44,13 @@ class PayController extends Controller
             //通过for循环查看该笔通知有几笔订单,并对于更改数据库状态
             for($i=0;$i<$v_count;$i++){
                 $where['order_number'] = $v_oid;
+                $where['status'] = array('neq',1);
                 if($a_pstatus[$i]=='1'){
 //                    $where['user_id'] = session('user')['id'];
                     $find_id = M('prepaid')->where($where)->find();
-                    D('prepaid')->finish($find_id['id']);
+                    if(!empty($find_id)){
+                        D('prepaid')->finish($find_id['id']);
+                    }
                 }else if($a_pstatus[$i]=='3'){//支付失败
                     $data['status'] = 2;
                     $data['update_time'] = time();

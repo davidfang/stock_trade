@@ -36,7 +36,7 @@ class PrepaidModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $recharge_info = $prepaid_table
-            -> field('p.id,p.user_id,u.name,u.phone,pr.name as product,p.money,p.update_time')
+            -> field('p.order_number,p.id,p.user_id,u.name,u.phone,pr.name as product,p.money,p.update_time')
             -> join('user as u on p.user_id=u.id')
             -> join('product as pr on p.product_id=pr.id')
             -> where($where)
@@ -99,7 +99,7 @@ class PrepaidModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $recharge_info = $prepaid_table
-            -> field('pr.name as product,p.order_number,p.money,p.update_time,p.remarks,p.status')
+            -> field('pr.name as product,p.id,p.order_number,p.money,p.update_time,p.remarks,p.status')
             -> join('user as u on p.user_id=u.id')
             -> join('product as pr on p.product_id=pr.id')
             -> where($where)
@@ -125,7 +125,8 @@ class PrepaidModel extends Model
         if(empty($res)){
             return false;
         }else{
-            return [$v_oid,$data['money']];
+//            return [$v_oid,$data['money']];
+            return $res;
         }
     }
 

@@ -1,0 +1,123 @@
+<extend name="Public:base"/>
+<block name="style">
+    <style>
+        .form-group{
+            display: inline-block;
+            width: 100%;
+        }
+        .widget-body{
+            display: inline-block;
+            width: 100%;
+            height: 450px;
+        }
+        .edit_info{
+            float: right;
+            margin-right: 50%;
+            margin-top: 10%;
+        }
+        h1{
+            text-align: center;
+            margin-top: 10%;
+        }
+    </style>
+</block>
+<block name="main">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget flat">
+            <div class="widget-header">
+                <span class="widget-caption">订单信息</span>
+            </div><!--Widget Header-->
+            <div class="widget-body">
+                <empty name="indent_info">
+                    <h1>订单不存在</h1>
+                <else />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">订单号：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['order_number']}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">产品：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['name']}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">充值金额（元）：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['money']}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">订单生成时间：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['create_time']|date="Y-m-d H:i:s",###}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">订单支付时间：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['update_time']|date="Y-m-d H:i:s",###}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">备注：</label>
+                        <span class="col-sm-10 control-label">{$indent_info['remarks']}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">订单状态：</label>
+                    <span class="col-sm-10 control-label">
+                        <if condition="$indent_info['status'] eq 0">
+                            待支付
+                            <elseif condition="$indent_info['status'] eq 1" />
+                            已充值
+                            <elseif condition="$indent_info['status'] eq 2" />
+                            支付失败
+                            <elseif condition="$indent_info['status'] eq 3" />
+                            订单处理中
+                        </if>
+                    </span>
+                    </div>
+
+                    <if condition="$indent_info['status'] eq 0">
+                        <a target="_blank" href="{:U('User/to_recharge')}?v_oid={$indent_info['order_number']}" class="btn btn-blue shiny edit_info">去支付</a>
+                        <elseif condition="$indent_info['status'] eq 2" />
+                        <a target="_blank" href="{:U('User/to_recharge')}?v_oid={$indent_info['order_number']}" class="btn btn-blue shiny edit_info">重新支付</a>
+                    </if>
+                </empty>
+            </div><!--Widget Body-->
+        </div><!--Widget-->
+    </div>
+
+    <div class="recharge modal modal-darkorange">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">支付提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" style="line-height: 30px;">
+                        支付完成前，请不要关闭此支付验证窗口。<br/>
+                        支付完成后，请根据您支付的情况点击下面按钮。
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="recharge_false btn btn-default" data-dismiss="modal">支付遇到困难</button>
+                    <button type="button" class="recharge_ok btn btn-default">支付完成</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <input type="hidden" value="{$indent_info['id']}" id="recharge_id" />
+    <input type="hidden" value="{:U('User/recharge_check')}" id="url" />
+
+</block>
+<block name="script">
+    <script>
+        $(function(){
+            $(".edit_info").click(function(){
+                $('.recharge').modal({
+                    backdrop: 'static'
+                });
+            })
+            var to_url = $.trim($("#url").val());
+            $(".recharge_false,.recharge_ok").click(function(){
+                var id = $.trim($("#recharge_id").val());
+                location.href=to_url+"?id="+id;
+            })
+        })
+    </script>
+</block>

@@ -100,9 +100,27 @@ class UserController extends BaseController
                 $this -> assign('status','false');
                 $this -> display('recharge_res');
             }else{
-                $this->finish_recharge($res);
+//                $this->finish_recharge($res);
+                $this->redirect('User/indent_info?id='.$res);
             }
         }
+    }
+
+    //订单详情
+    public function indent_info(){
+        $id = I('get.id');
+        $where['pr.id'] = $id;
+        $where['user_id'] = session('user')['id'];
+        $res = M('prepaid as pr')
+            ->field('pr.id,p.name,pr.order_number,pr.status,pr.create_time,pr.update_time,pr.money,pr.remarks')
+            ->join('product as p on pr.product_id=p.id')
+            ->where($where)
+            ->find();
+        $this -> assign('title','订单详情');
+        $this -> assign('route','充值管理 / 订单详情');
+        $this -> assign('header_title','订单详情');
+        $this -> assign('indent_info',$res);
+        $this -> display();
     }
 
     /**
@@ -219,11 +237,15 @@ class UserController extends BaseController
         $data2=$v_amount.$v_moneytype;
         $md5money= $this->hmac($key, $data2);
         if($md5info == $v_md5info && $md5money == $v_md5money){
+            $where['status'] = array('neq',1);
             if($v_pstatus=='20'){
                 $where['user_id'] = session('user')['id'];
                 $where['order_number'] = $v_oid;
                 $find_id = M('prepaid')->where($where)->find();
-                $res = D('prepaid')->finish($find_id['id']);
+                $res = false;
+                if(!empty($find_id)){
+                    $res = D('prepaid')->finish($find_id['id']);
+                }
                 if(empty($res)){
                     $title = '系统错误';
                     $sen_title = '系统出错了';
@@ -264,6 +286,46 @@ class UserController extends BaseController
         }else{
             echo("验证失败");
         }
+    }
+
+
+    /**
+     * 充值结果
+     */
+    public function recharge_check(){
+        $id = I('get.id');
+        $where['id'] = $id;
+        $where['user_id'] = session('user')['id'];
+        $res = M('prepaid')->where($where)->find();
+        if(empty($res)){
+            $this -> assign('title','订单有误');
+            $this -> assign('sen_title','订单不存在');
+            $this -> assign('content','订单不存在，请核对订单！');
+            $this -> assign('status','false');
+        }else{
+            if($res['status']==1){
+                $this -> assign('title','充值成功');
+                $this -> assign('sen_title','已充值');
+                $this -> assign('content','你已成功充值！');
+                $this -> assign('status','true');
+            }elseif($res['status']==0){
+                $this -> assign('title','订单未支付');
+                $this -> assign('sen_title','支付未完成');
+                $this -> assign('content','如有疑问请联系管理员！');
+                $this -> assign('status','false');
+            }elseif($res['status']==2){
+                $this -> assign('title','充值失败');
+                $this -> assign('sen_title','充值失败');
+                $this -> assign('content','如有疑问请联系管理员！');
+                $this -> assign('status','false');
+            }else{
+                $this -> assign('title','充值成功');
+                $this -> assign('sen_title','订单处理中');
+                $this -> assign('content','请耐心等待，如有疑问请联系管理员！');
+                $this -> assign('status','true');
+            }
+        }
+        $this -> display('recharge_res');
     }
 
     /**
