@@ -4,7 +4,7 @@
         .form-group{
             display: inline-block;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 5px;
         }
         .widget-body{
             display: inline-block;
@@ -36,6 +36,25 @@
             width: 18.5%;
             float: left;
         }
+        #num{
+            width: 70px;
+        }
+        .set_num{
+            display: inline-block;
+            width: 40%;
+        }
+        .tooltip-inner{
+            background-color: #e5e5e5;
+            border: 0px;
+            color: #444;
+            text-align: left;
+        }
+        .tooltip{
+            width: 150%;
+        }
+        .tooltip-arrow{
+            display: none;
+        }
     </style>
     <script>
         var conversiorate = {$conversion['conversiorate']};
@@ -59,7 +78,7 @@
                         </label>
                         <foreach name="product_list" item="vo" key="k" >
                             <label class="col-sm-2 control-label form_label" style="width: 12%;">
-                                <input value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
+                                <input min-money="{$vo.default_cardinal}" liquidate="{$vo.default_liquidate}" value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
                                 <span class="text"> {$vo.name}</span>
                                 <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="{$vo.intro}">?</span>
                             </label>
@@ -70,11 +89,34 @@
                         <!--</select>-->
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right form_label">是否过夜：</label>
+                        <label class="col-sm-2 control-label form_label" style="width: 12%;">
+                            <input value="0" checked name="type" type="radio" class="colored-blue">
+                            <span class="text"> 否</span>
+                        </label>
+                        <label class="col-sm-2 control-label form_label" style="width: 12%;">
+                            <input value="1" name="type" type="radio" class="colored-blue">
+                            <span class="text"> 是</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right form_label select_num">交易手数：</label>
+                        <div class="set_num">
+                            <label class="col-sm-2 control-label form_label I_set" style="width: 39%;">
+                                <input value="-1" name="num" type="radio" class="colored-blue">
+                            <span class="text">
+                                <input min="0" placeholder="手动设置" name="set_num" id="num" type="number">
+                            </span>
+                                <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="请选择产品">?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="money" class="col-sm-2 control-label text-align-right form_label">充值金额（元）：</label>
                         <!--<input type="number" min="0.01" onkeyup="matrixing(this.value);" placeholder="请输入充值金额" class="form-control form_text" name="money" id="money">-->
                         <div class="input-group">
                             <span class="input-group-addon">￥</span>
-                            <input type="number" step="0.01" min=0.01 onkeyup="matrixing(this.value);" placeholder="请输入充值金额" class="form-control" name="money" id="money">
+                            <input type="number" disabled step="0.01" min=0.01 onkeyup="matrixing(this.value);" placeholder="请输入充值金额" class="form-control" name="money" id="money">
                         </div>
                         <big style="float: left; margin: 0px 10px;line-height: 34px;"> ≈ </big>
                         <!--<input type="number" disabled min="0.01" class="form-control form_text" id="dollar">-->
@@ -100,6 +142,7 @@
                             </label>
                         </div>
                     </div>
+                    <input type="hidden" id="liquidate" name="liquidate" value="0">
                     <!--<a class="btn btn-blue shiny save_info" to-url="{:U('User/prepaid_records')}" url="{:U('User/recharge_handle')}">充值</a>-->
                     <button class="btn btn-blue shiny save_info" type="submit">充值</button>
                 </form>
@@ -136,6 +179,61 @@
 <block name="script">
     <script>
         $(function(){
+            var get_url = '{:U("User/get_product_info")}';
+            $('input[name="product_id"]').change(function(){
+                var min_money = $('input[name="product_id"]:checked').attr('min-money');
+                var liquidate = $('input[name="product_id"]:checked').attr('liquidate');
+                $('input[name="num"][value="-1"]').attr('min-money',min_money);
+                $('input[name="num"][value="-1"]').attr('liquidate',liquidate);
+                $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+min_money+'<br>平仓线（美元）'+liquidate);
+            })
+            $(document).on('change',$('input[name="num"]'),function(){
+                set_money();
+            })
+            function set_money(){
+                if(!$('input[name="product_id"]:checked').val()||!$('input[name="num"]:checked').val()){
+                    $("#money").attr('disabled','disabled');
+                    return;
+                }
+                var min_money = $('input[name="num"]:checked').attr('min-money');
+                var liquidate = $('input[name="num"]:checked').attr('liquidate');
+                $("#money").attr('min',min_money);
+                $("#money").attr('liquidate',liquidate);
+                $("#liquidate").val(liquidate);
+                $("#money").attr('disabled',false);
+            }
+            $('input[name="product_id"],input[name="type"]').change(function(){
+                var product_id = $('input[name="product_id"]:checked').val();
+                var type = $('input[name="type"]:checked').val();
+                if(!(product_id&&type)){
+                    return;
+                }
+                $.post(
+                        get_url, {
+                            product_id:product_id,
+                            type:type,
+                        },function(data){
+                            if(data['code']==1){
+                                hint('warning',data['msg'],data['data']);
+                            }else{
+                                $(".set_num").children().not('.I_set').remove();
+                                if(Array.isArray(data['data'])&&data['data'].length>0){
+                                    for(var i = 0;i<data['data'].length;i++){
+                                        var html = '<label class="col-sm-2 control-label form_label" style="width: 30%;">' +
+                                                '<input liquidate="'+data['data'][i]['liquidate']+'" min-money="'+data['data'][i]['min_money']+'" value="'+data['data'][i]['num']+'" name="num" type="radio" class="colored-blue"> ' +
+                                                '<span class="text"> '+data['data'][i]['num']+' 手</span> ' +
+//                                                '<span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="">?</span>'+
+                                                '<span class="badge margin-left-10" data-toggle="tooltip" data-placement="bottom" title="最少充值金额（人民币）'+data['data'][i]['min_money']+'平仓线（美元）'+data['data'][i]['liquidate']+'">?</span>'+
+                                                '</label>';
+                                        $(".I_set").before(html);
+                                    }
+                                }
+                                set_money();
+                                $("[data-toggle='tooltip']").tooltip();
+                            }
+                        }
+                )
+            })
             $("#money").blur(function(){
                 var that = $(this).val();
                 $("#money").val(parseFloat(that).toFixed(2));
@@ -145,6 +243,16 @@
                 var product_id = $('input[name="product_id"]:checked').val();
                 var money = $.trim($("#money").val());
                 var remarks = $.trim($("#remarks").val());
+
+//                var type = $('input[name="type"]:checked').val();
+                var num = $('input[name="num"]:checked').val();
+                if(num==-1){
+                    num = parseInt($.trim($("#num").val()));
+                }
+                if(num<0){
+                    hint('warning','提示','交易手数设置不合法！');
+                    return false;
+                }
                 if(!product_id){
                     hint('warning','提示','请选择产品');
                     return false;
@@ -154,7 +262,9 @@
                     hint('warning','提示','请输入充值金额');
                     return false;
                 }
-                if(isNaN(money)||money<0.01){
+                var min_money = parseFloat($.trim($("#money").attr('min')));
+//                var liquidate = parseFloat($.trim($("#money").attr('liquidate')));
+                if(isNaN(money)||money<min_money||money<0){
                     $("#money").focus();
                     hint('warning','提示','金额输入不合法！');
                     return false;
@@ -165,22 +275,28 @@
                 }
                 /*var url = $(this).attr('url');
                 var to_url = $(this).attr('to-url');
+                $(this).attr('disabled',true);
                 $.post(
                     url,
                     {
                         product_id:product_id,
                         money:money,
                         remarks:remarks,
+                        type:type,
+                        num:num,
+                        liquidate:liquidate,
                     },function(data){
                         if(data['code']==0){
                             hint('success',data['msg'],data['data']);
-                            setTimeout(function(){
-                                window.location.href=to_url;
-                            },1000)
+//                            setTimeout(function(){
+//                                window.location.href=to_url;
+//                            },1000)
                         }else if(data['code']==1){
                             hint('warning',data['msg'],data['data']);
+                            $('.save_info').attr('disabled',false);
                         }else if(data['code']==2){
                             hint('warning',data['msg'],data['data']);
+                            $('.save_info').attr('disabled',false);
                         }
                     }
                 )*/

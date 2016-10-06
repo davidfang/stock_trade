@@ -36,7 +36,7 @@ class PrepaidModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $recharge_info = $prepaid_table
-            -> field('p.order_number,p.id,p.user_id,u.name,u.phone,pr.name as product,p.money,p.update_time')
+            -> field('p.liquidate,p.num,p.type,p.order_number,p.id,p.user_id,u.name,u.phone,pr.name as product,p.money,p.update_time')
             -> join('user as u on p.user_id=u.id')
             -> join('product as pr on p.product_id=pr.id')
             -> where($where)
@@ -99,7 +99,7 @@ class PrepaidModel extends Model
         $Page->setConfig('last','尾页');//最后一页显示"尾页"
         $show = $Page->show();
         $recharge_info = $prepaid_table
-            -> field('pr.name as product,p.id,p.order_number,p.money,p.update_time,p.remarks,p.status')
+            -> field('p.liquidate,p.num,p.type,pr.name as product,p.id,p.order_number,p.money,p.update_time,p.remarks,p.status')
             -> join('user as u on p.user_id=u.id')
             -> join('product as pr on p.product_id=pr.id')
             -> where($where)
@@ -121,6 +121,9 @@ class PrepaidModel extends Model
         $v_date=date('His').$data['user_id'];
         $v_oid=$v_ymd .'-' . $v_mid . '-' .$v_date; //订单编号。订单编号的格式是yyyymmdd-用户编号-流水号，流水
         $data['order_number'] = $v_oid;
+        if($data['num']==-1){
+            $data['num'] = $data['set_num'];
+        }
         $res = M('prepaid')->add($data);
         if(empty($res)){
             return false;
@@ -158,7 +161,7 @@ class PrepaidModel extends Model
                 $recharge = $asset_table->where($where)->save($save_data);
             }
             if(!empty($recharge)){
-                $indent_res = $prepaid_table->where('status=0 and id='.$indent)->save(array('status'=>1));
+                $indent_res = $prepaid_table->where('status=0 and id='.$indent)->save(array('status'=>1,'update_time'=>time()));
                 if(!empty($indent_res)){
                     $user_money = M('user')->where('id='.$find_indent['user_id'])->setInc('current',$find_indent['money']);
                     if(!empty($user_money)){

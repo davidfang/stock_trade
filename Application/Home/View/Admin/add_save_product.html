@@ -26,6 +26,30 @@
             width: 67%;
             display: inline-block;
         }
+        div.dataTables_length{
+            position: inherit !important;
+        }
+        #editabledatatable_filter{
+            float: right;
+        }
+        .add_info{
+            width: 10%;
+            display: inline-block;
+            position: absolute;
+            left: 10%;
+            top: 1%;
+            z-index: 999;
+        }
+        .widget-body{
+            min-height: inherit;
+        }
+        .hr{
+            display: inline-block;width: 98%;
+            height: 1px;
+            border: dashed 1px #bdbdbd;
+            margin-left: 1%;
+            margin-bottom: 4%;
+        }
     </style>
 </block>
 <block name="main">
@@ -43,15 +67,90 @@
                     <label for="weight" class="col-sm-2 control-label text-align-right form_label">权值：</label>
                     <input type="number" placeholder="权值越大排位越靠前" class="form-control form_text" value="{$product['weight']}" name="weight" id="weight">
                 </div>
+                <div class="form-group margin-top-5">
+                    <label for="default_cardinal" class="col-sm-2 control-label text-align-right form_label">充值基数（人民币）：</label>
+                    <div class="input-group" style="width: 67%;">
+                        <span class="input-group-addon">￥</span>
+                        <input type="number" min="0" placeholder="充值基数" class="form-control form_text" value="{$product['default_cardinal']}" name="default_cardinal" id="default_cardinal">
+                    </div>
+                </div>
+                <div class="form-group margin-top-5">
+                    <label for="default_liquidate" class="col-sm-2 control-label text-align-right form_label">平仓线（美元）：</label>
+                    <div class="input-group" style="width: 67%;">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" min="0" placeholder="平仓线" class="form-control form_text" value="{$product['default_liquidate']}" name="default_liquidate" id="default_liquidate">
+                    </div>
+                </div>
                 <div class="form-group no-margin-top">
                     <label for="name" class="col-sm-2 control-label text-align-right form_label">产品简介：</label>
                     <div class="col-lg-8 col-sm-8 col-xs-12 no-padding">
-                        <script id="editor" type="text/plain" style="width:100%;height:500px;float: right;">
+                        <script id="editor" type="text/plain" style="width:100%;height:300px;float: right;">
                             {$product['intro']|html_entity_decode}
                         </script>
                     </div>
                 </div>
                 <a class="btn btn-blue shiny save_info" product="{$product['id']}" to-url="{:U('Admin/product')}" url="{:U('Admin/add_save_product')}">提交</a>
+
+                <div class="hr">
+                    <h4>设置</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="table-toolbar add_info">
+                                    <a id="editabledatatable_new" href="javascript:void(0);" class="btn btn-default">
+                                        添加设置
+                                    </a>
+                                </div>
+                                <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                    <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th>
+                                                交易手数
+                                            </th>
+                                            <th>
+                                                是否过夜(0:否、1:是)
+                                            </th>
+                                            <th>
+                                                最低充值金额（人民币）
+                                            </th>
+                                            <th>
+                                                平仓线（美元）
+                                            </th>
+                                            <th>
+                                                操作
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <foreach name="product_info_set" item="vo" >
+                                                <tr content="{$vo.id}" class="odd">
+                                                    <td>{$vo.num}</td>
+                                                    <td>
+                                                        <if condition="$vo.type eq 0">
+                                                            否
+                                                        <else/>
+                                                            是
+                                                        </if>
+                                                    </td>
+                                                    <td>{$vo.min_money}</td>
+                                                    <td>{$vo.liquidate}</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> 编辑</a>
+                                                        <a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> 删除</a>
+                                                    </td>
+                                                </tr>
+                                            </foreach>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div><!--Widget Body-->
         </div><!--Widget-->
     </div>
@@ -60,7 +159,253 @@
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/utf8-php/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="__ASSETS__/js/datatable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ASSETS__/js/datatable/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ASSETS__/js/datatable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ASSETS__/js/datatable/datatables-init.js"></script>
     <script>
+        var EditableDataTable = function () {
+            return {
+                init: function () {
+                    //Datatable Initiating
+                    var oTable = $('#editabledatatable').dataTable({
+                        "language": {
+                            "search": "",
+                            "sLengthMenu": "_MENU_",
+                            "oPaginate": {
+                                "sPrevious": "Prev",
+                                "sNext": "Next"
+                            }
+                        },
+                        'ordering':false,
+                        "aoColumns": [
+                            null,
+                            null,
+                            null,
+                            null,
+                            { "bSortable": false }
+                        ]
+                    });
+
+                    var isEditing = null;
+
+                    //Add New Row
+                    $('#editabledatatable_new').click(function (e) {
+                        e.preventDefault();
+                        var aiNew = oTable.fnAddData(['', '', '', '',
+                            '<a href="#" class="btn btn-success btn-xs save"><i class="fa fa-edit"></i> 保存</a> ' +
+                            '<a href="#" class="btn btn-warning btn-xs add_cancel"><i class="fa fa-times"></i> 取消</a>'
+                        ]);
+                        var nRow = oTable.fnGetNodes(aiNew[0]);
+                        var aData = oTable.fnGetData(nRow);
+                        var jqTds = $('>td', nRow);
+                        jqTds[0].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="交易手数" value="' + aData[0] + '">';
+                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+                        jqTds[2].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="最低充值金额（元）" value="' + aData[2] + '">';
+                        jqTds[3].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="平仓线（美元）" value="' + aData[3] + '">';
+                        jqTds[4].innerHTML = '<a href="#" class="btn btn-success btn-xs save"><i class="fa fa-save"></i> 保存</a>' +
+                                ' <a href="#" class="btn btn-warning btn-xs add_cancel"><i class="fa fa-times"></i> 取消</a>';
+                        isEditing = nRow;
+                        $(this).attr('disabled',true);
+                        $(".edit").attr('disabled',true);
+                    });
+
+                    //Delete an Existing Row
+                    $('#editabledatatable').on("click", 'a.delete', function (e) {
+                        e.preventDefault();
+                        var that = $(this);
+                        var obj = that.parents('tr').attr('content');
+                        var del_url = '{:U("Admin/product_info_del")}';
+                        bootbox.setDefaults("locale","zh_CN");
+                        bootbox.confirm("你确定要删除吗?", function (result) {
+                            if (!result) {
+                                return;
+                            } else {
+                                if (obj != '') {
+                                    $.post(
+                                            del_url,
+                                            {
+                                                obj_id:obj,
+                                            },
+                                            function (data) {
+                                                if (data['code'] == 0) {
+                                                    hint('success', '成功', '操作成功');
+                                                    var nRow = that.parents('tr')[0];
+                                                    oTable.fnDeleteRow(nRow);
+                                                } else if (data['code'] == 1) {
+                                                    hint('warning', data['msg'], data['data']);
+                                                } else {
+                                                    hint('warning', '提示', '未知错误！');
+                                                }
+                                            }
+                                    )
+                                } else {
+                                    hint('warning', '提示', '未知错误！');
+                                }
+                            }
+                        })
+                    });
+
+                    //add_cancel an Existing Row
+                    $('#editabledatatable').on("click", 'a.add_cancel', function (e) {
+                        e.preventDefault();
+                        var nRow = $(this).parents('tr')[0];
+                        oTable.fnDeleteRow(nRow);
+                        isEditing = null;
+                        $(".edit").attr('disabled',false);
+                        $("#editabledatatable_new").attr('disabled',false);
+                    });
+
+                    //Cancel Editing a Row
+                    $('#editabledatatable').on("click", 'a.cancel', function (e) {
+                        e.preventDefault();
+                        if ($(this).attr("data-mode") == "new") {
+                            var nRow = $(this).parents('tr')[0];
+                            oTable.fnDeleteRow(nRow);
+                        } else {
+                            restoreRow(oTable, isEditing);
+                            isEditing = null;
+                        }
+                        $("#editabledatatable_new").attr('disabled',false);
+                    });
+
+                    //Edit A Row
+                    $('#editabledatatable').on("click", 'a.edit', function (e) {
+                        e.preventDefault();
+
+                        var nRow = $(this).parents('tr')[0];
+                        if (isEditing !== null && isEditing != nRow) {
+                            restoreRow(oTable, isEditing);
+                            editRow(oTable, nRow);
+                            isEditing = nRow;
+                        } else {
+                            editRow(oTable, nRow);
+                            isEditing = nRow;
+                        }
+                        $("#editabledatatable_new").attr('disabled',true);
+                    });
+
+                    //Save an Editing Row
+                    $('#editabledatatable').on("click", 'a.save', function (e) {
+                        e.preventDefault();
+                        if (this.innerHTML.indexOf("保存") >= 0) {
+                            saveRow(oTable, isEditing);
+                            //Some Code to Highlight Updated Row
+                        }
+                    });
+
+
+                    function restoreRow(oTable, nRow) {
+                        var aData = oTable.fnGetData(nRow);
+                        var jqTds = $('>td', nRow);
+
+                        for (var i = 0, iLen = jqTds.length; i < iLen; i++) {
+                            if(i==1){
+                                if(aData[i]==1){
+                                    oTable.fnUpdate('是', nRow, i, false);
+                                }else{
+                                    oTable.fnUpdate('否', nRow, i, false);
+                                }
+                            }else{
+                                oTable.fnUpdate(aData[i], nRow, i, false);
+                            }
+                        }
+
+                        oTable.fnDraw();
+                    }
+
+                    function editRow(oTable, nRow) {
+                        var aData = oTable.fnGetData(nRow);
+                        var jqTds = $('>td', nRow);
+                        if(aData[1]=='是'){
+                            aData[1] = 1;
+                        }else{
+                            aData[1] = 0;
+                        }
+                        jqTds[0].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="交易手数" value="' + aData[0] + '">';
+                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+                        jqTds[2].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="最低充值金额（元）" value="' + aData[2] + '">';
+                        jqTds[3].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="平仓线（美元）" value="' + aData[3] + '">';
+                        jqTds[4].innerHTML = '<a href="#" class="btn btn-success btn-xs save"><i class="fa fa-save"></i> 保存</a>' +
+                                ' <a href="#" class="btn btn-warning btn-xs cancel"><i class="fa fa-times"></i> 取消</a>';
+                    }
+
+                    function saveRow(oTable, nRow) {
+                        var product = $('.save_info').attr('product');
+                        var obj_id = $(nRow).attr('content');
+                        var jqInputs = $('input', nRow);
+                        var num = parseInt(jqInputs[0].value);
+                        var type = parseInt(jqInputs[1].value);
+                        var min_money = parseFloat(parseFloat(jqInputs[2].value).toFixed(2));
+                        var liquidate = parseFloat(parseFloat(jqInputs[3].value).toFixed(2));
+                        var product_id = product;
+                        if(!type){
+                            type = 0;
+                        }
+                        if(!min_money){
+                            min_money = 0;
+                        }
+                        if(!liquidate){
+                            liquidate = 0;
+                        }
+                        if(!num||num<=0){
+                            hint('warning', '提示', '参数有误');
+                            return;
+                        }
+
+                        var set_url = '{:U("Admin/product_info")}';
+                        $.post(
+                            set_url,
+                            {
+                                num:num,
+                                type:type,
+                                min_money:min_money,
+                                liquidate:liquidate,
+                                product_id:product_id,
+                                obj_id:obj_id,
+                            },
+                            function (data) {
+                                if (data['code'] == 0) {
+                                    hint('success', data['msg'], '设置成功');
+                                    $(nRow).attr('content',data['data']);
+
+                                    oTable.fnUpdate(num, nRow, 0, false);
+                                    var text_type= '否';
+                                    if(type==1){
+                                        text_type= '是';
+                                    }
+                                    oTable.fnUpdate(text_type, nRow, 1, false);
+                                    oTable.fnUpdate(min_money, nRow, 2, false);
+                                    oTable.fnUpdate(liquidate, nRow, 3, false);
+                                    oTable.fnUpdate('<a href="#" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> 编辑</a> <a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> 删除</a>', nRow, 4, false);
+                                    oTable.fnDraw();
+                                    $(".edit").attr('disabled',false);
+                                    $("#editabledatatable_new").attr('disabled',false);
+                                    isEditing = null;
+                                } else if (data['code'] == 1) {
+                                    hint('warning', data['msg'], data['data']);
+                                } else {
+                                    hint('warning', '提示', '未知错误！');
+                                }
+                            }
+                        )
+                    }
+
+                    function cancelEditRow(oTable, nRow) {
+                        var jqInputs = $('input', nRow);
+                        oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+                        oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+                        oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+                        oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
+                        oTable.fnUpdate('<a href="#" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> 编辑</a> <a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> 删除</a>', nRow, 4, false);
+                        oTable.fnDraw();
+                    }
+                }
+
+            };
+        }();
+        EditableDataTable.init();
         $(function(){
             //实例化编辑器
             var ue = UE.getEditor('editor',{
@@ -105,6 +450,8 @@
                 var product = $(this).attr('product');
                 var name = $.trim($("#name").val());
                 var weight = parseInt($.trim($("#weight").val()));
+                var default_cardinal = parseFloat($.trim($("#default_cardinal").val())).toFixed(2);
+                var default_liquidate = parseFloat($.trim($("#default_liquidate").val())).toFixed(2);
                 weight = weight?weight:0;
                 var to_url = $(this).attr('to-url');
                 var intro = ue.getContent();
@@ -115,6 +462,8 @@
                             name:name,
                             intro:intro,
                             weight:weight,
+                            default_cardinal:default_cardinal,
+                            default_liquidate:default_liquidate,
                         },
                         function(data){
                             if(data['code']==0){
@@ -129,6 +478,14 @@
                             }
                         }
                 )
+            })
+            $("#cardinal").blur(function(){
+                var that = $(this).val();
+                $("#cardinal").val(parseFloat(that).toFixed(2));
+            })
+            $("#liquidate").blur(function(){
+                var that = $(this).val();
+                $("#liquidate").val(parseFloat(that).toFixed(2));
             })
         })
     </script>

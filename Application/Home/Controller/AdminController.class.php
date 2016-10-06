@@ -311,6 +311,12 @@ class AdminController extends BaseController
                     $this->redirect('Admin/product');
                 }
                 $this -> assign('product',$product_info);
+                $product_info_set = M('product as p1')
+                    ->field('p2.*')
+                    ->join('product_info as p2 on p1.id=p2.product_id')
+                    ->where('p1.status=0 and p1.id='.$product_id)
+                    ->select();
+                $this -> assign('product_info_set',$product_info_set);
             }
             $this -> display();
         }else{
@@ -326,6 +332,49 @@ class AdminController extends BaseController
         $obj_id = I('post.obj_id');
         $del_res = D('product')->del_product($obj_id);
         $this->json_response($del_res);
+    }
+
+    /**
+     * 修改或添加产品设置
+     */
+    public function product_info(){
+        $data = I('post.');
+        $where['num'] = $data['num'];
+        $where['type'] = $data['type'];
+        $where['product_id'] = $data['product_id'];
+        $find_res = M('product_info')->where($where)->find();
+        if(empty($data['obj_id'])){
+            if(!empty($find_res)){
+                $this->json_response(array('code' => 1,'msg' => '失败','data' => '参数有误，请重试！'));
+            }
+            $res = M('product_info')->add($data);
+        }else{
+            if(!empty($find_res)&&$find_res['id']!=$data['obj_id']){
+                $this->json_response(array('code' => 1,'msg' => '失败','data' => '参数有误，请重试！'));
+            }
+            $res = M('product_info')->where('id='.$data['obj_id'])->save($data);
+            if(!empty($res)){
+                $res = $data['obj_id'];
+            }
+        }
+        if(!empty($res)){
+            $this->json_response(array('code' => 0,'msg' => '成功','data' => $data['obj_id']));
+        }else{
+            $this->json_response(array('code' => 1,'msg' => '失败','data' => '设置失败，请重试！'));
+        }
+    }
+
+    /**
+     * 删除产品设置
+     */
+    public function product_info_del(){
+        $obj = intval(I("post.obj_id"));
+        $res = M('product_info')->where('id='.$obj)->delete();
+        if(!empty($res)){
+            $this->json_response(array('code' => 0,'msg' => '成功','data' => '删除成功。'));
+        }else{
+            $this->json_response(array('code' => 1,'msg' => '失败','data' => '删除失败，请重试！'));
+        }
     }
 
     /**

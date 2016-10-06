@@ -44,6 +44,16 @@
                         <span class="col-sm-10 control-label">{$indent_info['money']}</span>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 control-label text-align-right">是否过夜：</label>
+                        <span class="col-sm-10 control-label">
+                            <if condition="$indent_info['type'] eq 0">
+                                否
+                            <else/>
+                                是
+                            </if>
+                        </span>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label text-align-right">订单生成时间：</label>
                         <span class="col-sm-10 control-label">{$indent_info['create_time']|date="Y-m-d H:i:s",###}</span>
                     </div>

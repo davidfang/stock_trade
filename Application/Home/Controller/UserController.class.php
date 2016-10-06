@@ -74,6 +74,25 @@ class UserController extends BaseController
     }
 
     /**
+     * 获得产品设置
+     */
+    public function get_product_info(){
+        $product_id = I("post.product_id");
+        $type = I("post.type");
+        $where['type'] = $type;
+        $where['product_id'] = $product_id;
+        $find_res = M('product_info')->where($where)->select();
+        if(!empty(M()->getError())){
+            $this -> json_response(array('code'=>1,'msg'=>'提示','data'=>'请求失败，请重试！'));
+        }
+        if(empty($find_res)){
+            $this -> json_response(array('code'=>2,'msg'=>'提示','data'=>'没数据。'));
+        }else{
+            $this -> json_response(array('code'=>0,'msg'=>'成功','data'=>$find_res));
+        }
+    }
+
+    /**
      * 合作协议
      */
     public function agreement(){
@@ -112,7 +131,7 @@ class UserController extends BaseController
         $where['pr.id'] = $id;
         $where['user_id'] = session('user')['id'];
         $res = M('prepaid as pr')
-            ->field('pr.id,p.name,pr.order_number,pr.status,pr.create_time,pr.update_time,pr.money,pr.remarks')
+            ->field('pr.type,pr.id,p.name,pr.order_number,pr.status,pr.create_time,pr.update_time,pr.money,pr.remarks')
             ->join('product as p on pr.product_id=p.id')
             ->where($where)
             ->find();
@@ -290,6 +309,92 @@ class UserController extends BaseController
 
 
     /**
+     * 对账
+     * @param $v_oid 订单号
+     * @return bool
+     */
+    public function order_ack($v_oid){
+        $v_mid = C('SXY_ID');
+        $key = C('SXY_KEY');
+        $order_url = C('SXY_ORDER_url');
+        $data = $v_mid.$v_oid;
+        $v_mac = $this->hmac($key,$data);
+        $url = $order_url.'?v_mid='.$v_mid.'&v_oid='.$v_oid.'v_mac='.$v_mac;
+
+        $result = simplexml_load_string($this->curl($url));
+
+        $return_v_status = $result->messagehead->status;//请求状态
+        if($return_v_status!=0){
+
+        }else{
+            $return_v_oid = $result->messagehead->oid;//订单号
+            $return_v_mid = $result->messagehead->mid;//商户编号
+            $return_v_pstatus = $result->messagebody->order->pstatus;//支付状态
+            $return_v_pstring = $result->messagebody->order->pstring;//支付结果说明
+            $return_v_amount = $result->messagebody->order->amount;//订单金额
+            $return_v_moneytype = $result->messagebody->order->moneytype;//币种
+            $return_v_sign = $result->messagebody->order->sign;//数字签名【商城数据签名，参与签名的数据（v_oid+v_pstatus+v_amount+v_moneytype）】
+
+            $v_data = $return_v_oid.$return_v_pstatus.$return_v_amount.$return_v_moneytype;
+            $mac = $this -> hmac($key,$v_data);
+            if($mac == $return_v_sign){
+                $where['order_number'] = $v_oid;
+                $where['status'] = array('neq',1);
+                if($return_v_pstatus==0){
+
+                }elseif($return_v_pstatus==1){
+                    $find_id = M('prepaid')->where($where)->find();
+                    if(!empty($find_id)){
+                        D('prepaid')->finish($find_id['id']);
+                    }
+                }elseif($return_v_pstatus==2){
+                    $save_data['status'] = 3;
+                    $save_data['update_time'] = time();
+                    M('prepaid')->where($where)->save($save_data);
+                }else{
+                    $save_data['status'] = 2;
+                    $save_data['update_time'] = time();
+                    M('prepaid')->where($where)->save($save_data);
+                }
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    /**
+     * curl请取
+     * @param $pUrl
+     * @param bool|false $pCookies
+     * @param string $pCookieSuffix
+     * @return bool|mixed|string
+     */
+    function curl($pUrl, $pCookies = false, $pCookieSuffix = ""){
+        $ch = curl_init($pUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/A.B (KHTML, like Gecko) Chrome/X.Y.Z.W Safari/A.B.");
+
+        if ($pCookies) {
+            $cookieFile = "cookie" . $pCookieSuffix . ".txt";
+            curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
+            curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+        }
+
+        $html = curl_exec($ch);
+        $html = trim($html);
+
+        curl_close($ch);
+
+        if ($html == "") {
+            return false;
+        }
+
+        return $html;
+    }
+
+    /**
      * 充值结果
      */
     public function recharge_check(){
@@ -303,6 +408,8 @@ class UserController extends BaseController
             $this -> assign('content','订单不存在，请核对订单！');
             $this -> assign('status','false');
         }else{
+            $this -> order_ack($res['order_number']);
+            $res = M('prepaid')->where($where)->find();
             if($res['status']==1){
                 $this -> assign('title','充值成功');
                 $this -> assign('sen_title','已充值');

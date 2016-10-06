@@ -40,4 +40,5 @@ return array(
     'SXY_KEY'=>'test',//首信易密匙
     'SXY_URL'=>"https://pay.yizhifubj.com/prs/user_payment.checkit",//首信易支付请求地址
     'SXY_ID'=>11571,//首信易商户id
+    'SXY_ORDER_url'=>'http://api.yizhifubj.com/merchant/order/order_ack_oid_list.jsp',//对账地址
 );
