@@ -249,7 +249,7 @@
                 if(num==-1){
                     num = parseInt($.trim($("#num").val()));
                 }
-                if(num<0){
+                if(!num||num<0){
                     hint('warning','提示','交易手数设置不合法！');
                     return false;
                 }
@@ -273,6 +273,7 @@
                     hint('warning','提示','请您阅读并同意《合作协议》');
                     return false;
                 }
+                return false;
                 /*var url = $(this).attr('url');
                 var to_url = $(this).attr('to-url');
                 $(this).attr('disabled',true);
