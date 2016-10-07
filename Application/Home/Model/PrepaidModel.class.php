@@ -122,7 +122,7 @@ class PrepaidModel extends Model
         $v_oid=$v_ymd .'-' . $v_mid . '-' .$v_date; //订单编号。订单编号的格式是yyyymmdd-用户编号-流水号，流水
         $data['order_number'] = $v_oid;
         if($data['num']==-1){
-            $data['num'] = $data['set_num'];
+            $data['num'] = intval($data['set_num']);
         }
         $res = M('prepaid')->add($data);
         if(empty($res)){
