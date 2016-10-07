@@ -33,12 +33,12 @@
             float: right;
         }
         .add_info{
-            width: 10%;
-            display: inline-block;
-            position: absolute;
-            left: 10%;
-            top: 1%;
-            z-index: 999;
+            /*width: 10%;*/
+            /*display: inline-block;*/
+            /*position: absolute;*/
+            /*left: 10%;*/
+            /*top: 1%;*/
+            /*z-index: 999;*/
         }
         .widget-body{
             min-height: inherit;
@@ -50,6 +50,7 @@
             margin-left: 1%;
             margin-bottom: 4%;
         }
+        #editabledatatable_info{display: none;}
     </style>
 </block>
 <block name="main">
@@ -75,10 +76,10 @@
                     </div>
                 </div>
                 <div class="form-group margin-top-5">
-                    <label for="default_liquidate" class="col-sm-2 control-label text-align-right form_label">平仓线（美元）：</label>
+                    <label for="default_liquidate" class="col-sm-2 control-label text-align-right form_label">平仓线基数（美元）：</label>
                     <div class="input-group" style="width: 67%;">
                         <span class="input-group-addon">$</span>
-                        <input type="number" min="0" placeholder="平仓线" class="form-control form_text" value="{$product['default_liquidate']}" name="default_liquidate" id="default_liquidate">
+                        <input type="number" min="0" placeholder="平仓线基数" class="form-control form_text" value="{$product['default_liquidate']}" name="default_liquidate" id="default_liquidate">
                     </div>
                 </div>
                 <div class="form-group no-margin-top">
@@ -112,7 +113,7 @@
                                                 交易手数
                                             </th>
                                             <th>
-                                                是否过夜(0:否、1:是)
+                                                是否过夜
                                             </th>
                                             <th>
                                                 最低充值金额（人民币）
@@ -170,12 +171,15 @@
                 init: function () {
                     //Datatable Initiating
                     var oTable = $('#editabledatatable').dataTable({
+                        bFilter: false,    //去掉搜索框方法三：这种方法可以
+                        bLengthChange: false,   //去掉每页显示多少条数据方法
                         "language": {
+                            "emptyTable":'没有更多数据',
                             "search": "",
                             "sLengthMenu": "_MENU_",
                             "oPaginate": {
-                                "sPrevious": "Prev",
-                                "sNext": "Next"
+                                "sPrevious": "上页",
+                                "sNext": "下页"
                             }
                         },
                         'ordering':false,
@@ -201,7 +205,8 @@
                         var aData = oTable.fnGetData(nRow);
                         var jqTds = $('>td', nRow);
                         jqTds[0].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="交易手数" value="' + aData[0] + '">';
-                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+//                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+                        jqTds[1].innerHTML = '<select class="form-control input-small"><option selected value="0">否</option><option value="1">是</option></select>';
                         jqTds[2].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="最低充值金额（元）" value="' + aData[2] + '">';
                         jqTds[3].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="平仓线（美元）" value="' + aData[3] + '">';
                         jqTds[4].innerHTML = '<a href="#" class="btn btn-success btn-xs save"><i class="fa fa-save"></i> 保存</a>' +
@@ -318,13 +323,15 @@
                     function editRow(oTable, nRow) {
                         var aData = oTable.fnGetData(nRow);
                         var jqTds = $('>td', nRow);
+                        var option;
                         if(aData[1]=='是'){
-                            aData[1] = 1;
+                            option='<option value="0">否</option><option selected value="1">是</option>';
                         }else{
-                            aData[1] = 0;
+                            option='<option selected value="0">否</option><option value="1">是</option>';
                         }
                         jqTds[0].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="交易手数" value="' + aData[0] + '">';
-                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+//                        jqTds[1].innerHTML = '<input type="number" class="form-control input-small" min="0" max="1" placeholder="0:否、1:是" value="' + aData[1] + '">';
+                        jqTds[1].innerHTML = '<select class="form-control input-small">'+option+'</select>';
                         jqTds[2].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="最低充值金额（元）" value="' + aData[2] + '">';
                         jqTds[3].innerHTML = '<input type="number" class="form-control input-small" min="0" placeholder="平仓线（美元）" value="' + aData[3] + '">';
                         jqTds[4].innerHTML = '<a href="#" class="btn btn-success btn-xs save"><i class="fa fa-save"></i> 保存</a>' +
@@ -334,11 +341,11 @@
                     function saveRow(oTable, nRow) {
                         var product = $('.save_info').attr('product');
                         var obj_id = $(nRow).attr('content');
+                        var type = $('select', nRow)[0].value;
                         var jqInputs = $('input', nRow);
                         var num = parseInt(jqInputs[0].value);
-                        var type = parseInt(jqInputs[1].value);
-                        var min_money = parseFloat(parseFloat(jqInputs[2].value).toFixed(2));
-                        var liquidate = parseFloat(parseFloat(jqInputs[3].value).toFixed(2));
+                        var min_money = parseFloat(parseFloat(jqInputs[1].value).toFixed(2));
+                        var liquidate = parseFloat(parseFloat(jqInputs[2].value).toFixed(2));
                         var product_id = product;
                         if(!type){
                             type = 0;
@@ -353,8 +360,7 @@
                             hint('warning', '提示', '参数有误');
                             return;
                         }
-
-                        var set_url = '{:U("Admin/product_info")}';
+                        var set_url = '{:U("Admin/product_info")}'
                         $.post(
                             set_url,
                             {

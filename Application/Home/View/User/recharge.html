@@ -37,7 +37,7 @@
             float: left;
         }
         #num{
-            width: 70px;
+            width: 45px;
         }
         .set_num{
             display: inline-block;
@@ -102,10 +102,11 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label text-align-right form_label select_num">交易手数：</label>
                         <div class="set_num">
-                            <label class="col-sm-2 control-label form_label I_set" style="width: 39%;">
+                            <label class="col-sm-2 control-label form_label I_set" style="width: 40%;">
+                                <span class="text" style="margin-right: 5px;">自选</span>
                                 <input value="-1" name="num" type="radio" class="colored-blue">
                             <span class="text">
-                                <input min="0" placeholder="手动设置" name="set_num" id="num" type="number">
+                                <input min="0" placeholder="设置" name="set_num" id="num" type="number">
                             </span>
                                 <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="请选择产品">?</span>
                             </label>
@@ -129,11 +130,11 @@
                     <!--<label for="dollar" class="col-sm-2 control-label text-align-right form_label">换算为美金为：</label>-->
                     <!--<input type="number" disabled min="0.01" class="form-control form_text" id="dollar">-->
                     <!--</div>-->
-                    <div class="form-group">
+                    <div style="display: none;" class="form-group">
                         <label for="remarks" class="col-sm-2 control-label text-align-right form_label">备注：</label>
                         <textarea style="resize: inherit;" name="remarks" id="remarks" maxlength="100" placeholder="请填写备注(100字符以内)"></textarea>
                     </div>
-                    <div class="form-group no-margin">
+                    <div class="form-group no-margin margin-top-30">
                         <div class="checkbox">
                             <label for="remarks" class="col-sm-2 control-label text-align-right "></label>
                             <label>
