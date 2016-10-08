@@ -106,7 +106,7 @@
                                 <span class="text" style="margin-right: 5px;">自选</span>
                                 <input value="-1" name="num" type="radio" class="colored-blue">
                             <span class="text">
-                                <input min="0" placeholder="设置" name="set_num" id="num" type="number">
+                                <input min="1" value="1" placeholder="设置" name="set_num" id="num" type="number">
                             </span>
                                 <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="请选择产品">?</span>
                             </label>
@@ -191,6 +191,9 @@
             $(document).on('change',$('input[name="num"]'),function(){
                 set_money();
             })
+            $(document).on('change',"#num",function(){
+                set_money();
+            })
             function set_money(){
                 if(!$('input[name="product_id"]:checked').val()||!$('input[name="num"]:checked').val()){
                     $("#money").attr('disabled','disabled');
@@ -198,9 +201,15 @@
                 }
                 var min_money = $('input[name="num"]:checked').attr('min-money');
                 var liquidate = $('input[name="num"]:checked').attr('liquidate');
-                $("#money").attr('min',min_money);
-                $("#money").attr('liquidate',liquidate);
-                $("#liquidate").val(liquidate);
+                var num = parseInt($.trim($("#num").val()));
+                if(!num||num<1){
+                    $("#num").val(1);
+                    return;
+                }
+                $("#money").attr('min',num*min_money);
+                $("#money").attr('liquidate',num*liquidate);
+                $("#liquidate").val(num*liquidate);
+                $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money+'<br>平仓线（美元）'+num*liquidate);
                 $("#money").attr('disabled',false);
             }
             $('input[name="product_id"],input[name="type"]').change(function(){
@@ -250,7 +259,7 @@
                 if(num==-1){
                     num = parseInt($.trim($("#num").val()));
                 }
-                if(!num||num<0){
+                if(!num||num<1){
                     hint('warning','提示','交易手数设置不合法！');
                     return false;
                 }
@@ -274,7 +283,6 @@
                     hint('warning','提示','请您阅读并同意《合作协议》');
                     return false;
                 }
-                return false;
                 /*var url = $(this).attr('url');
                 var to_url = $(this).attr('to-url');
                 $(this).attr('disabled',true);
