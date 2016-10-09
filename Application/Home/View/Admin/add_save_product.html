@@ -82,6 +82,14 @@
                         <input type="number" min="0" placeholder="平仓线基数" class="form-control form_text" value="{$product['default_liquidate']}" name="default_liquidate" id="default_liquidate">
                     </div>
                 </div>
+                <div class="form-group margin-top-5">
+                    <label for="overnight" class="col-sm-2 control-label text-align-right form_label">过夜交易时间：</label>
+                    <input type="text" maxlength="100" placeholder="过夜交易时间" class="form-control form_text" value="{$product['overnight']}" name="overnight" id="overnight">
+                </div>
+                <div class="form-group margin-top-5">
+                    <label for="unovernight" class="col-sm-2 control-label text-align-right form_label">不过夜交易时间：</label>
+                    <input type="text" placeholder="不过夜交易时间" class="form-control form_text" value="{$product['unovernight']}" name="unovernight" id="unovernight">
+                </div>
                 <div class="form-group no-margin-top">
                     <label for="name" class="col-sm-2 control-label text-align-right form_label">产品简介：</label>
                     <div class="col-lg-8 col-sm-8 col-xs-12 no-padding">
@@ -455,6 +463,8 @@
                 var url = $(this).attr("url");
                 var product = $(this).attr('product');
                 var name = $.trim($("#name").val());
+                var unovernight = $.trim($("#unovernight").val());
+                var overnight = $.trim($("#overnight").val());
                 var weight = parseInt($.trim($("#weight").val()));
                 var default_cardinal = parseFloat($.trim($("#default_cardinal").val())).toFixed(2);
                 var default_liquidate = parseFloat($.trim($("#default_liquidate").val())).toFixed(2);
@@ -466,6 +476,8 @@
                         {
                             product:product,
                             name:name,
+                            unovernight:unovernight,
+                            overnight:overnight,
                             intro:intro,
                             weight:weight,
                             default_cardinal:default_cardinal,

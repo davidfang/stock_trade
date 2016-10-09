@@ -29,6 +29,8 @@ class ProductModel extends Model
             $data['name'] = $product['name'];
             $data['intro'] = $product['intro'];
             $data['weight'] = $product['weight'];
+            $data['unovernight'] = $product['unovernight'];
+            $data['overnight'] = $product['overnight'];
             $data['default_cardinal'] = $product['default_cardinal'];
             $data['default_liquidate'] = $product['default_liquidate'];
             if (empty($product['product'])) {

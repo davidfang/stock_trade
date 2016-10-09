@@ -55,6 +55,11 @@
         .tooltip-arrow{
             display: none;
         }
+        .deal_info{
+            display: inline-block;
+            line-height: 20px;
+            min-height: 20px;
+        }
     </style>
     <script>
         var conversiorate = {$conversion['conversiorate']};
@@ -78,7 +83,7 @@
                         </label>
                         <foreach name="product_list" item="vo" key="k" >
                             <label class="col-sm-2 control-label form_label" style="width: 12%;">
-                                <input min-money="{$vo.default_cardinal}" liquidate="{$vo.default_liquidate}" value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
+                                <input overnight="{$vo.overnight}" unovernight="{$vo.unovernight}" min-money="{$vo.default_cardinal}" liquidate="{$vo.default_liquidate}" value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
                                 <span class="text"> {$vo.name}</span>
                                 <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="{$vo.intro}">?</span>
                             </label>
@@ -126,15 +131,21 @@
                             <input type="number" disabled min=0 placeholder="换算成美金" class="form-control" id="dollar">
                         </div>
                     </div>
-                    <!--<div class="form-group">-->
-                    <!--<label for="dollar" class="col-sm-2 control-label text-align-right form_label">换算为美金为：</label>-->
-                    <!--<input type="number" disabled min="0.01" class="form-control form_text" id="dollar">-->
-                    <!--</div>-->
+                    <div class="form-group" style="color: red;">
+                        <label class="col-sm-2 control-label text-align-right deal_info">交易时间：</label>
+                        <label class="col-sm-10 control-label deal_info deal_time"></label>
+
+                        <label class="col-sm-2 control-label deal_info text-align-right">最低充值金额（元）：</label>
+                        <label class="col-sm-10 control-label deal_info deal_min_money"></label>
+
+                        <label class="col-sm-2 control-label deal_info text-align-right">平仓线（美元）：</label>
+                        <label class="col-sm-10 control-label deal_info deal_liquidate"></label>
+                    </div>
                     <div style="display: none;" class="form-group">
                         <label for="remarks" class="col-sm-2 control-label text-align-right form_label">备注：</label>
                         <textarea style="resize: inherit;" name="remarks" id="remarks" maxlength="100" placeholder="请填写备注(100字符以内)"></textarea>
                     </div>
-                    <div class="form-group no-margin margin-top-30">
+                    <div class="form-group no-margin margin-top-20">
                         <div class="checkbox">
                             <label for="remarks" class="col-sm-2 control-label text-align-right "></label>
                             <label>
@@ -212,6 +223,18 @@
                 $("#money").attr('min',num*min_money);
                 $("#money").attr('liquidate',num*liquidate);
                 $("#liquidate").val(num*liquidate);
+
+                var type = $('input[name="type"]:checked').val();
+                var deal_time;
+                if(type==1){
+                    deal_time = $('input[name="product_id"]:checked').attr('overnight');
+                }else{
+                    deal_time = $('input[name="product_id"]:checked').attr('unovernight');
+                }
+                $(".deal_time").text(deal_time);
+                $(".deal_min_money").text(num*liquidate+" （元）");
+                $(".deal_liquidate").text(num*liquidate+" （美元）");
+
                 $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money+'<br>平仓线（美元）'+num*liquidate);
                 $("#money").attr('disabled',false);
             }
