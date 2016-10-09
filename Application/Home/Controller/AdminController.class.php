@@ -339,6 +339,7 @@ class AdminController extends BaseController
      */
     public function product_info(){
         $data = I('post.');
+        $data['update_time'] = time();
         $where['num'] = $data['num'];
         $where['type'] = $data['type'];
         $where['product_id'] = $data['product_id'];
