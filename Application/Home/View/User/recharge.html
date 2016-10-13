@@ -62,9 +62,12 @@
         }
     </style>
     <script>
-        var conversiorate = {$conversion['conversiorate']};
+        var conversiorate = '{$conversion["conversiorate"]}';
         function matrixing(that){
-            $("#dollar").val(parseFloat(that*conversiorate).toFixed(2));
+            var dollar = parseFloat(that*conversiorate).toFixed(2);
+            $("#dollar").val(dollar);
+            var payment = $('input[name="product_id"]:checked').attr('payment');
+            $(".deal_min_money").text((parseFloat(dollar)+parseFloat(payment)).toFixed(2)+"（美元）");
         }
     </script>
 </block>
@@ -83,7 +86,7 @@
                         </label>
                         <foreach name="product_list" item="vo" key="k" >
                             <label class="col-sm-2 control-label form_label" style="width: 12%;">
-                                <input overnight="{$vo.overnight}" unovernight="{$vo.unovernight}" min-money="{$vo.default_cardinal}" liquidate="{$vo.default_liquidate}" value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
+                                <input payment="{$vo.payment}" overnight="{$vo.overnight}" unovernight="{$vo.unovernight}" min-money="{$vo.default_cardinal}" liquidate="{$vo.default_liquidate}" value="{$vo.id}" name="product_id" type="radio" class="colored-blue">
                                 <span class="text"> {$vo.name}</span>
                                 <span class="badge margin-left-10" data-container="body" data-titleclass="bordered-purple" data-class="dark" data-toggle="popover-hover" data-placement="bottom" data-content="{$vo.intro}">?</span>
                             </label>
@@ -135,7 +138,7 @@
                         <label class="col-sm-2 control-label text-align-right deal_info">交易时间：</label>
                         <label class="col-sm-10 control-label deal_info deal_time"></label>
 
-                        <label class="col-sm-2 control-label deal_info text-align-right">最低充值金额（元）：</label>
+                        <label class="col-sm-2 control-label deal_info text-align-right">起始金额（美元）：</label>
                         <label class="col-sm-10 control-label deal_info deal_min_money"></label>
 
                         <label class="col-sm-2 control-label deal_info text-align-right">平仓线（美元）：</label>
@@ -232,7 +235,7 @@
                     deal_time = $('input[name="product_id"]:checked').attr('unovernight');
                 }
                 $(".deal_time").text(deal_time);
-                $(".deal_min_money").text(num*liquidate+" （元）");
+//                $(".deal_min_money").text(num*liquidate+" （元）");
                 $(".deal_liquidate").text(num*liquidate+" （美元）");
 
                 $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money+'<br>平仓线（美元）'+num*liquidate);

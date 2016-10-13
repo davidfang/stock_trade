@@ -83,6 +83,13 @@
                     </div>
                 </div>
                 <div class="form-group margin-top-5">
+                    <label for="payment" class="col-sm-2 control-label text-align-right form_label">垫付金额（美元）：</label>
+                    <div class="input-group" style="width: 67%;">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" min="0" placeholder="垫付金额" class="form-control form_text" value="{$product['payment']}" name="payment" id="payment">
+                    </div>
+                </div>
+                <div class="form-group margin-top-5">
                     <label for="overnight" class="col-sm-2 control-label text-align-right form_label">过夜交易时间：</label>
                     <input type="text" maxlength="100" placeholder="过夜交易时间" class="form-control form_text" value="{$product['overnight']}" name="overnight" id="overnight">
                 </div>
@@ -90,6 +97,7 @@
                     <label for="unovernight" class="col-sm-2 control-label text-align-right form_label">不过夜交易时间：</label>
                     <input type="text" placeholder="不过夜交易时间" class="form-control form_text" value="{$product['unovernight']}" name="unovernight" id="unovernight">
                 </div>
+
                 <div class="form-group no-margin-top">
                     <label for="name" class="col-sm-2 control-label text-align-right form_label">产品简介：</label>
                     <div class="col-lg-8 col-sm-8 col-xs-12 no-padding">
@@ -468,6 +476,7 @@
                 var weight = parseInt($.trim($("#weight").val()));
                 var default_cardinal = parseFloat($.trim($("#default_cardinal").val())).toFixed(2);
                 var default_liquidate = parseFloat($.trim($("#default_liquidate").val())).toFixed(2);
+                var payment = parseFloat($.trim($("#payment").val())).toFixed(2);
                 weight = weight?weight:0;
                 var to_url = $(this).attr('to-url');
                 var intro = ue.getContent();
@@ -482,6 +491,7 @@
                             weight:weight,
                             default_cardinal:default_cardinal,
                             default_liquidate:default_liquidate,
+                            payment:payment,
                         },
                         function(data){
                             if(data['code']==0){
