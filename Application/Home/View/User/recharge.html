@@ -251,7 +251,8 @@
 //                $(".deal_min_money").text(num*liquidate+" （元）");
                 $(".deal_liquidate").text(num*liquidate+" （美元）");
 
-                $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money+'<br>平仓线（美元）'+num*liquidate);
+//                $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money+'<br>平仓线（美元）'+num*liquidate);
+                $('input[name="num"][value="-1"]').nextAll('.badge').attr('data-content','最少充值金额（人民币）'+num*min_money);
                 $("#money").attr('disabled',false);
             }
             $('input[name="product_id"],input[name="type"]').change(function(){
