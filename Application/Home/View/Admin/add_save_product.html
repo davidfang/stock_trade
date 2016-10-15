@@ -83,10 +83,17 @@
                     </div>
                 </div>
                 <div class="form-group margin-top-5">
-                    <label for="payment" class="col-sm-2 control-label text-align-right form_label">垫付金额（美元）：</label>
+                    <label for="payment" style="line-height: inherit;" class="col-sm-2 control-label text-align-right form_label">【过夜】垫付金额（美元）：</label>
                     <div class="input-group" style="width: 67%;">
                         <span class="input-group-addon">$</span>
-                        <input type="number" min="0" placeholder="垫付金额" class="form-control form_text" value="{$product['payment']}" name="payment" id="payment">
+                        <input type="number" min="0" placeholder="垫付金额（过夜）" class="form-control form_text" value="{$product['payment']}" name="payment" id="payment">
+                    </div>
+                </div>
+                <div class="form-group margin-top-5">
+                    <label for="unpayment" style="line-height: inherit;" class="col-sm-2 control-label text-align-right form_label">【不过夜】垫付金额（美元）：</label>
+                    <div class="input-group" style="width: 67%;">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" min="0" placeholder="垫付金额（不过夜）" class="form-control form_text" value="{$product['unpayment']}" name="unpayment" id="unpayment">
                     </div>
                 </div>
                 <div class="form-group margin-top-5">
@@ -477,6 +484,7 @@
                 var default_cardinal = parseFloat($.trim($("#default_cardinal").val())).toFixed(2);
                 var default_liquidate = parseFloat($.trim($("#default_liquidate").val())).toFixed(2);
                 var payment = parseFloat($.trim($("#payment").val())).toFixed(2);
+                var unpayment = parseFloat($.trim($("#unpayment").val())).toFixed(2);
                 weight = weight?weight:0;
                 var to_url = $(this).attr('to-url');
                 var intro = ue.getContent();
@@ -492,6 +500,7 @@
                             default_cardinal:default_cardinal,
                             default_liquidate:default_liquidate,
                             payment:payment,
+                            unpayment:unpayment,
                         },
                         function(data){
                             if(data['code']==0){

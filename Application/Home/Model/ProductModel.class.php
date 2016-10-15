@@ -34,6 +34,7 @@ class ProductModel extends Model
             $data['default_cardinal'] = $product['default_cardinal'];
             $data['default_liquidate'] = $product['default_liquidate'];
             $data['payment'] = $product['payment'];
+            $data['unpayment'] = $product['unpayment'];
             if (empty($product['product'])) {
                 $data['create_time'] = $data['update_time'] = time();
                 $res = $table->add($data);
