@@ -67,13 +67,17 @@
             var dollar = parseFloat(that*conversiorate).toFixed(2);
             $("#dollar").val(dollar);
             var type = $('input[name="type"]:checked').val();
+            var num = $('input[name="num"]:checked').val();
+            if(!num||num==-1){
+                num = parseInt($.trim($("#num").val()));
+            }
             var payment;
             if(type==1){
                 payment = $('input[name="product_id"]:checked').attr('payment');
             }else{
                 payment = $('input[name="product_id"]:checked').attr('unpayment');
             }
-            $(".deal_min_money").text((parseFloat(dollar)+parseFloat(payment)).toFixed(2)+"（美元）");
+            $(".deal_min_money").text((parseFloat(dollar)+parseFloat(payment*num)).toFixed(2)+"（美元）");
         }
     </script>
 </block>
@@ -213,9 +217,15 @@
             })
             $(document).on('change',$('input[name="num"]'),function(){
                 set_money();
+                var that = $("#money").val();
+                $("#money").val(parseFloat(that).toFixed(2));
+                matrixing(that);
             })
             $(document).on('change',"#num",function(){
                 set_money();
+                var that = $("#money").val();
+                $("#money").val(parseFloat(that).toFixed(2));
+                matrixing(that);
             })
             function set_money(){
                 if(!$('input[name="product_id"]:checked').val()||!$('input[name="num"]:checked').val()){
